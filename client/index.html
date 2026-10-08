@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ocellus larva</title>
+  <style>
+    :root { color-scheme: dark; --ink: #e7f2ef; --dim: #8aa39c; --line: #24403b; --bad: #ffb4a8; --ok: #b7f0c8; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 16px/1.45 "Iowan Old Style", Palatino, Georgia, serif; background: #10221f; color: var(--ink); }
+    main { max-width: 880px; margin: 0 auto; padding: 28px 20px 64px; }
+    h1 { font-weight: 500; font-size: 28px; margin: 0 0 6px; }
+    .lede { color: var(--dim); margin: 0 0 22px; }
+    .status { min-height: 3.2em; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; }
+    .status.bad { color: var(--bad); border-color: #6a3330; }
+    .status.ok { color: var(--ok); }
+    .row { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+    button, label.file { font: 15px/1 sans-serif; background: #1b3833; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+    button:disabled { opacity: 0.45; cursor: default; }
+    dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 0; }
+    div.cell { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+    dt { color: var(--dim); font: 12px/1 sans-serif; letter-spacing: 0.04em; text-transform: uppercase; }
+    dd { margin: 6px 0 0; font-variant-numeric: tabular-nums; }
+    svg { width: 100%; height: 280px; background: #0c1a18; border: 1px solid var(--line); border-radius: 12px; margin-top: 16px; }
+    .hash { font: 12px/1.4 ui-monospace, monospace; color: var(--dim); word-break: break-all; margin-top: 12px; }
+    input { display: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Larva</h1>
+    <p class="lede">Each tick is predicted with the on-chain integers, then checked against the event. A mismatch stops the larva.</p>
+    <p id="status" class="status" role="status"></p>
+    <div class="row">
+      <button id="play" type="button">Play</button>
+      <button id="step" type="button">Step</button>
+      <button id="reset" type="button">Reset</button>
+      <button id="break" type="button">Break the next tick</button>
+      <button id="claim" type="button">Claim</button>
+      <label class="file">Open events<input id="file" type="file" accept="application/json"></label>
+    </div>
+    <p id="claimtext" class="lede"></p>
+    <dl>
+      <div class="cell"><dt>Tick</dt><dd id="tick">0</dd></div>
+      <div class="cell"><dt>x</dt><dd id="x">0</dd></div>
+      <div class="cell"><dt>y</dt><dd id="y">0</dd></div>
+      <div class="cell"><dt>Heading</dt><dd id="heading">0°</dd></div>
+      <div class="cell"><dt>Yolk</dt><dd id="yolk">100000</dd></div>
+    </dl>
+    <svg id="track" viewBox="0 0 800 280" role="img" aria-label="Path of the larva"></svg>
+    <p id="hash" class="hash"></p>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

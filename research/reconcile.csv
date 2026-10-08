@@ -1,0 +1,442 @@
+source_file,source_label,canonical_id,class,also_classes,side,decision,confidence,reason
+elife-fig1-data1.xlsx,84,84,PR-III,,,absent,high,Named in Figure 1 source data 1 and has no positive entry in either Figure 16 matrix. Not given empty edges.
+elife-fig1-data1.xlsx,coronet13,coronet13,Cor,,L,absent,high,Named in Figure 1 source data 1 and has no positive entry in either Figure 16 matrix. Not given empty edges.
+elife-fig1-data1.xlsx,coronet15,coronet15,Cor,,L,absent,high,Named in Figure 1 source data 1 and has no positive entry in either Figure 16 matrix. Not given empty edges.
+elife-fig1-data1.xlsx,lens4,lens4,lens,,,absent,high,Accessory lens cell in Figure 1. Not a neuron in the synapse matrices.
+elife-fig1-data1.xlsx,lens5,lens5,lens,,,absent,high,Accessory lens cell in Figure 1. Not a neuron in the synapse matrices.
+elife-fig1-data1.xlsx,lens8,lens8,lens,,,absent,high,Accessory lens cell in Figure 1. Not a neuron in the synapse matrices.
+elife-fig1-data1.xlsx,oacc1,oacc1,oacc,,,absent,high,"Otolith-associated ciliated cell in Figure 1. Accessory, not in the synapse matrices."
+elife-fig1-data1.xlsx,oacc2,oacc2,oacc,,,absent,high,"Otolith-associated ciliated cell in Figure 1 (also numbered 45). Accessory, not in the synapse matrices."
+elife-fig1-data1.xlsx,Ocellus,Ocellus,ocellus,,,absent,high,Accessory pigment cup in Figure 1. Not a neuron.
+elife-fig1-data1.xlsx,Otolith,Otolith,otolith,,,absent,high,Accessory gravity organ in Figure 1. Not a neuron.
+elife-fig1-data1.xlsx,pnz,pnz,DCEN,,,absent,high,Figure 1 lists pnz as a DCEN. Neither matrix contains pnz. Not merged with pnw.
+elife-fig16-data2.xlsx,14,14,unassigned,,,absent,high,"Listed in this sheet with no positive entry, and it has no synapse in the other matrix either. Not added as an empty cell."
+elife-fig16-data2.xlsx,84,84,PR-III,,,absent,high,"Listed in this sheet with no positive entry, and it has no synapse in the other matrix either. Not added as an empty cell."
+elife-fig16-data2.xlsx,118,118,unassigned,,,absent,high,"Listed in this sheet with no positive entry, and it has no synapse in the other matrix either. Not added as an empty cell."
+elife-fig16-data2.xlsx,132,132,unassigned,,,absent,high,"Listed in this sheet with no positive entry, and it has no synapse in the other matrix either. Not added as an empty cell."
+elife-fig16-data2.xlsx,137,137,unassigned,,,absent,high,"Listed in this sheet with no positive entry, and it has no synapse in the other matrix either. Not added as an empty cell."
+elife-fig16-data2.xlsx,155,155,unassigned,,,absent,high,"Listed in this sheet with no positive entry, and it has no synapse in the other matrix either. Not added as an empty cell."
+elife-fig16-data2.xlsx,169,169,unassigned,,,absent,high,"Listed in this sheet with no positive entry, and it has no synapse in the other matrix either. Not added as an empty cell."
+elife-fig16-data2.xlsx,170,170,unassigned,,,absent,high,"Listed in this sheet with no positive entry, and it has no synapse in the other matrix either. Not added as an empty cell."
+elife-fig16-data2.xlsx,172,172,unassigned,,,absent,high,"Listed in this sheet with no positive entry, and it has no synapse in the other matrix either. Not added as an empty cell."
+elife-fig16-data1.xlsx,bm,,basal lamina,,,drop,high,Ryan et al. 2016 exclude synapses onto the basal lamina from the neuron matrix.
+elife-fig16-data1.xlsx,bm-noto,,basal lamina,,,drop,high,Basal lamina over the notochord. Same exclusion as bm.
+elife-fig16-data1.xlsx,mul,,muscle pool,,,drop,high,"Pooled muscle column. Kept as a neuromuscular-junction target, not as a cell."
+elife-fig16-data1.xlsx,mulm,,muscle pool,,,drop,high,"Pooled muscle column. Kept as a neuromuscular-junction target, not as a cell."
+elife-fig16-data1.xlsx,mur,,muscle pool,,,drop,high,"Pooled muscle column. Kept as a neuromuscular-junction target, not as a cell."
+elife-fig16-data1.xlsx,murm,,muscle pool,,,drop,high,"Pooled muscle column. Kept as a neuromuscular-junction target, not as a cell."
+elife-fig16-data2.xlsx,Ep,,ependymal,,,drop,high,"Ryan et al. 2016 define ependymal cells as ciliated cells on the canal that lack an axon, and exclude them from the neuron matrix."
+elife-fig16-data1.xlsx,1,1,cor-ass BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,2,2,cor-ass BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,3,3,cil-BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,4,4,PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,5,5,unassigned,,,keep,low,"In a synapse matrix, not named in Figure 1 source data 1. Kept, so its synapses are not dropped."
+elife-fig16-data1.xlsx,6,6,PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,13,13,cil-BVIN,prIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,15,15,cor-ass BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,16,16,prIN,antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,17,17,cil-BVIN,prIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,18,18,cil-BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,19,19,unassigned,,,keep,low,"In a synapse matrix, not named in Figure 1 source data 1. Kept, so its synapses are not dropped."
+elife-fig16-data1.xlsx,20,20,PNIN,cil-BVIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,21,21,cil-BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,22,22,cil-BVIN,prIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,23,23,cor-ass BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,24,24,cil-BVIN,antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,25,25,PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,29,29,PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,30,30,PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,33,33,cil-BVIN,antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,35,35,unassigned,,,keep,low,"In a synapse matrix, not named in Figure 1 source data 1. Kept, so its synapses are not dropped."
+elife-fig16-data1.xlsx,38,38,cor-ass BVIN,antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,40,40,unassigned,,,keep,low,"In a synapse matrix, not named in Figure 1 source data 1. Kept, so its synapses are not dropped."
+elife-fig16-data1.xlsx,41,41,cil-BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,42,42,cil-BVIN,prIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,43,43,cil-BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,44,44,unassigned,,,keep,low,"In a synapse matrix, not named in Figure 1 source data 1. Kept, so its synapses are not dropped."
+elife-fig16-data1.xlsx,46,46,unassigned,,,keep,low,"In a synapse matrix, not named in Figure 1 source data 1. Kept, so its synapses are not dropped."
+elife-fig16-data1.xlsx,48,48,cil-BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,50,50,cil-BVIN,prIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,55,55,cor-ass BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,57,57,unassigned,,,keep,low,"In a synapse matrix, not named in Figure 1 source data 1. Kept, so its synapses are not dropped."
+elife-fig16-data1.xlsx,59,59,cor-ass BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,60,60,cor-ass BVIN,antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,61,61,PNIN,cil-BVIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,62,62,cor-ass BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,65,65,PNIN,cor-ass BVIN cil-BVIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,68,68,cor-ass BVIN,prIN antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,70,70,cor-ass BVIN,prIN antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,73,73,cor-ass BVIN,antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,74,74,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,78,78,cor-ass BVIN,prIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,79,79,cor-ass BVIN,antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,80,80,prRN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,85,85,PNIN,cil-BVIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,86,86,prRN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,88,88,PNIN,cil-BVIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,90,90,BPIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,92,92,BPIN,cil-BVIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,93,93,2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,94,94,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,96,96,prRN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,100,100,prRN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,101,101,PR-III,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,103,103,2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,105,105,pr-cor RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,106,106,2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,107,107,ambiguous,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,108,108,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,110,110,PR-III,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,112,112,pr-cor RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,113,113,PR-III,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,114,114,PR-III,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,116,116,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,119,119,pr-cor RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,120,120,ant-cor RN,ant1/2 RN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,121,121,prRN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,122,122,2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,123,123,pr-BTN RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,124,124,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,125,125,2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,126,126,prRN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,127,127,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,130,130,pr-BTN RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,131,131,PN RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,134,134,ant1/2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,135,135,ant2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,138,138,prIN,antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,140,140,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,142,142,ant1/2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,143,143,ant1/2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,147,147,ant1 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,152,152,ant1 RN,ant1/2 RN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,153,153,ant2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,157,157,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,159,159,ant2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,160,160,PBV PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,161,161,ant1 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,162,162,PBV PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,163,163,PBV PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,164,164,PBV PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,177,177,ambiguous,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,181,181,unassigned,,,keep,low,"In a synapse matrix, not named in Figure 1 source data 1. Kept, so its synapses are not dropped."
+elife-fig16-data1.xlsx,aaIN1,aaIN1,aaIN,,,keep,high,"Figure 1 numbers the three aaINs 95, 102 and 115, and does not say which matrix index that is. aaIN1–aaIN3 stay canonical. Those numbers are not extra cells."
+elife-fig16-data1.xlsx,aaIN2,aaIN2,aaIN,,,keep,high,"See aaIN1. Pairing to 95, 102, 115 is not stated."
+elife-fig16-data1.xlsx,aaIN3,aaIN3,aaIN,,,keep,high,"See aaIN1. Pairing to 95, 102, 115 is not stated."
+elife-fig16-data1.xlsx,ACIN1L,ACIN1L,ACIN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,ACIN2L,ACIN2L,ACIN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,ACIN2R,ACIN2R,ACIN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,AMG1,AMG1,AMG,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,AMG2,AMG2,AMG,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,AMG3,AMG3,AMG,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,AMG4,AMG4,AMG,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,AMG5,AMG5,AMG,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,AMG6,AMG6,AMG,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,AMG7,AMG7,AMG,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,Ant1,Ant1,Ant,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,Ant2,Ant2,Ant,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,ATEN1,ATEN1,aATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,ATEN2,ATEN2,aATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,ATEN3,ATEN3,aATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,ATEN4,ATEN4,aATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,BTN1,BTN1,BTN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,BTN2,BTN2,BTN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,BTN3,BTN3,BTN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,BTN4,BTN4,BTN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,coronet1,coronet1,Cor,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,coronet2,coronet2,Cor,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,coronet3,coronet3,Cor,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,coronet4,coronet4,Cor,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,coronet5,coronet5,Cor,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,coronet6,coronet6,Cor,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,coronet7,coronet7,Cor,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,coronet8,coronet8,Cor,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,coronet9,coronet9,Cor,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,coronet10,coronet10,Cor,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,coronet11,coronet11,Cor,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,coronet12,coronet12,Cor,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,coronet14,coronet14,Cor,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,coronet16,coronet16,Cor,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,ddNL,ddNL,ddN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,ddNR,ddNR,ddN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,Em1,Em1,Em,,,keep,high,"Figure 1 cell id 109. Distinct from ACIN1L, which the same key marks '109*'."
+elife-fig16-data1.xlsx,Em2,Em2,Em,,,keep,high,Figure 1 cell id 99.
+elife-fig16-data1.xlsx,lens6,lens6,PR-III,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,lens7,lens7,PR-III,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MGIN1L,MGIN1L,MGIN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MGIN1R,MGIN1R,MGIN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MGIN2L,MGIN2L,MGIN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MGIN2R,MGIN2R,MGIN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MGIN3L,MGIN3L,MGIN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MGIN3R,MGIN3R,MGIN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,midtail1,midtail1,MTN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,midtail2,midtail2,MTN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,midtail4,midtail4,MTN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,midtail7,midtail7,MTN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MN1L,MN1L,MN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MN1R,MN1R,MN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MN2L,MN2L,MN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MN2R,MN2R,MN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MN3L,MN3L,MN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MN3R,MN3R,MN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MN4L,MN4L,MN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MN4R,MN4R,MN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MN5L,MN5L,MN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,MN5R,MN5R,MN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,NeckNL,NeckNL,Neck,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,NeckNR,NeckNR,Neck,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,PMGN1,PMGN1,PMGN,,,keep,high,Figure 1 also calls this tail8.
+elife-fig16-data1.xlsx,PMGN2,PMGN2,PMGN,,,keep,high,Figure 1 also calls this tail15.
+elife-fig16-data1.xlsx,pna,pna,pATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pnb,pnb,pATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pnc,pnc,pATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pnf,pnf,pATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pnh,pnh,DCEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pns1,pns1,RTEN-a,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pns2,pns2,RTEN-a,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pns3,pns3,RTEN-b,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pns4,pns4,RTEN-b,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pns5,pns5,RTEN-a,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pns6,pns6,RTEN-a,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pns7,pns7,RTEN-b,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pns9,pns9,RTEN-a,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pns10,pns10,RTEN-b,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pns11,pns11,RTEN-b,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pns12,pns12,RTEN-b,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pns13,pns13,RTEN-a,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pns14,pns14,unassigned,,,keep,low,Chemical matrix only. Not in the Figure 1 RTEN id lists.
+elife-fig16-data1.xlsx,pnu,pnu,DCEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pnw,pnw,unassigned,,,keep,low,"Present in both matrices. Figure 1 lists DCEN ids pnh, pnu, pnx, pnz and does not list pnw. pnz is absent from both matrices. pnw is kept as its own cell and is not merged into pnz."
+elife-fig16-data1.xlsx,pnx,pnx,DCEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr1,pr1,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr2,pr2,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr3,pr3,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr4,pr4,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr5,pr5,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr6,pr6,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr7,pr7,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr8,pr8,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr9,pr9,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr10,pr10,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr11,pr11,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr12,pr12,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr13,pr13,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr14,pr14,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr15,pr15,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr16,pr16,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr17,pr17,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr18,pr18,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr19,pr19,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr20,pr20,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr21,pr21,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr22,pr22,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pr23,pr23,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pra,pra,PR-II,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,prb,prb,PR-II,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,prc,prc,PR-II,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,prd,prd,PR-II,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,pre,pre,PR-II,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,prf,prf,PR-II,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,prg,prg,PR-II,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,trIN,trIN,trIN,,,keep,high,Figure 1 cell id 36. One cell. The matrix name trIN is canonical.
+elife-fig16-data1.xlsx,ukn,ukn,BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,ukn2,ukn2,BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data1.xlsx,vacIN1,vacIN1,vacIN,,,keep,high,Figure 1 names this class lens1 and lens2. The matrices name them vacIN1 and vacIN2. The matrix name is canonical; lens1 is not a second cell.
+elife-fig16-data2.xlsx,2,2,cor-ass BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,3,3,cil-BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,4,4,PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,6,6,PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,13,13,cil-BVIN,prIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,15,15,cor-ass BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,16,16,prIN,antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,17,17,cil-BVIN,prIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,18,18,cil-BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,20,20,PNIN,cil-BVIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,21,21,cil-BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,22,22,cil-BVIN,prIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,23,23,cor-ass BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,24,24,cil-BVIN,antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,29,29,PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,30,30,PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,38,38,cor-ass BVIN,antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,42,42,cil-BVIN,prIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,43,43,cil-BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,44,44,unassigned,,,keep,low,"In a synapse matrix, not named in Figure 1 source data 1. Kept, so its synapses are not dropped."
+elife-fig16-data2.xlsx,48,48,cil-BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,55,55,cor-ass BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,59,59,cor-ass BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,61,61,PNIN,cil-BVIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,62,62,cor-ass BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,65,65,PNIN,cor-ass BVIN cil-BVIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,68,68,cor-ass BVIN,prIN antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,70,70,cor-ass BVIN,prIN antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,73,73,cor-ass BVIN,antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,74,74,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,78,78,cor-ass BVIN,prIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,79,79,cor-ass BVIN,antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,80,80,prRN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,82,82,unassigned,,,keep,low,"In a synapse matrix, not named in Figure 1 source data 1. Kept, so its synapses are not dropped."
+elife-fig16-data2.xlsx,85,85,PNIN,cil-BVIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,86,86,prRN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,88,88,PNIN,cil-BVIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,89,89,unassigned,,,keep,low,"In a synapse matrix, not named in Figure 1 source data 1. Kept, so its synapses are not dropped."
+elife-fig16-data2.xlsx,93,93,2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,94,94,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,96,96,prRN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,100,100,prRN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,101,101,PR-III,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,103,103,2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,105,105,pr-cor RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,106,106,2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,107,107,ambiguous,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,108,108,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,110,110,PR-III,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,112,112,pr-cor RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,113,113,PR-III,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,114,114,PR-III,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,116,116,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,119,119,pr-cor RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,120,120,ant-cor RN,ant1/2 RN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,121,121,prRN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,122,122,2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,123,123,pr-BTN RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,124,124,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,125,125,2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,126,126,prRN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,127,127,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,130,130,pr-BTN RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,131,131,PN RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,134,134,ant1/2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,135,135,ant2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,138,138,prIN,antIN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,139,139,unassigned,,,keep,low,"In a synapse matrix, not named in Figure 1 source data 1. Kept, so its synapses are not dropped."
+elife-fig16-data2.xlsx,140,140,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,142,142,ant1/2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,143,143,ant1/2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,147,147,ant1 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,149,149,unassigned,,,keep,low,"In a synapse matrix, not named in Figure 1 source data 1. Kept, so its synapses are not dropped."
+elife-fig16-data2.xlsx,152,152,ant1 RN,ant1/2 RN,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,153,153,ant2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,157,157,pr-AMG RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,159,159,ant2 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,160,160,PBV PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,161,161,ant1 RN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,162,162,PBV PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,163,163,PBV PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,164,164,PBV PNIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,168,168,unassigned,,,keep,low,"In a synapse matrix, not named in Figure 1 source data 1. Kept, so its synapses are not dropped."
+elife-fig16-data2.xlsx,177,177,ambiguous,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,181,181,unassigned,,,keep,low,"In a synapse matrix, not named in Figure 1 source data 1. Kept, so its synapses are not dropped."
+elife-fig16-data2.xlsx,aaIN1,aaIN1,aaIN,,,keep,high,"Figure 1 numbers the three aaINs 95, 102 and 115, and does not say which matrix index that is. aaIN1–aaIN3 stay canonical. Those numbers are not extra cells."
+elife-fig16-data2.xlsx,aaIN2,aaIN2,aaIN,,,keep,high,"See aaIN1. Pairing to 95, 102, 115 is not stated."
+elife-fig16-data2.xlsx,aaIN3,aaIN3,aaIN,,,keep,high,"See aaIN1. Pairing to 95, 102, 115 is not stated."
+elife-fig16-data2.xlsx,ACIN1L,ACIN1L,ACIN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,ACIN2L,ACIN2L,ACIN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,ACIN2R,ACIN2R,ACIN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,AMG1,AMG1,AMG,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,AMG2,AMG2,AMG,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,AMG3,AMG3,AMG,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,AMG4,AMG4,AMG,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,AMG5,AMG5,AMG,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,AMG6,AMG6,AMG,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,AMG7,AMG7,AMG,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,Ant1,Ant1,Ant,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,Ant2,Ant2,Ant,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,ATEN1,ATEN1,aATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,ATEN2,ATEN2,aATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,ATEN3,ATEN3,aATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,ATEN4,ATEN4,aATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,BTN1,BTN1,BTN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,BTN2,BTN2,BTN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,BTN3,BTN3,BTN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,BTN4,BTN4,BTN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,ddNL,ddNL,ddN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,ddNR,ddNR,ddN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,Em1,Em1,Em,,,keep,high,"Figure 1 cell id 109. Distinct from ACIN1L, which the same key marks '109*'."
+elife-fig16-data2.xlsx,Em2,Em2,Em,,,keep,high,Figure 1 cell id 99.
+elife-fig16-data2.xlsx,lens7,lens7,PR-III,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MGIN1L,MGIN1L,MGIN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MGIN1R,MGIN1R,MGIN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MGIN2L,MGIN2L,MGIN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MGIN2R,MGIN2R,MGIN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MGIN3L,MGIN3L,MGIN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MGIN3R,MGIN3R,MGIN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,midtail1,midtail1,MTN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,midtail2,midtail2,MTN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,midtail3,midtail3,unassigned,,,keep,low,"Gap matrix only. Figure 1 midtail subtypes are 1, 2, 4 and 7. Not merged into those."
+elife-fig16-data2.xlsx,midtail4,midtail4,MTN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MN1L,MN1L,MN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MN1R,MN1R,MN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MN2L,MN2L,MN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MN2R,MN2R,MN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MN3L,MN3L,MN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MN3R,MN3R,MN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MN4L,MN4L,MN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MN4R,MN4R,MN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MN5L,MN5L,MN,,L,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,MN5R,MN5R,MN,,R,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,PMGN1,PMGN1,PMGN,,,keep,high,Figure 1 also calls this tail8.
+elife-fig16-data2.xlsx,PMGN2,PMGN2,PMGN,,,keep,high,Figure 1 also calls this tail15.
+elife-fig16-data2.xlsx,pna,pna,pATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pnb,pnb,pATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pnc,pnc,pATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pnf,pnf,pATEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pnh,pnh,DCEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pns1,pns1,RTEN-a,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pns3,pns3,RTEN-b,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pns4,pns4,RTEN-b,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pns7,pns7,RTEN-b,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pns10,pns10,RTEN-b,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pns11,pns11,RTEN-b,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pns12,pns12,RTEN-b,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pnw,pnw,unassigned,,,keep,low,"Present in both matrices. Figure 1 lists DCEN ids pnh, pnu, pnx, pnz and does not list pnw. pnz is absent from both matrices. pnw is kept as its own cell and is not merged into pnz."
+elife-fig16-data2.xlsx,pnx,pnx,DCEN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr1,pr1,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr2,pr2,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr3,pr3,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr4,pr4,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr5,pr5,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr6,pr6,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr7,pr7,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr8,pr8,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr9,pr9,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr10,pr10,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr11,pr11,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr12,pr12,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr13,pr13,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr15,pr15,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr16,pr16,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr17,pr17,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr18,pr18,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr19,pr19,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr20,pr20,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr21,pr21,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr22,pr22,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pr23,pr23,PR-I,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pra,pra,PR-II,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,prb,prb,PR-II,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,prc,prc,PR-II,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,prd,prd,PR-II,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,pre,pre,PR-II,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,prf,prf,PR-II,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,prg,prg,PR-II,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,tail5,tail5,unassigned,,,keep,low,Gap matrix only. Figure 1 does not list a tail5 neuron (PMGN alternates are tail8 and tail15). Kept as its own cell.
+elife-fig16-data2.xlsx,trIN,trIN,trIN,,,keep,high,Figure 1 cell id 36. One cell. The matrix name trIN is canonical.
+elife-fig16-data2.xlsx,ukn,ukn,BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,ukn2,ukn2,BVIN,,,keep,high,Same label in the matrix and the canonical id.
+elife-fig16-data2.xlsx,vacIN1,vacIN1,vacIN,,,keep,high,Figure 1 names this class lens1 and lens2. The matrices name them vacIN1 and vacIN2. The matrix name is canonical; lens1 is not a second cell.
+elife-fig16-data2.xlsx,vacIN2,vacIN2,vacIN,,,keep,high,Figure 1 name lens2. The matrix name vacIN2 is canonical; lens2 is not a second cell.
+elife-fig16-data2.xlsx,165,NeckNL,Neck,,L,merge,high,"Figure 1 lists neck neurons as '165, 166' beside 'NeckNL and NeckNR'. The chemical matrix uses the names and the gap matrix uses the numbers. Paired in that listed order. This label has no positive matrix entry, so the alias moves no edges."
+elife-fig16-data2.xlsx,166,NeckNR,Neck,,R,merge,high,"Figure 1 lists neck neurons as '165, 166' beside 'NeckNL and NeckNR'. Paired in that listed order. This label has no positive matrix entry, so the alias moves no edges."
+elife-fig16-data2.xlsx,BPN1,90,BPIN,,,merge,medium,"The paper identifies two bipolar neurons, cells 90 and 92. The gap matrix calls them BPN1 and BPN2; the chemical matrix uses 90 and 92. Paired in listed order (BPN1=90, BPN2=92). Which number is which is not stated in the source files."
+elife-fig16-data2.xlsx,BPN2,92,BPIN,cil-BVIN,,merge,medium,Paired in listed order with cell 92. See BPN1.
+elife-fig16-data2.xlsx,Cor1,coronet1,Cor,,L,merge,high,"Gap matrix abbreviates coronet cells as Cor. Figure 1 uses Cor for coronet1–coronet16 and the chemical matrix spells them coronet. Same number, one cell."
+elife-fig16-data2.xlsx,Cor2,coronet2,Cor,,L,merge,high,"Gap matrix abbreviates coronet cells as Cor. Figure 1 uses Cor for coronet1–coronet16 and the chemical matrix spells them coronet. Same number, one cell."
+elife-fig16-data2.xlsx,Cor3,coronet3,Cor,,L,merge,high,"Gap matrix abbreviates coronet cells as Cor. Figure 1 uses Cor for coronet1–coronet16 and the chemical matrix spells them coronet. Same number, one cell."
+elife-fig16-data2.xlsx,Cor4,coronet4,Cor,,L,merge,high,"Gap matrix abbreviates coronet cells as Cor. Figure 1 uses Cor for coronet1–coronet16 and the chemical matrix spells them coronet. Same number, one cell."
+elife-fig16-data2.xlsx,Cor8,coronet8,Cor,,L,merge,high,"Gap matrix abbreviates coronet cells as Cor. Figure 1 uses Cor for coronet1–coronet16 and the chemical matrix spells them coronet. Same number, one cell."
+elife-fig16-data2.xlsx,Cor9,coronet9,Cor,,L,merge,high,"Gap matrix abbreviates coronet cells as Cor. Figure 1 uses Cor for coronet1–coronet16 and the chemical matrix spells them coronet. Same number, one cell."
+elife-fig16-data2.xlsx,Cor10,coronet10,Cor,,L,merge,high,"Gap matrix abbreviates coronet cells as Cor. Figure 1 uses Cor for coronet1–coronet16 and the chemical matrix spells them coronet. Same number, one cell."
+elife-fig16-data2.xlsx,Cor11,coronet11,Cor,,L,merge,high,"Gap matrix abbreviates coronet cells as Cor. Figure 1 uses Cor for coronet1–coronet16 and the chemical matrix spells them coronet. Same number, one cell."
+elife-fig16-data2.xlsx,Cor12,coronet12,Cor,,L,merge,high,"Gap matrix abbreviates coronet cells as Cor. Figure 1 uses Cor for coronet1–coronet16 and the chemical matrix spells them coronet. Same number, one cell."
+elife-fig16-data2.xlsx,Cor16,coronet16,Cor,,L,merge,high,"Gap matrix abbreviates coronet cells as Cor. Figure 1 uses Cor for coronet1–coronet16 and the chemical matrix spells them coronet. Same number, one cell."

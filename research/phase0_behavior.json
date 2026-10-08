@@ -1,0 +1,80 @@
+{
+ "data_hash": "9004dac630dbed5d88438c892deab08bb3a927f75e6337301cc720eeac65cf16",
+ "counts": {
+  "cells": 224,
+  "inhibitory": 28,
+  "unassigned": 17,
+  "chem_edges": 3010,
+  "gap_undirected": 428,
+  "nmj_edges": 13,
+  "absent_fig1": 11,
+  "merged_labels": 14
+ },
+ "unassigned": [
+  "5",
+  "19",
+  "35",
+  "40",
+  "44",
+  "46",
+  "57",
+  "82",
+  "89",
+  "139",
+  "149",
+  "168",
+  "181",
+  "midtail3",
+  "pns14",
+  "pnw",
+  "tail5"
+ ],
+ "probe": {
+  "pr1_drive_8000_motor_mean": 1298.6,
+  "dimming_motor_mean": 0.0,
+  "antenna_only_motor_mean": 0.0,
+  "integrator": "spike-count fallback for PR-II and antenna; thrust from neuromuscular weights"
+ },
+ "course": {
+  "light_100": {
+   "x": 2832,
+   "y": 154,
+   "heading": 1304,
+   "yolk": 97812
+  },
+  "hash": "5fb4c2b85af11c7b2b6a73c8542533a3f6f8ff1b49f2956fc5f2c62cc3c3c315",
+  "shadow_escape_thrust": 2000,
+  "shadow_displacement": 2001,
+  "control_displacement": 926,
+  "tilt_after_80": 140
+ },
+ "constants": {
+  "drive": 8000,
+  "near2": 16000000,
+  "shade_floor": 64,
+  "shade_span": 192,
+  "shadow_div": 4,
+  "ant_tonic": 1500,
+  "ant_gain": 6400,
+  "pr2_drive": 12000,
+  "pr2_window": 6,
+  "pr2_trigger": 3,
+  "escape_ticks": 8,
+  "escape_cooldown": 40,
+  "escape_thrust": 250,
+  "bout_bridge": 3,
+  "thrust_base": 40,
+  "thrust_div": 100,
+  "yaw_div": 800,
+  "yaw_cap": 400,
+  "pr1_turn": 180,
+  "tilt_step": 40,
+  "tilt_cap": 512,
+  "yolk0": 100000,
+  "burn_idle": 12,
+  "burn_bout": 26,
+  "burn_pulse": 18,
+  "burn_escape": 20,
+  "drive_cap": 20000
+ }
+}

@@ -1,0 +1,10 @@
+[package]
+name = "ocellus_game"
+edition = "2024"
+
+[dependencies]
+ocellus_brain = { local = "../brain" }
+ocellus_sink = { local = "../sink" }
+
+[addresses]
+ocellus_game = "0x0"

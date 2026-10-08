@@ -63,7 +63,7 @@ class Brain:
         self.tick = 0
         self.spikes_total = 0
 
-    def step(self, sensor_idx=(), sensor_drive=(), force_all=False):
+    def step(self, sensor_idx=(), sensor_drive=(), force_all=False, leak=None, theta=None):
         p, n, v = self.p, self.n, self.v
         exc, inh = [0] * n, [0] * n
         for i in range(n):
@@ -87,7 +87,8 @@ class Brain:
         fired = []
         for i in range(n):
             x = v[i]
-            x = x - ((x - REST) >> p["leak_shift"]) if x > REST else x + ((REST - x) >> p["leak_shift"])
+            shift = p["leak_shift"] if leak is None else leak[i]
+            x = x - ((x - REST) >> shift) if x > REST else x + ((REST - x) >> shift)
             x += exc[i]
             x = x - inh[i] if x > inh[i] else 0
             if x < p["v_floor"]: x = p["v_floor"]
@@ -98,7 +99,8 @@ class Brain:
                 self.r[i] -= 1
                 f = False
             else:
-                f = x >= p["thresh"] + a
+                extra = 0 if theta is None else theta[i]
+                f = x >= p["thresh"] + a + extra
             if f:
                 self.r[i] = p["refractory"]
                 x = p["reset"]

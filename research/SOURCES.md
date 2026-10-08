@@ -13,8 +13,13 @@ All of these files come from, or are derived from, an article published under th
 | `elife-fig1-data1.xlsx` | Figure 1 source data 1: cell-type key. https://cdn.elifesciences.org/articles/16962/elife-16962-fig1-data1-v1.xlsx | Unmodified |
 | `ryan2016.xml` | Full-text JATS XML from Europe PMC. https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5140270/fullTextXML | Unmodified |
 | `ryan2016.txt` | Plain text extracted from `ryan2016.xml` (tags stripped) | Derived; used for searching |
-| `graph.json` | Edge list built by `bench/scripts/build_graph.py` from the two Figure 16 matrices | **Derived (modified):** integer weights = depth ÷ 0.06 µm; labels not yet reconciled |
+| `graph.json` | Edge list built by `bench/scripts/build_graph.py` from the two Figure 16 matrices | **Derived (modified):** integer weights = depth ÷ 0.06 µm; labels not reconciled. Benchmark only |
 | `matrix_stats.json` | Non-zero entry counts per matrix, from the same script | Derived |
+| `reconcile.csv` | One row per source label, from `bench/scripts/build_connectome.py` | **Derived.** Alias decisions for Cor/coronet, BPN/90/92, and neck cells 165/166 |
+| `signs.csv` | Excitatory/inhibitory sign per canonical cell | **Derived.** 28 inhibitory cells cited to Kourakis 2019, Bostwick 2020, or the Ryan cell key. Every other cell is an explicit default |
+| `connectome.v1.json` | Canonical cells, edges, roles, and `data_hash` | **Derived.** This is the graph a frozen Connectome will store |
+| `connectome.v1.bin` | Canonical binary whose blake2b256 is `data_hash` | Derived |
+| `phase0_behavior.json` | Course and probe results from `bench/scripts/test_course.py` | Derived |
 
 ## Not included (listed for reference)
 

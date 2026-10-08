@@ -8,8 +8,9 @@ Outputs (research/): graph.json        {cells, chem, gap, nmj}  (indices + integ
                      matrix_stats.json  raw non-zero entry counts
 
 Weight = cumulative contact depth (um) / 0.06 um, rounded, min 1  (=> number of 60-nm sections).
-NOTE: labels are NOT yet reconciled between the two matrices (e.g. Cor1 vs coronet1);
-this is a benchmark-grade graph, not the canonical connectome.
+NOTE: labels are NOT reconciled (e.g. Cor1 vs coronet1). This graph is the
+benchmark. The canonical connectome is research/connectome.v1.json, built by
+build_connectome.py.
 Requires: pip install openpyxl
 """
 import json, re, sys

@@ -1,0 +1,13 @@
+{
+  "name": "ocellus-client",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "check": "node src/check.js"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}

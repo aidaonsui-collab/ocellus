@@ -1,0 +1,6 @@
+[package]
+name = "ocellus_sink"
+edition = "2024"
+
+[addresses]
+ocellus_sink = "0x0"

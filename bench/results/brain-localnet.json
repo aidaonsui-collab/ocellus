@@ -1,0 +1,124 @@
+{
+ "date": "2026-10-07T23:47:43",
+ "sui": "sui 1.80.1-homebrew",
+ "reference_gas_price": 1000,
+ "package": "0x4f1d3a79349ff30658342eaf26355d96e36505c94d12d0f36418f16a9f830b51",
+ "connectome": "0xf2e58f0d0d1bf28409ebc77d8639064c0f7a5318f47ac7f1845b3a297ba767e2",
+ "larva": "0x83b91d7fdbce30b899d496c8d4fb16380b89b69ec635c77934709ac4e6c90f36",
+ "busy_units_max_after_warmup": 3930,
+ "seizure_units": 34400,
+ "ticks": [
+  {
+   "call": "tick_baseline",
+   "i": 0,
+   "units": 2730,
+   "gasUsed": {
+    "computationCost": "2730000",
+    "storageCost": "13474800",
+    "storageRebate": "13332528",
+    "nonRefundableStorageFee": "134672"
+   },
+   "connectome_mutated": false
+  },
+  {
+   "call": "tick_baseline",
+   "i": 1,
+   "units": 2740,
+   "gasUsed": {
+    "computationCost": "2740000",
+    "storageCost": "13482400",
+    "storageRebate": "13340052",
+    "nonRefundableStorageFee": "134748"
+   },
+   "connectome_mutated": false
+  },
+  {
+   "call": "tick_baseline",
+   "i": 2,
+   "units": 2870,
+   "gasUsed": {
+    "computationCost": "2870000",
+    "storageCost": "13490000",
+    "storageRebate": "13347576",
+    "nonRefundableStorageFee": "134824"
+   },
+   "connectome_mutated": false
+  },
+  {
+   "call": "tick_baseline",
+   "i": 3,
+   "units": 3580,
+   "gasUsed": {
+    "computationCost": "3580000",
+    "storageCost": "13497600",
+    "storageRebate": "13355100",
+    "nonRefundableStorageFee": "134900"
+   },
+   "connectome_mutated": false
+  },
+  {
+   "call": "tick_baseline",
+   "i": 4,
+   "units": 3440,
+   "gasUsed": {
+    "computationCost": "3440000",
+    "storageCost": "13505200",
+    "storageRebate": "13362624",
+    "nonRefundableStorageFee": "134976"
+   },
+   "connectome_mutated": false
+  },
+  {
+   "call": "tick_baseline",
+   "i": 5,
+   "units": 3350,
+   "gasUsed": {
+    "computationCost": "3350000",
+    "storageCost": "13512800",
+    "storageRebate": "13370148",
+    "nonRefundableStorageFee": "135052"
+   },
+   "connectome_mutated": false
+  },
+  {
+   "call": "tick_baseline",
+   "i": 6,
+   "units": 3930,
+   "gasUsed": {
+    "computationCost": "3930000",
+    "storageCost": "13512800",
+    "storageRebate": "13377672",
+    "nonRefundableStorageFee": "135128"
+   },
+   "connectome_mutated": false
+  },
+  {
+   "call": "tick_baseline",
+   "i": 7,
+   "units": 3480,
+   "gasUsed": {
+    "computationCost": "3480000",
+    "storageCost": "13512800",
+    "storageRebate": "13377672",
+    "nonRefundableStorageFee": "135128"
+   },
+   "connectome_mutated": false
+  }
+ ],
+ "seizure": {
+  "call": "measure_seizure",
+  "units": 34400,
+  "gasUsed": {
+   "computationCost": "34400000",
+   "storageCost": "13512800",
+   "storageRebate": "13377672",
+   "nonRefundableStorageFee": "135128"
+  },
+  "connectome_mutated": false
+ },
+ "gate": {
+  "busy_under_8000": true,
+  "seizure_under_40000": true,
+  "connectome_not_rewritten": true
+ }
+}

@@ -1,0 +1,6 @@
+[package]
+name = "ocellus_brain"
+edition = "2024"
+
+[addresses]
+ocellus_brain = "0x0"
