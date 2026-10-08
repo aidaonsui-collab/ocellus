@@ -1,0 +1,186 @@
+{
+ "params": {
+  "v0": {
+   "thresh": 1064960,
+   "reset": 1044480,
+   "leak_shift": 3,
+   "w_scale": 64,
+   "gap_shift": 6,
+   "gap_mode": "raw",
+   "v_floor": 0,
+   "v_ceil": null,
+   "adapt_inc": 0,
+   "adapt_shift": 0
+  },
+  "v1": {
+   "thresh": 1064960,
+   "reset": 1044480,
+   "leak_shift": 3,
+   "w_scale": 320,
+   "gap_shift": 12,
+   "gap_mode": "normalized",
+   "v_floor": 1032192,
+   "v_ceil": 1114112,
+   "adapt_inc": 8192,
+   "adapt_shift": 4
+  }
+ },
+ "results": {
+  "v0": {
+   "light_then_dark": {
+    "motor_mean_light": 3496.5,
+    "swim_bouts_in_light": 1,
+    "motor_mean_dark": 3496.5,
+    "ticks_to_silence_after_off": null
+   },
+   "drive_sweep": {
+    "drive": [
+     0,
+     1500,
+     2500,
+     4000,
+     6000,
+     8000,
+     10000,
+     15000,
+     20000
+    ],
+    "motor_mean": [
+     0.0,
+     3496.5,
+     3496.5,
+     3496.5,
+     3496.5,
+     3496.5,
+     3496.5,
+     3496.5,
+     3496.5
+    ],
+    "swim_bouts_per_400_ticks": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "share_of_ticks_swimming": [
+     0.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "spearman_rho_motor_mean": 0.548
+   },
+   "pulsed_light": {
+    "motor_mean_on_phase": 3511.1,
+    "motor_mean_off_phase": 3481.9
+   },
+   "dimming_step": {
+    "motor_mean_before": 3496.5,
+    "motor_mean_first_10_after": 3496.5,
+    "motor_mean_dark": 3496.5
+   },
+   "antenna_only": {
+    "motor_mean": 3496.5
+   },
+   "no_input_from_rest": {
+    "spikes": 0
+   },
+   "all_spiking_start_no_input": {
+    "ticks_to_silence": null,
+    "spikes_last_50": 800
+   },
+   "activity_census": {
+    "cells_fired_once_or_more": 54,
+    "of": 237
+   }
+  },
+  "v1": {
+   "light_then_dark": {
+    "motor_mean_light": 1063.6,
+    "swim_bouts_in_light": 5,
+    "motor_mean_dark": 0.0,
+    "ticks_to_silence_after_off": 0
+   },
+   "drive_sweep": {
+    "drive": [
+     0,
+     1500,
+     2500,
+     4000,
+     6000,
+     8000,
+     10000,
+     15000,
+     20000
+    ],
+    "motor_mean": [
+     0.0,
+     0.0,
+     163.6,
+     487.5,
+     617.1,
+     964.5,
+     1164.9,
+     1217.9,
+     1377.4
+    ],
+    "swim_bouts_per_400_ticks": [
+     0,
+     0,
+     1,
+     3,
+     4,
+     6,
+     7,
+     8,
+     10
+    ],
+    "share_of_ticks_swimming": [
+     0.0,
+     0.0,
+     0.04,
+     0.12,
+     0.15,
+     0.26,
+     0.29,
+     0.33,
+     0.38
+    ],
+    "spearman_rho_motor_mean": 0.996
+   },
+   "pulsed_light": {
+    "motor_mean_on_phase": 1207.0,
+    "motor_mean_off_phase": 747.9
+   },
+   "dimming_step": {
+    "motor_mean_before": 0.0,
+    "motor_mean_first_10_after": 0.0,
+    "motor_mean_dark": 0.0
+   },
+   "antenna_only": {
+    "motor_mean": 0.0
+   },
+   "no_input_from_rest": {
+    "spikes": 0
+   },
+   "all_spiking_start_no_input": {
+    "ticks_to_silence": 12,
+    "spikes_last_50": 0
+   },
+   "activity_census": {
+    "cells_fired_once_or_more": 113,
+    "of": 237
+   }
+  }
+ }
+}

@@ -54,7 +54,7 @@ def main():
 
         pub = run(["test-publish", "--build-env", "testnet", "--pubfile-path", str(work / "Pub.localnet.toml")], "2000000000")
         pkg = next(o["packageId"] for o in pub["objectChanges"] if o["type"] == "published")
-        args = [str(G["n"]), V(G["ptr"]), V(G["col"]), V(G["w"]), V(G["inhib"]), V(G["gptr"]), V(G["gcol"]), V(G["gw"])]
+        args = [str(G["n"]), V(G["ptr"]), V(G["col"]), V(G["w"]), V(G["inhib"]), V(G["gptr"]), V(G["gcol"]), V(G["gc"])]  # gc: model v1 gap coefficients
         sens, drive = V(G["sens"]), V([20000] * len(G["sens"]))
         out = {"date": datetime.now().isoformat(timespec="seconds"), "sui_version": subprocess.run([SUI, "--version"], capture_output=True, text=True).stdout.strip(),
                "reference_gas_price": rgp, "graph": {k: G[k] for k in ("n",)} | {"chem_edges": len(G["col"]), "gap_directed": len(G["gcol"])}, "variants": {}}
