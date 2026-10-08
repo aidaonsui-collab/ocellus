@@ -118,6 +118,22 @@ A sign change doesn't add state, but it can add spikes, and spikes add gas becau
 
 Nothing. Everything below depends on this, except phase 1, which can start in parallel because it only needs the PR-I pathway that already works.
 
+## Playing without a signature on every tick
+
+Today every brain step is its own transaction (`swim_tick` or `race_tick`), signed by the larva's owner, because `&mut Ciona` is an owned object. A 400-tick race leg is 400 wallet prompts. Some on-chain brain games avoid this by running play on a server and touching the chain only when ownership changes. Ocellus doesn't. Every step still runs in Move and emits `Tick`. What changes is who signs and who pays.
+
+**Measured so far** (bench package, 237-label graph, every sensor driven at 20,000, local network only, `bench/README.md`). Model v1: 1 tick 1,640–3,200 computation units, 2 ticks 23,500, 5 ticks 209,100. Model v0: 100 ticks ran out of gas at the 50 SUI budget cap. The jump comes from Sui's tiered instruction pricing (DESIGN §3.5). Mainnet must be re-measured, and so must the game's `ciona::swim` path, which adds checks and an event on top of the bench step.
+
+| Option | How it works on Sui | Tradeoffs |
+|---|---|---|
+| **A. Several steps per transaction** | A new `ciona::swim_many(ciona, connectome, clock, inputs)` runs N brain steps in one call. Calling `swim` N times in one PTB doesn't work: `step` aborts with `E_CLOCK` when two steps share a clock millisecond, and every command in a transaction sees the same `Clock`. | Fewer signatures, but the tier cliff caps N. DESIGN's target of ≥ 4 ticks under ~20k instructions is an **estimate** that needs the planned optimizations. Treat N as a measured cap, not a promise. Every step still emits `Tick`, so replay is unchanged. |
+| **B. Sponsored transactions** | Sui's native sponsorship: `sender` is the player, `GasData.owner` is the game's gas-station address, and both sign the full `TransactionData` ([Sui docs](https://docs.sui.io/develop/transaction-payment/sponsor-txn)). | The player holds no SUI and sees no gas, but **still signs every transaction**. On its own this doesn't remove the prompt. The operator pays gas from its own funded address, never from the `Sink` (it has no withdraw) or from race pots. This is an operating cost, not a payout to holders. The station must allowlist Ocellus `moveCall` targets, rate-limit per address, and cap the budget (all from the Sui hardening list). |
+| **C. A session that one signature authorizes** | Sui has **no protocol-level session key for ordinary wallets**. Two honest versions: (1) **zkLogin**. The app's ephemeral key signs silently until `maxEpoch` ([zkLogin](https://docs.sui.io/sui-stack/zklogin-integration/)), but it carries the whole account's authority. (2) **A Move-level grant**, the same pattern as DeepBook's `deepbook_sessions` ([docs](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/sessions)). The owner signs once: `session::open(ciona, delegate, max_ticks, expires_ms, mode)` wraps the larva in a shared `SwimSession`. A browser-held key may then call only `session::swim` or `session::race_tick` on that one larva, until the tick budget or deadline runs out. `session::close` returns the larva: the owner can call it any time, and anyone can call it after the deadline. | One prompt covers a race leg. The scope is narrow: one larva and two step functions, with no transfer, claim, settle or payout. `Ciona` has `store`, so it must stay wrapped and never be sent to the delegate address. Otherwise a leaked browser key could take the larva. Wrapping makes the larva a shared object, so its ticks go through consensus. Two ticks landing in the same commit would hit `E_CLOCK`, so the client must space them. For `race_tick` the inputs come from the revealed seed, so a delegate can only choose *when* to tick, not what the larva sees. |
+
+**Recommended default: C(2) + B, one step per transaction, with A as an optimization.** The player signs `session::open` once per race leg or free-swim stretch. The browser key signs each step, the game's station sponsors the gas, and the transaction goes to a full node. `swim_many` comes in only after the optimized step measures inside the first tier on testnet and mainnet. zkLogin players can use C(1) instead. It is simpler, but broader in authority.
+
+**Never off-chain:** the brain step (`brain::tick_state`), the race seed (`race::reveal_seed` with `sui::random`), hatching randomness, settlement (`claim`, `complete_settle`, `fail_settle`, `reef::evict_expired`), and payouts (`finalize_race`, `market::claim_prize`). The server may build transactions, sponsor gas, submit them and index events. It never holds the owner's key or the larva, and it never decides an outcome. If it stalls or censors, the owner can still `close` the session and step the larva directly from their wallet.
+
 ## Phase 1. Light racing ladder
 
 **Goal.** A series of shared light races where the only thing a player controls is where the light is, and the brain's PR-I pathway does the swimming. Genomes differ in excitability, so larvae steer differently, and breeding is how you get a larva that steers the way you want.
@@ -152,6 +168,7 @@ If phase 0 picks the herding convention, a race is scored on reaching a goal reg
 ### Gas, storage, risks
 
 - No new per-tick state. A second pure function is noise next to the brain step. Re-measure once anyway.
+- A race leg is hundreds of `race_tick` calls. Ship it with the session, sponsorship and batching path in [Playing without a signature on every tick](#playing-without-a-signature-on-every-tick), not as one wallet prompt per tick.
 - **Open item, PR #3:** `hatch_founder` is free and never calls `pay_hatch`. A racing ladder with free larvae is fine for the demo and wrong for launch. Wire founder hatching through `pay_hatch` (new `hatch_paid<T>`, mirroring `enter_paid`) before the ladder is playable against the coin, and keep `hatch_founder` behind a dev-only flag or remove it. Note `market` already has `settle_bounty`, which nothing pays out.
 - `create_race` is a public, free `entry`. Anyone can open races. Cap open races per game, or require `pay_entry`-style funding at creation, before this is public.
 - Shared `LightRace` is written at `enter`, `reveal_seed` and `finish` only, so the race itself doesn't hot-spot. Good; keep it that way.
@@ -188,6 +205,7 @@ Phase 0's dimming result: a shadow must change motor output and heading inside `
 ### Gas, storage, risks
 
 - One extra shared-object read per tick, no extra write. The gauntlet object is only written at entry and at the final mark.
+- `gauntlet_tick` needs the same session entry point as `race_tick` (see [Playing without a signature on every tick](#playing-without-a-signature-on-every-tick)). Its shadow schedule comes from the seed, so the delegate key can't choose what the larva sees.
 - If phase 0's dimming burst makes the tick much more expensive, the gauntlet is the first place it hurts, because every tick in the window is a dimming tick. Re-measure before building the mode.
 - Don't let the gauntlet mint rewards by itself. Payouts reuse `claim_prize`.
 
@@ -223,6 +241,7 @@ Phase 0's antenna result: tilt changes the motor left/right split only during a 
 ### Gas, storage, risks
 
 - One `u32` on `Body` is small. The cost is the phase 0 tick, not the field.
+- Puzzles are free-swim stretches driven by the player's light and dimming. They use `session::swim` under the same one-signature path (see [Playing without a signature on every tick](#playing-without-a-signature-on-every-tick)).
 - `Ciona` and `Body` are stored structs. Adding a field is fine now and a migration later. Land it before any deployment.
 - The 20-minute competence clock (`rules::competence_ms`) and the 1,200-tick minimum are unchanged. Puzzles have to be solvable inside the remaining yolk, which the tests should check.
 
