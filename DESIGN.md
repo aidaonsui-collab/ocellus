@@ -441,6 +441,8 @@ Sui policies can only become more restrictive over time ([custom upgrade policie
 | **4: Breeding & lineages** | Spawning, self-sterility genetics, family trees, Tunic Bed (fossils), lineage leaderboards. |
 | **5: New species (optional)** | Bigger brains that don't fit on-chain run inside a **Nautilus** attested enclave (AWS Nitro), and its signed state transitions are verified on-chain ([Nautilus docs](https://docs.sui.io/concepts/cryptography/nautilus)). Candidates: the ***Platynereis*** 3-day larva, a marine annelid with 9,162 cells, 966 neurons and 14,066 directed graph edges, CC BY ([Verasztó et al. 2025, eLife](https://pmc.ncbi.nlm.nih.gov/articles/PMC12387772/)); the ***Drosophila* larva** brain, 3,016 neurons and 548,000 synapses ([Winding et al. 2023, *Science*](https://doi.org/10.1126/science.add9330); check its data license before use). On-chain *Ciona* stays the fully verifiable flagship. |
 
+The modes inside phases 1 to 4, and the brain work they depend on, are sequenced in [docs/BRAIN_MODES_PLAN.md](docs/BRAIN_MODES_PLAN.md). That plan starts from the code as it stands: the contracts exist and pass their tests, but the dimming escape and the gravity response are still rules applied to the body, because PR-II and antenna drive don't reach the motor neurons yet (see the brain model v1 notes in PR #2).
+
 ---
 
 ## 13. Open questions and risks

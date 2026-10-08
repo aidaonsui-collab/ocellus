@@ -8,7 +8,9 @@ The game works with any standard Sui coin and never needs minting rights, so it 
 
 ## Status
 
-**Design stage.** No contracts have been deployed yet. A prototype gas benchmark exists (see `bench/`). Read the full design in **[DESIGN.md](./DESIGN.md)**, which covers the brain model, gas benchmarks, creature objects, genetics, lifecycle, reef world, token integration, verification, trading, roadmap and risks.
+**Contracts written and tested locally; nothing deployed.** `contracts/brain`, `contracts/game` and `contracts/sink` build and pass `sui move test`. `client/src/engine.js` is the integer mirror that both the verifier (`client/index.html`) and the demo (`client/demo/`) run, and `replay/replay.py` checks the same events in Python. The gas figures in `bench/` come from a throwaway local network only. No package has been published to Sui mainnet or testnet.
+
+Read the full design in **[DESIGN.md](./DESIGN.md)** and the plan for the game modes in **[docs/BRAIN_MODES_PLAN.md](./docs/BRAIN_MODES_PLAN.md)**.
 
 ## Repository layout
 
@@ -18,6 +20,10 @@ The game works with any standard Sui coin and never needs minting rights, so it 
 | [`client/demo/`](./client/demo/README.md) | WebGL demo of the lifecycle (hatch, light-gate race, settlement, metamorphosis), served at `/demo/` by the Vite client. Every tick runs the chain's integer engine (`client/src/engine.js`) over the reconciled 224-cell connectome, and the page replays recorded chain events to check it. Nothing in it is on-chain. |
 | [`bench/`](./bench/README.md) | Prototype Move gas benchmark of the on-chain brain (real connectome), scripts to reproduce it, and raw results. **Numbers are from a local Sui test network.** |
 | [`research/`](./research/SOURCES.md) | CC BY source data from Ryan et al. 2016 (connectome matrices, cell key, full text), the derived edge list, and `SOURCES.md` listing every cited source, including ones that aren't redistributed here |
+| [`contracts/`](./contracts) | The Move packages: `brain`, `game` (`ciona`, `race`, `reef`, `market`, `rules`) and `sink`, plus their tests |
+| [`client/`](./client/src/engine.js) | The shared integer engine, the verifier page and the WebGL demo |
+| [`replay/`](./replay) | The Python replay checker |
+| [`docs/`](./docs/BRAIN_MODES_PLAN.md) | Implementation plans. The brain-modes plan sequences the modes the brain actually drives, starting with the pathway work that makes dimming and gravity real neural behavior |
 
 ## Data credit and license note
 
