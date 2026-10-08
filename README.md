@@ -8,7 +8,15 @@ The game works with any standard Sui coin and never needs minting rights, so it 
 
 ## Status
 
-**Design stage.** No contracts have been deployed yet. Read the full design in **[DESIGN.md](./DESIGN.md)**, which covers the brain model, gas benchmarks, creature objects, genetics, lifecycle, reef world, token integration, verification, trading, roadmap and risks.
+**Design stage.** No contracts have been deployed yet. A prototype gas benchmark exists (see `bench/`). Read the full design in **[DESIGN.md](./DESIGN.md)**, which covers the brain model, gas benchmarks, creature objects, genetics, lifecycle, reef world, token integration, verification, trading, roadmap and risks.
+
+## Repository layout
+
+| Path | Contents |
+|---|---|
+| [`DESIGN.md`](./DESIGN.md) | Full design document |
+| [`bench/`](./bench/README.md) | Prototype Move gas benchmark of the on-chain brain (real connectome), scripts to reproduce it, and raw results. **Numbers are from a local Sui test network.** |
+| [`research/`](./research/SOURCES.md) | CC BY source data from Ryan et al. 2016 (connectome matrices, cell key, full text), the derived edge list, and `SOURCES.md` listing every cited source, including ones that aren't redistributed here |
 
 ## Data credit and license note
 

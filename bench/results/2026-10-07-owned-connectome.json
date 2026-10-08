@@ -1,0 +1,161 @@
+{
+ "1_False": [
+  "success",
+  {
+   "computationCost": "1450000",
+   "storageCost": "110298800",
+   "storageRebate": "109195812",
+   "nonRefundableStorageFee": "1102988"
+  },
+  {
+   "status": "success"
+  }
+ ],
+ "10_False": [
+  "success",
+  {
+   "computationCost": "511900000",
+   "storageCost": "110298800",
+   "storageRebate": "109195812",
+   "nonRefundableStorageFee": "1102988"
+  },
+  {
+   "status": "success"
+  }
+ ],
+ "50_False": [
+  "success",
+  {
+   "computationCost": "3076000000",
+   "storageCost": "110298800",
+   "storageRebate": "109195812",
+   "nonRefundableStorageFee": "1102988"
+  },
+  {
+   "status": "success"
+  }
+ ],
+ "100_False": [
+  "ERR",
+  ""
+ ],
+ "200_False": [
+  "ERR",
+  ""
+ ],
+ "1_True": [
+  "success",
+  {
+   "computationCost": "12500000",
+   "storageCost": "110298800",
+   "storageRebate": "109195812",
+   "nonRefundableStorageFee": "1102988"
+  },
+  {
+   "status": "success"
+  }
+ ],
+ "5_True": [
+  "success",
+  {
+   "computationCost": "499600000",
+   "storageCost": "110298800",
+   "storageRebate": "109195812",
+   "nonRefundableStorageFee": "1102988"
+  },
+  {
+   "status": "success"
+  }
+ ],
+ "10_True": [
+  "success",
+  {
+   "computationCost": "1109000000",
+   "storageCost": "110298800",
+   "storageRebate": "109195812",
+   "nonRefundableStorageFee": "1102988"
+  },
+  {
+   "status": "success"
+  }
+ ],
+ "20_True": [
+  "success",
+  {
+   "computationCost": "2327000000",
+   "storageCost": "110298800",
+   "storageRebate": "109195812",
+   "nonRefundableStorageFee": "1102988"
+  },
+  {
+   "status": "success"
+  }
+ ],
+ "40_True": [
+  "success",
+  {
+   "computationCost": "4763000000",
+   "storageCost": "110298800",
+   "storageRebate": "109195812",
+   "nonRefundableStorageFee": "1102988"
+  },
+  {
+   "status": "success"
+  }
+ ],
+ "series2": [
+  [
+   1,
+   false,
+   2610
+  ],
+  [
+   1,
+   false,
+   2290
+  ],
+  [
+   1,
+   false,
+   2480
+  ],
+  [
+   2,
+   false,
+   18100
+  ],
+  [
+   3,
+   false,
+   81500
+  ],
+  [
+   4,
+   false,
+   146200
+  ],
+  [
+   5,
+   false,
+   210100
+  ],
+  [
+   2,
+   true,
+   134300
+  ],
+  [
+   3,
+   true,
+   256100
+  ],
+  [
+   100,
+   false,
+   [
+    "ERR",
+    "Error executing transaction 'pyPd9gCymjikLXFCiVE1PNeJhBqe81xyHSVN1R3YLyK': InsufficientGas in command 0\n"
+   ]
+  ]
+ ]
+}

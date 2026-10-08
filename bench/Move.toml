@@ -1,0 +1,6 @@
+[package]
+name = "ciona_bench"
+edition = "2024"
+
+[addresses]
+ciona_bench = "0x0"

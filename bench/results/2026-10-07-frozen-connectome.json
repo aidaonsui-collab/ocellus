@@ -1,0 +1,90 @@
+{
+ "create": {
+  "computationCost": "1000000",
+  "storageCost": "110298800",
+  "storageRebate": "978120",
+  "nonRefundableStorageFee": "9880"
+ },
+ "runs": [
+  [
+   1,
+   false,
+   {
+    "computationCost": "1450000",
+    "storageCost": "11415200",
+    "storageRebate": "11301048",
+    "nonRefundableStorageFee": "114152"
+   }
+  ],
+  [
+   1,
+   false,
+   {
+    "computationCost": "1830000",
+    "storageCost": "11415200",
+    "storageRebate": "11301048",
+    "nonRefundableStorageFee": "114152"
+   }
+  ],
+  [
+   1,
+   false,
+   {
+    "computationCost": "1870000",
+    "storageCost": "11415200",
+    "storageRebate": "11301048",
+    "nonRefundableStorageFee": "114152"
+   }
+  ],
+  [
+   1,
+   false,
+   {
+    "computationCost": "1970000",
+    "storageCost": "11415200",
+    "storageRebate": "11301048",
+    "nonRefundableStorageFee": "114152"
+   }
+  ],
+  [
+   1,
+   false,
+   {
+    "computationCost": "2080000",
+    "storageCost": "11415200",
+    "storageRebate": "11301048",
+    "nonRefundableStorageFee": "114152"
+   }
+  ],
+  [
+   1,
+   true,
+   {
+    "computationCost": "12600000",
+    "storageCost": "11415200",
+    "storageRebate": "11301048",
+    "nonRefundableStorageFee": "114152"
+   }
+  ],
+  [
+   1,
+   true,
+   {
+    "computationCost": "12600000",
+    "storageCost": "11415200",
+    "storageRebate": "11301048",
+    "nonRefundableStorageFee": "114152"
+   }
+  ],
+  [
+   2,
+   false,
+   {
+    "computationCost": "21100000",
+    "storageCost": "11415200",
+    "storageRebate": "11301048",
+    "nonRefundableStorageFee": "114152"
+   }
+  ]
+ ]
+}

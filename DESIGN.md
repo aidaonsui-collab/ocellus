@@ -106,7 +106,7 @@ public struct Connectome has key {
 }
 ```
 
-Size: about 3,010 × 3 B + 866 × 3 B + pointers ≈ **13 KB (estimate)**. Sui's object size limit is **256,000 bytes** (`max_move_object_size`), and a vector may hold up to **262,144 elements** ([protocol config snapshot](https://github.com/MystenLabs/sui/blob/main/crates/sui-protocol-config/src/snapshots/sui_protocol_config__test__Mainnet_version_57.snap); [Move Book: Building against limits](https://move-book.com/guides/building-against-limits/)). We are about 20× below the cap. A single pure transaction argument is limited to 16 KB, so the connectome is created from several vector arguments, which is what the prototype does.
+Size: about 3,010 × 3 B + 866 × 3 B + pointers ≈ **13 KB (estimate)**. Sui's object size limit is **256,000 bytes** (`max_move_object_size`), and a vector may hold up to **262,144 elements** ([protocol config snapshot](https://github.com/MystenLabs/sui/blob/main/crates/sui-protocol-config/src/snapshots/sui_protocol_config__test__Mainnet_version_57.snap); [Move Book: Building against limits](https://move-book.com/guides/building-against-limits/)). We are about 20× below the cap. A single pure transaction argument is limited to 16 KB, so the connectome is created from several vector arguments, which is what the prototype does ([`bench/`](./bench/README.md)).
 
 ### 3.3 Neuron model: fixed-point leaky integrate-and-fire
 
@@ -145,8 +145,8 @@ We wrote an unoptimized benchmark of the model above in Move. It uses the **real
 | No-op call (same objects) | 1,000 (minimum bucket) | 0.0010 |
 | **1 tick, typical activity** | **1,450 – 2,610** | **0.0015 – 0.0026** |
 | 1 tick, worst case (every cell spikes) | 12,500 – 12,600 | 0.0125 |
-| 2 ticks, typical | 18,100 – 21,100 | ≈0.02 |
-| 5 ticks, typical | 210,100 | ≈0.21 |
+| 2 ticks, typical | 12,600 – 21,100 | ≈0.013 – 0.021 |
+| 5 ticks, typical | 207,700 – 210,100 | ≈0.21 |
 | 50 ticks, typical | 3,076,000 | ≈3.1 |
 | 100 ticks | failed: `InsufficientGas` at the 50 SUI budget cap | |
 
@@ -397,7 +397,7 @@ These are CI tests on the model, not marketing claims:
 
 ### 9.4 Benchmarks
 
-The gas benchmark package and scripts from §3.5 will be published in the repository in Phase 0, with instructions to reproduce them on localnet or testnet.
+The gas benchmark package, scripts and raw results from §3.5 are in [`bench/`](./bench/README.md), with instructions to reproduce them on a local test network. The source data and a source list are in [`research/`](./research/SOURCES.md).
 
 ---
 

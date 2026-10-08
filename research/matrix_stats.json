@@ -1,0 +1,14 @@
+{
+ "elife-fig16-data1.xlsx": {
+  "cells": 216,
+  "edges": 3010,
+  "edges_to_muscle_or_bm": 95,
+  "pns_like": 29
+ },
+ "elife-fig16-data2.xlsx": {
+  "cells": 166,
+  "edges": 451,
+  "edges_to_muscle_or_bm": 0,
+  "pns_like": 22
+ }
+}
