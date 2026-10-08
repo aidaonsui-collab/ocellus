@@ -11,6 +11,7 @@
     main { max-width: 880px; margin: 0 auto; padding: 28px 20px 64px; }
     h1 { font-weight: 500; font-size: 28px; margin: 0 0 6px; }
     .lede { color: var(--dim); margin: 0 0 22px; }
+    .lede a { color: var(--ink); text-underline-offset: 3px; }
     .status { min-height: 3.2em; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; }
     .status.bad { color: var(--bad); border-color: #6a3330; }
     .status.ok { color: var(--ok); }
@@ -29,7 +30,7 @@
 <body>
   <main>
     <h1>Larva</h1>
-    <p class="lede">Each tick is predicted with the on-chain integers, then checked against the event. A mismatch stops the larva.</p>
+    <p class="lede">Each tick is predicted with the on-chain integers, then checked against the event. A mismatch stops the larva. To swim one yourself, <a href="demo/">play the 3D demo</a>, which runs the same engine.</p>
     <p id="status" class="status" role="status"></p>
     <div class="row">
       <button id="play" type="button">Play</button>
