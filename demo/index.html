@@ -259,9 +259,9 @@ button{font:inherit;color:inherit}
 <section id="about" class="screen sheet" hidden>
   <div class="card" role="dialog" aria-labelledby="aboutH">
     <h2 id="aboutH">The brain</h2>
-    <p>The larva runs the 237-cell matrix from Ryan et al. 2016: 3,010 chemical connections, 866 directed gap-junction entries and 28 inhibitory cells. Each tick applies the same integer leaky integrate-and-fire update as <span class="num">bench/sources/brain.move</span>, to every cell.</p>
-    <p>PR-I photoreceptors receive your light, shaded by where the ocellus faces. Antenna cells read body tilt. PR-II cells read dimming. The tail bends with the left and right motor-neuron spikes, weighted by their neuromuscular junctions from the matrix.</p>
-    <p class="note">Steering toward the light uses a demo assist that is gated by real PR-I spikes, because the tuned behavioral model is still a design item (DESIGN §9.3). Gas on the localnet bench: about 1,450–2,610 computation units per typical tick. The state hash is a BLAKE2b-256 chain over tick, inputs and spikes.</p>
+    <p>The larva runs the 237-cell matrix from Ryan et al. 2016: 3,010 chemical connections, 866 directed gap-junction entries and 28 inhibitory cells. Each tick applies brain model v1 from <span class="num">bench/sources/brain.move</span> to every cell: the same integer leaky integrate-and-fire update, with stable gap-junction coupling, an inhibitory reversal floor and spike-frequency adaptation.</p>
+    <p>PR-I photoreceptors receive your light, shaded by where the ocellus faces. Antenna cells read body tilt. PR-II cells read dimming. The larva swims in bouts while its motor neurons fire, and brighter light brings more frequent bouts. Beat strength follows the motor output, weighted by the neuromuscular junctions in the matrix, and the left/right imbalance bends the tail.</p>
+    <p class="note">Steering toward the light uses a demo assist gated by real PR-I spikes, and the beat rhythm inside a bout is drawn by the game; the tuned behavioral model is still a design item (DESIGN §9.3). Ticks run at 18 per second here; on-chain the design is one tick per transaction. Gas on the localnet bench (model v1): about 1,640–3,200 computation units per typical tick. The state hash is a BLAKE2b-256 chain over tick, inputs and spikes.</p>
     <p class="note">Wiring data: Ryan K, Lu Z, Meinertzhagen IA (2016) eLife 5:e16962, CC BY 4.0. Sign assignments after Kourakis et al. 2019 and Bostwick et al. 2020.</p>
     <div class="actions"><button class="btn primary" data-close>Close</button></div>
   </div>
@@ -378,12 +378,13 @@ function fbm3(x, y, z, o = 4, s = 0) {
   return sum / n;
 }
 
-// ---------------------------------------------------------------- connectome + brain (exact port of bench/sources/brain.move step)
+// ---------------------------------------------------------------- connectome + brain (exact port of bench/sources/brain.move, model v1)
 const CX = JSON.parse($('connectome').textContent);
 const NCELL = CX.n;
 const CELLS = CX.cells;
 const cellIdx = (name) => CELLS.indexOf(name);
-const REST = 1048576, THRESH = REST + 16384, RESET = REST - 4096, LEAK_SHIFT = 3, W_SCALE = 64;
+const REST = 1048576, THRESH = REST + 16384, RESET = REST - 4096, LEAK_SHIFT = 3, W_SCALE = 320;
+const V_FLOOR = REST - 16384, V_CEIL = REST + 65536, GAP_SHIFT = 12, ADAPT_INC = 8192, ADAPT_SHIFT = 4;
 const PR1 = CX.sens.slice(0, 23);
 const ANT = CX.sens.slice(23);
 const PR2 = ['pra', 'prb', 'prc', 'prd', 'pre', 'prf', 'prg'].map(cellIdx);
@@ -394,10 +395,16 @@ const MN_R = ['MN1R', 'MN2R', 'MN3R', 'MN4R', 'MN5R'].map(cellIdx);
 const INHIB = Uint8Array.from(CX.inhib.split(''), (c) => c === '1' ? 1 : 0);
 const PTR = Int32Array.from(CX.ptr), COL = Int32Array.from(CX.col), WT = Int32Array.from(CX.w);
 const GPTR = Int32Array.from(CX.gptr), GCOL = Int32Array.from(CX.gcol), GW = Int32Array.from(CX.gw);
+// v1 stability-normalized gap coefficients, same integer formula as bench/scripts/lif_model.py
+const GSUM = new Int32Array(NCELL);
+for (let i = 0; i < NCELL; i++) for (let k = GPTR[i]; k < GPTR[i + 1]; k++) GSUM[i] += GW[k];
+const GC = new Int32Array(GW.length);
+for (let i = 0; i < NCELL; i++) for (let k = GPTR[i]; k < GPTR[i + 1]; k++) GC[k] = Math.floor(GW[k] * 2048 / Math.max(32, GSUM[i], GSUM[GCOL[k]]));
 
 class Brain {
   constructor() {
     this.v = new Uint32Array(NCELL).fill(REST);
+    this.a = new Uint32Array(NCELL);
     this.sp = new Uint8Array(NCELL);
     this.exc = new Float64Array(NCELL);
     this.inh = new Float64Array(NCELL);
@@ -405,7 +412,7 @@ class Brain {
   }
   // One call == brain::step(c, b, sensor_idx, sensor_drive, 1, false)
   step(si, sd, count) {
-    const v = this.v, sp = this.sp, exc = this.exc, inh = this.inh;
+    const v = this.v, sp = this.sp, exc = this.exc, inh = this.inh, ad = this.a;
     exc.fill(0); inh.fill(0);
     for (let i = 0; i < NCELL; i++) {
       if (!sp[i]) continue;
@@ -418,8 +425,8 @@ class Brain {
     for (let i = 0; i < NCELL; i++) {
       const vi = v[i];
       for (let k = GPTR[i], hi = GPTR[i + 1]; k < hi; k++) {
-        const j = GCOL[k], vj = v[j], g = GW[k];
-        if (vj > vi) exc[i] += ((vj - vi) >>> 6) * g; else inh[i] += ((vi - vj) >>> 6) * g;
+        const j = GCOL[k], vj = v[j], g = GC[k];
+        if (vj > vi) exc[i] += ((vj - vi) * g) >>> GAP_SHIFT; else inh[i] += ((vi - vj) * g) >>> GAP_SHIFT;
       }
     }
     for (let s = 0; s < count; s++) exc[si[s]] += sd[s];
@@ -429,10 +436,13 @@ class Brain {
       if (x > REST) x = x - ((x - REST) >>> LEAK_SHIFT); else x = x + ((REST - x) >>> LEAK_SHIFT);
       x = x + exc[i];
       x = x > inh[i] ? x - inh[i] : 0;
-      if (x > 4294967295) x = 4294967295; // Move would abort on u32 overflow; never reached in practice
-      const f = x >= THRESH;
-      if (f) { x = RESET; this.total++; fired.push(i); }
-      v[i] = x; sp[i] = f ? 1 : 0;
+      if (x < V_FLOOR) x = V_FLOOR;
+      if (x > V_CEIL) x = V_CEIL;
+      let a = ad[i];
+      a -= a >>> ADAPT_SHIFT;
+      const f = x >= THRESH + a;
+      if (f) { x = RESET; a += ADAPT_INC; this.total++; fired.push(i); }
+      v[i] = x; ad[i] = a; sp[i] = f ? 1 : 0;
     }
     this.tick++;
     return fired;
@@ -2243,7 +2253,7 @@ function buildNpcs() {
 function resetNpcs() {
   const sp = [0.98, 1.06, 0.9, 1.12, 0.86, 1.01];
   NPCS.forEach((n, i) => {
-    n.u = 0.004 + i * 0.002; n.speed = sp[i] * 6.0; n.state = 'wait'; n.delay = 1.0 + i * 0.55; n.cell = null; n.t = 0;
+    n.u = 0.004 + i * 0.002; n.speed = sp[i] * 5.6; n.state = 'wait'; n.delay = 1.0 + i * 0.55; n.cell = null; n.t = 0;
     n.l.tailLen = 1; n.l.uni.uFade.value = 1; n.l.root.scale.setScalar(1.3);
     const p = pathSample(n.u); n.l.pos.copy(p).add(new THREE.Vector3((i - 2.5) * 1.6, -1.6, 2 + (i % 2) * 2));
     n.l.pos.y = Math.max(n.l.pos.y, heightAt(n.l.pos.x, n.l.pos.z) + 0.6);
@@ -2419,15 +2429,17 @@ function showGenomePanel(g) {
 
 
 // ================================================================ game state
-const TICK_HZ = 12;
+const TICK_HZ = 18; // demo pacing; on-chain the design is one tick per transaction
 const HERO_SCALE = 1.4;
-const COMPETENT_TICKS = 840;
+const COMPETENT_TICKS = 1260;
+const DRIVE_SCALE = 18000; // PR-I drive at full light; v1 starts swimming from about 2,500
 const G = {
   state: 'boot', paused: false, t: 0, genome: null, gid: '', gain: 1, hand: 1, yolkMax: 100,
   tint: new THREE.Color(), adultTint: new THREE.Color(),
   brain: null, hash: new Uint8Array(32), tickAcc: 0, sinceHatch: 0,
   yolk: 100, raceT: 0, raceOn: false, gate: 0, place: 1,
-  escape: 0, escapeCd: 0, pr2Win: [], prRate: 0, netAct: 0, vigor: 0, meanTurn: 0, lastSunVis: 1, lastFired: 0,
+  escape: 0, escapeCd: 0, pr2Win: [], prRate: 0, netAct: 0, vigor: 0, lastSunVis: 1, lastFired: 0,
+  boutHold: 0, boutEnv: 0, bouts: 0, swimTicks: 0, mnLevel: 0, turnBias: 0, tailBias: 0, beatPhase: 0,
   lureI: 0, lureTarget: 0, lightLevel: 1, timeScale: 1, slowT: 0,
   hatchT: -1, metaT: 0, cell: null, failT: 0, hud: true, cine: false, u: 0, uIdx: 0, hudT: 0,
   manta: { on: false, t: 0, dur: 11, a: new THREE.Vector2(), b: new THREE.Vector2(), y: 70, ang: 0, slowDone: false },
@@ -2466,7 +2478,8 @@ function resetRun() {
   G.brain = new Brain();
   G.hash = blake2b256(new Uint8Array([...new TextEncoder().encode('ocellus/genesis/'), ...g]));
   G.tickAcc = 0; G.sinceHatch = 0; G.yolk = G.yolkMax; G.raceT = 0; G.raceOn = false; G.gate = 0; G.next = 0; G.prevAlong = null; G.place = 1;
-  G.escape = 0; G.escapeCd = 0; G.pr2Win = []; G.prRate = 0; G.netAct = 0; G.vigor = 0; G.meanTurn = 0; G.lastSunVis = 1;
+  G.escape = 0; G.escapeCd = 0; G.pr2Win = []; G.prRate = 0; G.netAct = 0; G.vigor = 0; G.lastSunVis = 1;
+  G.boutHold = 0; G.boutEnv = 0; G.bouts = 0; G.swimTicks = 0; G.mnLevel = 0; G.turnBias = 0; G.tailBias = 0; G.beatPhase = 0;
   G.lureI = 0; G.lureTarget = 0; G.hatchT = -1; G.metaT = 0; G.cell = null; G.failT = 0; G.u = 0; G.uIdx = 0; G.orbit = false;
   G.capTail = G.capBrain = G.capAdult = G.lightOn = false; G.lastHi = -2; G.hiCell = -1;
   G.manta.on = false; U.uManta.value.w = 0; manta.visible = false; G.lightLevel = 1; G.timeScale = 1; G.slowT = 0;
@@ -2503,7 +2516,7 @@ function brainTick() {
   const sunVis = G.lightLevel * (1 - mantaShadowAt(L.pos));
   const Isun = 0.16 * sunVis * (0.5 + 0.5 * smooth(-0.3, 0.8, eye.dot(SUN_DIR)));
   const I = Ilure * shade + Isun;
-  for (let i = 0; i < 23; i++) SD[i] = Math.round(G.gain * I * 7200 * PR_JIT[i]);
+  for (let i = 0; i < 23; i++) SD[i] = Math.round(G.gain * I * DRIVE_SCALE * PR_JIT[i]);
   const tilt = L.fwd.y;
   SD[23] = Math.round(1500 + 3200 * Math.max(0, tilt) * G.gain);
   SD[24] = Math.round(1500 + 3200 * Math.max(0, -tilt) * G.gain);
@@ -2513,11 +2526,18 @@ function brainTick() {
   const fired = b.step(SI, SD, 32);
   let Lw = 0, Rw = 0, prN = 0, pr2N = 0;
   for (const i of fired) { Lw += NMJ_L[i]; Rw += NMJ_R[i]; const g = NEURONS.GROUP[i]; if (g === 'pr1') prN++; else if (g === 'pr2') pr2N++; hero.act[i] = 1; }
+  // v1 swims in bouts: a bout lasts while motor neurons keep firing (gaps under 3 ticks bridged)
   const turn = Rw - Lw;
   const mnOn = Lw + Rw > 0;
-  if (mnOn) G.meanTurn = lerp(G.meanTurn, turn, 0.12);
-  L.bendTarget = mnOn ? clamp((turn - G.meanTurn) / 300, -1.3, 1.3) : 0;
-  G.vigor = lerp(G.vigor, mnOn ? 1 : 0, 0.22);
+  if (mnOn) {
+    if (G.boutHold <= 0) G.bouts++;
+    G.boutHold = 3;
+    G.mnLevel = lerp(G.mnLevel, clamp((Lw + Rw) / 3500, 0.3, 1.2), 0.5);
+    G.turnBias = lerp(G.turnBias, turn, 0.15);
+    G.tailBias = clamp(turn / 2500, -1, 1);
+  } else if (G.boutHold > 0) G.boutHold--;
+  G.vigor = G.boutHold > 0 ? 1 : 0;
+  if (G.vigor) G.swimTicks++;
   G.netAct = lerp(G.netAct, fired.length / 35, 0.2);
   G.prRate = lerp(G.prRate, prN / 23, 0.25);
   G.lastFired = fired.length; G.lastPr = prN; G.lastLw = Lw; G.lastRw = Rw;
@@ -2538,10 +2558,21 @@ function brainTick() {
   rasterTick(fired);
   if (G.state === 'swim') {
     G.sinceHatch++;
-    G.yolk -= 0.03 + (G.lureTarget > 1.2 ? 0.05 : 0) + (G.escape > 0 ? 0.04 : 0);
+    G.yolk -= 0.012 + (G.vigor ? 0.026 : 0) + (G.lureTarget > 1.2 ? 0.018 : 0) + (G.escape > 0 ? 0.02 : 0);
   }
 }
 const _zAxis = new THREE.Vector3(0, 0, 1);
+
+// Tail during a bout: beat strength follows motor-neuron output and left/right imbalance bends it;
+// the beat rhythm itself is drawn here, because v1's left/right spikes don't alternate cleanly.
+function driveTail(dt) {
+  const on = G.vigor > 0 || G.escape > 0;
+  const level = Math.max(G.mnLevel, G.escape > 0 ? 1 : 0);
+  G.boutEnv = damp(G.boutEnv, on ? level : 0, on ? 12 : 3.5, dt);
+  if (!G.vigor) G.tailBias *= Math.exp(-3 * dt);
+  G.beatPhase += dt * Math.PI * 2 * 7.5 * (0.6 + 0.4 * G.boutEnv);
+  hero.bendTarget = G.boutEnv * (Math.sin(G.beatPhase) * 1.05 + G.tailBias * 0.35);
+}
 
 // ---------------------------------------------------------------- lure (the light you steer)
 function buildLure() {
@@ -2588,18 +2619,19 @@ function swimPhysics(dt, assist = true) {
   if (assist && G.lureI > 0.05) {
     _d.subVectors(lureMesh.position, L.pos); const dl = _d.length(); _d.divideScalar(Math.max(dl, 1e-3));
     const gate = 0.45 + 0.55 * clamp(G.prRate * 3, 0, 1);
-    const rate = 3.2 * gate * (G.escape > 0 ? 1.3 : 1);
+    const rate = 3.2 * gate * (0.4 + 0.6 * G.boutEnv) * (G.escape > 0 ? 1.3 : 1);
     L.fwd.lerp(_d, 1 - Math.exp(-rate * dt)).normalize();
   }
   // helical swimming from the brain's own left/right imbalance, rotating with the body roll
   _tmpX.crossVectors(_up, L.fwd).normalize(); _tmpY.crossVectors(L.fwd, _tmpX);
   _ax.copy(_tmpY).multiplyScalar(Math.cos(L.roll)).addScaledVector(_tmpX, Math.sin(L.roll));
-  L.fwd.applyAxisAngle(_ax, clamp(G.meanTurn / 446, -1.5, 1.5) * 0.5 * G.vigor * dt * G.hand).normalize();
+  L.fwd.applyAxisAngle(_ax, clamp(G.turnBias / 2500, -1.5, 1.5) * 0.5 * G.boutEnv * dt * G.hand).normalize();
   if (Math.abs(L.fwd.y) > 0.72) { L.fwd.y = Math.sign(L.fwd.y) * 0.72; L.fwd.normalize(); }
-  L.roll += (1.6 + 2.6 * G.vigor) * dt * G.hand;
-  let target = 6.2 * G.vigor * (0.62 + 0.38 * clamp(G.netAct, 0, 1.2)) * (G.lureTarget > 1.2 ? 1.45 : 1) * (G.escape > 0 ? 1.85 : 1);
+  L.roll += (1.2 + 3.0 * G.boutEnv) * dt * G.hand;
+  // thrust only during a bout; between bouts the larva glides and slows
+  let target = 9.5 * G.boutEnv * (0.75 + 0.25 * clamp(G.netAct, 0, 1.2)) * (G.lureTarget > 1.2 ? 1.12 : 1) * (G.escape > 0 ? 1.55 : 1);
   const dl = lureMesh.position.distanceTo(L.pos); if (dl < 2.2) target *= Math.max(0.25, dl / 2.2);
-  L.speed = damp(L.speed, target, 2.0, dt) + Math.abs(L.bendV) * 0.0004;
+  L.speed = damp(L.speed, target, target > L.speed ? 3.5 : 0.85, dt) + Math.abs(L.bendV) * 0.0004;
   L.pos.addScaledVector(L.fwd, L.speed * dt);
   // cross-current over the meadow
   const cur = smooth(0.2, 0.26, G.u) * (1 - smooth(0.42, 0.47, G.u));
@@ -2869,6 +2901,7 @@ function update(dt, rdt) {
       if (h > 0.5) {
         updateLure(dt, steer, false);
         G.tickAcc += dt * TICK_HZ; while (G.tickAcc >= 1) { G.tickAcc -= 1; brainTick(); }
+        driveTail(dt);
         swimPhysics(dt, h > 0.9);
       }
       chaseCam(dt, lerp(0.55, 1, smooth(0.5, 2.4, h)));
@@ -2881,6 +2914,7 @@ function update(dt, rdt) {
     updateLure(dt, steer, pulse);
     G.tickAcc += dt * TICK_HZ; while (G.tickAcc >= 1) { G.tickAcc -= 1; brainTick(); }
     if (G.escape > 0) G.escape -= dt; if (G.escapeCd > 0) G.escapeCd -= dt;
+    driveTail(dt);
     swimPhysics(dt);
     hero.animate(dt, G.t); hero.orient();
     chaseCam(dt);
@@ -3117,7 +3151,7 @@ async function boot() {
     setLoad(1, 'Ready');
     addEventListener('resize', onResize);
     window.claude?.hot?.snapshot?.(() => ({ quality: qualityName }));
-    if (AUTORUN) window.__oc = { G, P, U, camera, get hero() { return hero; }, get renderer() { return renderer; }, get sun() { return sun; }, QUALITY, GATES, CELLS_GRID, NPCS, THREE, input };
+    if (AUTORUN) window.__oc = { G, P, U, camera, get hero() { return hero; }, get renderer() { return renderer; }, get sun() { return sun; }, QUALITY, GATES, CELLS_GRID, NPCS, THREE, input, Brain, GC, CX };
     enterTitle();
     requestAnimationFrame(loop);
     setTimeout(() => $('loading').classList.add('out'), 150);

@@ -11,21 +11,23 @@ python3 -m http.server 5180 --directory demo   # then open http://localhost:5180
 
 | Part | Status |
 |---|---|
-| Brain | **Real wiring, real math.** The 237-cell matrix from `bench/graph_csr.json` (3,010 chemical entries, 866 directed gap entries, 28 inhibitory cells) steps every tick with the same integer LIF update as `bench/sources/brain.move` (`REST`, `THRESH`, `RESET`, `LEAK_SHIFT`, `W_SCALE`, chemical → gap → sensory → membrane order). |
+| Brain | **Real wiring, real math.** The 237-cell matrix from `bench/graph_csr.json` (3,010 chemical entries, 866 directed gap entries, 28 inhibitory cells) steps every tick with brain model v1, the same integer update as `bench/sources/brain.move`: constants, stability-normalized gap coefficients, reversal floor, adaptation, and chemical → gap → sensory → membrane order. In the browser it reproduces the Move unit tests' golden spike totals exactly. It runs at 18 ticks/s, a pacing choice; on-chain the design is one tick per transaction. |
 | Sensors | PR-I photoreceptors get the player's light, shaded by where the ocellus faces as the larva rolls. Ant1/Ant2 read body tilt. PR-II cells read dimming (tonic darkness plus the drop per tick). |
-| Motor | Tail bend each tick = right minus left motor-neuron spikes, weighted by the neuromuscular-junction values in `research/graph.json`, propagated down the tail as a travelling wave. The running mean of that imbalance becomes the helical turn bias. |
+| Motor | The larva swims in **bouts**. A bout lasts while motor neurons keep firing (gaps under 3 ticks are bridged), and brighter light brings bouts more often. Thrust and tail-beat strength follow the motor output, weighted by the neuromuscular-junction values in `research/graph.json`. Right minus left bends the tail and sets the helical turn bias. Between bouts the larva glides and slows. The beat rhythm inside a bout is drawn by the game, because v1's left and right spikes don't alternate cleanly. |
 | Steering toward the light | **Demo assist.** Heading eases toward the light at a rate gated by real PR-I spike rate. The tuned behavioural model is still a design item (DESIGN §9.3). |
-| Escape swim | Triggered only when PR-II cells actually spike during the dimming event. |
+| Escape swim | Triggered only when PR-II cells actually spike during the dimming event. In v1, PR-II drive doesn't reach the motor neurons, so the escape swim itself is a game-layer response to those real spikes. |
 | State hash | BLAKE2b-256 chain over (previous hash, tick u64 LE, input digest u32, 237-bit spike set). Verified against RFC 7693 test vectors. The encoding is a demo choice, not a protocol spec. |
 | Genome, `sui::random`, LarvalRecord, reef cells | Simulated in the browser to show the flow in DESIGN §5–§7. |
 
-## Observed while building it
+## Brain model history
 
-With the benchmark constants, the network is silent until light reaches PR-I. About 5 to 8 ticks later the motor ganglion locks into a **self-sustaining period-2 loop**: MN1L, MN2R and MN4L alternate with MN1R, MN2L and MN4R (MN5R joining once the loop has settled). The loop keeps running after the input goes to zero, and its NMJ-weighted output barely changes with stimulus strength. The demo uses that alternation as the tail beat. For the §9.3 behavioural tests, the production model will likely need refractoriness or adaptation so that motor output tracks sensory input.
+The first version of this demo ran the v0 benchmark model. About 5 to 8 ticks after light reached PR-I, its motor ganglion locked into a self-sustaining period-2 loop that ignored input, and the demo used that loop as the tail beat. The loop turned out to be numerical: an unstable gap-junction update plus inhibition with no floor. Model v1 fixes both (see `bench/README.md`, section "Model v1", added in #2).
+
+The demo now runs v1. In a scripted run of the full course, the larva swam in 30 bouts, roughly one every 2.5 seconds, and was swimming 43% of the time. It is silent without light and stops swimming soon after the light goes away.
 
 ## Controls
 
-Mouse / WASD / left stick / drag steers the light. Hold click / Space / RT pulses it brighter (more PR-I drive, more yolk burned). E / A settles on a free cell once competent. B toggles the brain panel, H the HUD, C a cinematic camera, Esc pauses (graphics quality lives there), M mutes.
+Mouse / WASD / left stick / drag steers the light. Hold click / Space / RT pulses it brighter (more PR-I drive, so more frequent swim bouts, and more yolk burned). E / A settles on a free cell once competent. B toggles the brain panel, H the HUD, C a cinematic camera, Esc pauses (graphics quality lives there), M mutes.
 
 ## Rendering notes
 
