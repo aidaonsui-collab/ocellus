@@ -1,0 +1,206 @@
+{
+ "date": "2026-10-07T22:18:42",
+ "sui_version": "sui 1.80.1-homebrew",
+ "reference_gas_price": "1000",
+ "graph": {
+  "n": 237,
+  "chem_edges": 3010,
+  "gap_directed": 866
+ },
+ "variants": {
+  "frozen_connectome": [
+   {
+    "call": "create",
+    "gasUsed": {
+     "computationCost": "1000000",
+     "storageCost": "117518800",
+     "storageRebate": "978120",
+     "nonRefundableStorageFee": "9880"
+    }
+   },
+   {
+    "call": "noop",
+    "gasUsed": {
+     "computationCost": "1000000",
+     "storageCost": "18635200",
+     "storageRebate": "18448848",
+     "nonRefundableStorageFee": "186352"
+    }
+   },
+   {
+    "call": "step",
+    "ticks": 1,
+    "force_all_spiking": false,
+    "gasUsed": {
+     "computationCost": "1640000",
+     "storageCost": "18635200",
+     "storageRebate": "18448848",
+     "nonRefundableStorageFee": "186352"
+    }
+   },
+   {
+    "call": "step",
+    "ticks": 1,
+    "force_all_spiking": false,
+    "gasUsed": {
+     "computationCost": "2390000",
+     "storageCost": "18635200",
+     "storageRebate": "18448848",
+     "nonRefundableStorageFee": "186352"
+    }
+   },
+   {
+    "call": "step",
+    "ticks": 1,
+    "force_all_spiking": false,
+    "gasUsed": {
+     "computationCost": "3200000",
+     "storageCost": "18635200",
+     "storageRebate": "18448848",
+     "nonRefundableStorageFee": "186352"
+    }
+   },
+   {
+    "call": "step",
+    "ticks": 2,
+    "force_all_spiking": false,
+    "gasUsed": {
+     "computationCost": "23500000",
+     "storageCost": "18635200",
+     "storageRebate": "18448848",
+     "nonRefundableStorageFee": "186352"
+    }
+   },
+   {
+    "call": "step",
+    "ticks": 5,
+    "force_all_spiking": false,
+    "gasUsed": {
+     "computationCost": "209100000",
+     "storageCost": "18635200",
+     "storageRebate": "18448848",
+     "nonRefundableStorageFee": "186352"
+    }
+   },
+   {
+    "call": "step",
+    "ticks": 1,
+    "force_all_spiking": true,
+    "gasUsed": {
+     "computationCost": "20100000",
+     "storageCost": "18635200",
+     "storageRebate": "18448848",
+     "nonRefundableStorageFee": "186352"
+    }
+   },
+   {
+    "call": "step",
+    "ticks": 2,
+    "force_all_spiking": true,
+    "gasUsed": {
+     "computationCost": "149000000",
+     "storageCost": "18635200",
+     "storageRebate": "18448848",
+     "nonRefundableStorageFee": "186352"
+    }
+   }
+  ],
+  "owned_connectome": [
+   {
+    "call": "create",
+    "gasUsed": {
+     "computationCost": "1000000",
+     "storageCost": "117518800",
+     "storageRebate": "978120",
+     "nonRefundableStorageFee": "9880"
+    }
+   },
+   {
+    "call": "noop",
+    "gasUsed": {
+     "computationCost": "1000000",
+     "storageCost": "117518800",
+     "storageRebate": "116343612",
+     "nonRefundableStorageFee": "1175188"
+    }
+   },
+   {
+    "call": "step",
+    "ticks": 1,
+    "force_all_spiking": false,
+    "gasUsed": {
+     "computationCost": "1640000",
+     "storageCost": "117518800",
+     "storageRebate": "116343612",
+     "nonRefundableStorageFee": "1175188"
+    }
+   },
+   {
+    "call": "step",
+    "ticks": 1,
+    "force_all_spiking": false,
+    "gasUsed": {
+     "computationCost": "2390000",
+     "storageCost": "117518800",
+     "storageRebate": "116343612",
+     "nonRefundableStorageFee": "1175188"
+    }
+   },
+   {
+    "call": "step",
+    "ticks": 1,
+    "force_all_spiking": false,
+    "gasUsed": {
+     "computationCost": "3200000",
+     "storageCost": "117518800",
+     "storageRebate": "116343612",
+     "nonRefundableStorageFee": "1175188"
+    }
+   },
+   {
+    "call": "step",
+    "ticks": 2,
+    "force_all_spiking": false,
+    "gasUsed": {
+     "computationCost": "23500000",
+     "storageCost": "117518800",
+     "storageRebate": "116343612",
+     "nonRefundableStorageFee": "1175188"
+    }
+   },
+   {
+    "call": "step",
+    "ticks": 5,
+    "force_all_spiking": false,
+    "gasUsed": {
+     "computationCost": "209100000",
+     "storageCost": "117518800",
+     "storageRebate": "116343612",
+     "nonRefundableStorageFee": "1175188"
+    }
+   },
+   {
+    "call": "step",
+    "ticks": 1,
+    "force_all_spiking": true,
+    "gasUsed": {
+     "computationCost": "20100000",
+     "storageCost": "117518800",
+     "storageRebate": "116343612",
+     "nonRefundableStorageFee": "1175188"
+    }
+   },
+   {
+    "call": "step",
+    "ticks": 2,
+    "force_all_spiking": true,
+    "gasUsed": {
+     "computationCost": "149000000",
+     "storageCost": "117518800",
+     "storageRebate": "116343612",
+     "nonRefundableStorageFee": "1175188"
+    }
+   }
+  ]
+ }
+}

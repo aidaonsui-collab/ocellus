@@ -116,9 +116,11 @@ Move has no floating point, so the model is integer-only and fully deterministic
 - On every tick, for **every** cell *i*:
   1. **Leak:** `v += (rest − v) >> leak_shift[i]`
   2. **Chemical input:** for each presynaptic cell that spiked on the previous tick, add `±w × gain` to its targets (CSR walk).
-  3. **Gap junctions:** a current proportional to the voltage difference with each coupled neighbor.
+  3. **Gap junctions:** a current proportional to the voltage difference with each coupled neighbor. Coupling is stability-normalized so each cell's total is at most 0.5 of the difference per tick. With the raw matrix values, 37 cells exceed 1 per tick, and the explicit update then oscillates with period 2 regardless of input **(measured)**.
   4. **Sensory drive:** injected into the photoreceptor or antenna indices (§3.4).
-  5. **Threshold:** if `v ≥ θ[i]`, the cell spikes, `v ← reset`, and the spike is recorded.
+  5. **Reversal floor:** inhibition can't push `v` below an inhibitory reversal level (rest − 16,384).
+  6. **Threshold with adaptation:** if `v ≥ θ[i] + a[i]`, the cell spikes, `v ← reset`, `a[i]` rises, and the spike is recorded. `a` decays every tick (spike-frequency adaptation), so recurrent loops can't keep firing without input.
+- The benchmark implements this as model v1. Its behaviour (output tracks light, silence without input, seizures die out) is measured by `bench/scripts/probe_dynamics.py`; see [bench/README.md](./bench/README.md#model-v1-motor-output-that-tracks-input).
 - Per-cell parameters (`leak_shift`, `θ`, `gain`) come from the **genome** (§5). The wiring comes from the connectome and is identical in every creature. So individuals differ the way real ones do (excitability, sensitivity, side bias), not by rewiring.
 - The model is a game abstraction. Real *Ciona* neurons are not all spiking cells, so we will not claim biological accuracy. We publish the behavioral tests the model has to pass (§9.3).
 
@@ -151,6 +153,8 @@ We wrote an unoptimized benchmark of the model above in Move. It uses the **real
 | 100 ticks | failed: `InsufficientGas` at the 50 SUI budget cap | |
 
 Storage for the brain write was about 11.4 M MIST, 99% rebated. The non-refundable part was about 0.11 M MIST per tick **(measured)**.
+
+These are model v0 numbers. Model v1 (§3.3) measures 1,640–3,200 units for a typical tick, 20,100 for the every-cell-spiking case, and 18.6 M MIST of storage per brain write (0.19 M non-refundable). The increase comes from the adaptation state; see [bench/README.md](./bench/README.md#results-so-far-localnet-computation-units) **(measured)**.
 
 **Key finding: multi-tick transactions get expensive fast.** Sui charges instructions in tiers: about 1× up to 20,000 instructions, 2× to 50,000, 10× to 100,000, 50× to 200,000, 100× beyond that, and 1000× past 10 M ([`gas_model/tables.rs`, `initial_cost_schedule_v5`](https://github.com/MystenLabs/sui/blob/main/crates/sui-types/src/gas_model/tables.rs)). Computation is also capped at 5,000,000 units per transaction ([Sui gas docs](https://docs.sui.io/concepts/tokenomics/gas-in-sui)). Design consequences:
 
