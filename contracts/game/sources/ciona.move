@@ -21,6 +21,7 @@ use sui::tx_context::TxContext;
 const STAGE_LARVA: u8 = 1;
 const STAGE_SETTLING: u8 = 2;
 const STAGE_ADULT: u8 = 3;
+const STAGE_FOSSIL: u8 = 4;
 
 const E_STAGE: u64 = 1;
 const E_YOLK: u64 = 2;
@@ -32,6 +33,8 @@ const E_FAR: u64 = 7;
 const E_EARLY: u64 = 8;
 const E_LATE: u64 = 9;
 const E_RACE: u64 = 10;
+const E_RACING: u64 = 11;
+const E_HOME: u64 = 12;
 
 const NO_BEST: u64 = 1000000000;
 
@@ -51,6 +54,7 @@ public struct Ciona has key, store {
     home: Option<ID>,
     settling_cell: u32,
     race: Option<ID>,
+    race_lock_until_ms: u64,
     best_distance: u64,
     record: Option<ID>,
     energy: u64,
@@ -113,7 +117,22 @@ entry fun hatch_founder(
     transfer::public_transfer(creature, ctx.sender());
 }
 
+/// Free swimming with the player's own lure. Not allowed from race entry until the race ends.
 public fun swim(
+    ciona: &mut Ciona,
+    connectome: &Connectome,
+    clock: &Clock,
+    lure_x: u64,
+    lure_y: u64,
+    light: u16,
+    shadow: bool,
+    pulse: bool,
+) {
+    assert!(clock.timestamp_ms() >= ciona.race_lock_until_ms, E_RACING);
+    step(ciona, connectome, clock, lure_x, lure_y, light, shadow, pulse);
+}
+
+fun step(
     ciona: &mut Ciona,
     connectome: &Connectome,
     clock: &Clock,
@@ -198,6 +217,7 @@ fun mint(bytes: vector<u8>, clock: &Clock, connectome: &Connectome, ctx: &mut Tx
         home: option::none(),
         settling_cell: 0,
         race: option::none(),
+        race_lock_until_ms: 0,
         best_distance: NO_BEST,
         record: option::none(),
         energy: 0,
@@ -211,18 +231,20 @@ public fun claim(ciona: &mut Ciona, reef: &mut Reef, cell: u32, clock: &Clock) {
     assert!(brain::brain_tick(&ciona.brain) >= rules::competence_ticks(), E_COMPETENCE);
     assert!(now >= ciona.born_ms + rules::competence_ms(), E_COMPETENCE);
     assert!(near(ciona, cell), E_FAR);
-    reef::occupy(reef, cell, object::id(ciona));
+    reef::occupy(reef, cell, object::id(ciona), now + rules::settle_window_ms());
     ciona.stage = STAGE_SETTLING;
     ciona.stage_since_ms = now;
     ciona.home = option::some(reef::id_of(reef));
     ciona.settling_cell = cell;
 }
 
-public fun complete_settle(ciona: &mut Ciona, clock: &Clock, ctx: &mut TxContext) {
+public fun complete_settle(ciona: &mut Ciona, reef: &mut Reef, clock: &Clock, ctx: &mut TxContext) {
     assert!(ciona.stage == STAGE_SETTLING, E_STAGE);
+    assert!(is_home(ciona, reef), E_HOME);
     let now = clock.timestamp_ms();
     assert!(now >= ciona.stage_since_ms + rules::attach_ms(), E_EARLY);
     assert!(now <= ciona.stage_since_ms + rules::settle_window_ms(), E_LATE);
+    reef::attach(reef, ciona.settling_cell, object::id(ciona));
     let hash = brain::state_hash_bytes(&ciona.brain);
     let record_id_uid = object::new(ctx);
     let record_id = record_id_uid.to_inner();
@@ -249,6 +271,20 @@ public fun complete_settle(ciona: &mut Ciona, clock: &Clock, ctx: &mut TxContext
     ciona.record = option::some(record_id);
 }
 
+/// The larva missed its settle window: it fails (DESIGN §6) and its claim, if still held, is released.
+public fun fail_settle(ciona: &mut Ciona, reef: &mut Reef, clock: &Clock) {
+    assert!(ciona.stage == STAGE_SETTLING, E_STAGE);
+    assert!(is_home(ciona, reef), E_HOME);
+    let now = clock.timestamp_ms();
+    assert!(now > ciona.stage_since_ms + rules::settle_window_ms(), E_EARLY);
+    reef::release(reef, ciona.settling_cell, object::id(ciona));
+    brain::clear(&mut ciona.brain);
+    ciona.stage = STAGE_FOSSIL;
+    ciona.stage_since_ms = now;
+    ciona.home = option::none();
+}
+
+/// The only way into a race: the entry fee goes to the sink and the race pot.
 public fun enter_paid<T>(
     ciona: &mut Ciona,
     race: &mut LightRace,
@@ -263,11 +299,16 @@ public fun enter_paid<T>(
     refund
 }
 
-public fun enter_race(ciona: &mut Ciona, race: &mut LightRace, clock: &Clock) {
+public(package) fun enter_race(ciona: &mut Ciona, race: &mut LightRace, clock: &Clock) {
     assert!(ciona.stage == STAGE_LARVA, E_STAGE);
-    assert!(option::is_none(&ciona.race), E_RACE);
+    let now = clock.timestamp_ms();
+    // A larva can race again once its last race is finalized or its results window has passed.
+    assert!(option::is_none(&ciona.race) || now > ciona.race_lock_until_ms + rules::race_grace_ms(), E_RACE);
     race::enter(race, object::id(ciona), clock);
+    let (_start, end) = race::window(race);
     ciona.race = option::some(race::id_of(race));
+    ciona.race_lock_until_ms = end;
+    ciona.best_distance = NO_BEST;
 }
 
 public fun race_tick(
@@ -281,10 +322,11 @@ public fun race_tick(
     assert!(race::has_entered(race, object::id(ciona)), E_RACE);
     let now = clock.timestamp_ms();
     assert!(race::in_window(race, now), E_RACE);
+    assert!(race::is_revealed(race), E_RACE);
     let next = brain::brain_tick(&ciona.brain) + 1;
     let (lx, ly) = brain::race_lure(race::seed_of(race), next);
     let shadow = brain::race_shadow(race::seed_of(race), next);
-    swim(ciona, connectome, clock, lx, ly, 256, shadow, false);
+    step(ciona, connectome, clock, lx, ly, 256, shadow, false);
     let dist = apart(brain::body_x(&ciona.body), brain::body_y(&ciona.body), lx, ly);
     if (dist < ciona.best_distance) ciona.best_distance = dist;
 }
@@ -293,6 +335,7 @@ public fun finalize_race(ciona: &mut Ciona, race: &mut LightRace, clock: &Clock,
     assert!(option::is_some(&ciona.race) && *option::borrow(&ciona.race) == race::id_of(race), E_RACE);
     assert!(ciona.best_distance < NO_BEST, E_RACE);
     race::finish(race, object::id(ciona), ciona.best_distance, ctx.sender(), clock);
+    ciona.race = option::none();
 }
 
 public fun feed(ciona: &mut Ciona, reef: &Reef, clock: &Clock) {
@@ -324,7 +367,7 @@ public fun destroy_ciona(c: Ciona) {
     let Ciona {
         id, generation: _, stage: _, genome: _, brain: _, body: _, born_ms: _, stage_since_ms: _,
         ticked: _, last_tick_ms: _, parents: _, connectome: _,
-        home: _, settling_cell: _, race: _, best_distance: _, record: _, energy: _, last_feed_ms: _,
+        home: _, settling_cell: _, race: _, race_lock_until_ms: _, best_distance: _, record: _, energy: _, last_feed_ms: _,
     } = c;
     object::delete(id);
 }
@@ -342,6 +385,10 @@ public fun test_pose(c: &mut Ciona, x: u64, y: u64) {
 #[test_only]
 public fun test_set_best(c: &mut Ciona, distance: u64) {
     c.best_distance = distance;
+}
+
+fun is_home(ciona: &Ciona, reef: &Reef): bool {
+    option::is_some(&ciona.home) && *option::borrow(&ciona.home) == reef::id_of(reef)
 }
 
 fun near(ciona: &Ciona, cell: u32): bool {
