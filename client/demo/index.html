@@ -2589,9 +2589,8 @@ function presentLarva(dt) {
   engineToWorld(lerp(G.prev.x, b.x, f), lerp(G.prev.y, b.y, f), L.pos);
   let dh = (b.heading - G.prev.heading) & 65535; if (dh >= 32768) dh -= 65536;
   headingToWorld(G.prev.heading + dh * f, _hd);
-  const want = clearHeight(L.pos.x, L.pos.z, pathQuery(L.pos.x, L.pos.z).y, 0.55);
-  G.alt = damp(G.alt, want, want > G.alt ? 5 : 1.6, dt);
-  L.pos.y = Math.max(G.alt, heightAt(L.pos.x, L.pos.z) + 0.9);
+  G.alt = damp(G.alt, pathQuery(L.pos.x, L.pos.z).y, 1.6, dt);
+  L.pos.y = clearHeight(L.pos.x, L.pos.z, G.alt, 0.55); // applied at once, so the larva is never drawn inside rock
   // pitch shows the integer tilt that the antenna cells read
   const pitch = clamp(lerp(G.prev.tilt, b.tilt, f) / CONST.tilt_cap, -1, 1) * 0.35;
   L.fwd.copy(_hd).multiplyScalar(Math.cos(pitch)); L.fwd.y = Math.sin(pitch);
@@ -2648,8 +2647,17 @@ function blocked(p, r) {
   return false;
 }
 function boom(from, to) { // pull the camera in toward the subject when terrain or rock is in the way
+  if (blocked(from, 0.45)) return to;
   _bl.copy(from);
-  for (let i = 1; i <= 14; i++) { _bp.lerpVectors(from, to, i / 14); if (blocked(_bp, 0.45)) { to.copy(_bl); return to; } _bl.copy(_bp); }
+  for (let i = 1; i <= 14; i++) {
+    _bp.lerpVectors(from, to, i / 14);
+    if (blocked(_bp, 0.45)) {
+      // too cramped to stand behind: look down from just above rather than from inside the larva
+      if (_bl.distanceToSquared(from) < 1) { to.copy(from); to.y += 1.6; collide(to, 0.45, null); } else to.copy(_bl);
+      return to;
+    }
+    _bl.copy(_bp);
+  }
   return to;
 }
 const camPos = new THREE.Vector3(), camLook = new THREE.Vector3(), _cp = new THREE.Vector3(), _cl = new THREE.Vector3();
@@ -2912,9 +2920,12 @@ function update(dt, rdt) {
     hero.animate(dt, G.t); hero.orient();
     chaseCam(dt);
     G.raceT += dt;
-    // progress along the course
-    let bi = G.uIdx, bd = 1e9;
-    for (let i = Math.max(0, G.uIdx - 25); i <= Math.min(PATH_N, G.uIdx + 60); i++) { const d = PATH[i].distanceToSquared(hero.pos); if (d < bd) { bd = d; bi = i; } }
+    // progress along the course. Far off it, the windowed search would run ahead, so hold the last place
+    // until the larva is back near the course (possibly further along, if it cut a corner)
+    const off2 = (i) => { const q = PATH[i], dx = q.x - hero.pos.x, dz = q.z - hero.pos.z; return dx * dx + dz * dz; };
+    let bi = G.uIdx, bd = Infinity;
+    for (let i = Math.max(0, G.uIdx - 25); i <= Math.min(PATH_N, G.uIdx + 60); i++) { const d = off2(i); if (d < bd) { bd = d; bi = i; } }
+    if (bd > 18 * 18) { bd = 12 * 12; bi = G.uIdx; for (let i = G.uIdx + 61; i <= PATH_N; i++) { const d = off2(i); if (d < bd) { bd = d; bi = i; } } }
     G.uIdx = bi; G.u = bi / PATH_N;
     // gates
     const ng = GATES[G.next];
