@@ -299,7 +299,8 @@ function hashTick(prev, tick, drives, fired, n) {
   return blake2b256(raw);
 }
 
-function fresh(view, yolk0) {
+// A newly hatched larva: body at the origin, membranes at rest, zero hash.
+export function fresh(view, yolk0) {
   return [{
     x: 0, y: 0, heading: 0, tilt: 0, yolk: yolk0 ?? CONST.yolk0,
     bout: 0, escape: 0, escapeCd: 0, pr2Hist: [], hash: new Uint8Array(32),
@@ -361,6 +362,7 @@ export function stepLarva(body, brain, view, lure, light, shadow, pulse, decoded
   body.yolk = body.yolk > burn ? body.yolk - burn : 0;
   const tick = (body.tick = (body.tick || 0) + 1);
   body.hash = hashTick(body.hash, tick, drives, fired, view.graph.n);
+  return { fired, drives, left, right, thrust };
 }
 
 export function bytesOf(value) {

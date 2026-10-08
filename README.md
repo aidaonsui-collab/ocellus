@@ -15,7 +15,7 @@ The game works with any standard Sui coin and never needs minting rights, so it 
 | Path | Contents |
 |---|---|
 | [`DESIGN.md`](./DESIGN.md) | Full design document |
-| [`demo/`](./demo/README.md) | Single-file WebGL demo of the lifecycle (hatch, light-gate race, settlement, metamorphosis). The larva runs the bench connectome with the same integer step as `brain.move`. Nothing in it is on-chain. |
+| [`client/demo/`](./client/demo/README.md) | WebGL demo of the lifecycle (hatch, light-gate race, settlement, metamorphosis), served at `/demo/` by the Vite client. Every tick runs the chain's integer engine (`client/src/engine.js`) over the reconciled 224-cell connectome, and the page replays recorded chain events to check it. Nothing in it is on-chain. |
 | [`bench/`](./bench/README.md) | Prototype Move gas benchmark of the on-chain brain (real connectome), scripts to reproduce it, and raw results. **Numbers are from a local Sui test network.** |
 | [`research/`](./research/SOURCES.md) | CC BY source data from Ryan et al. 2016 (connectome matrices, cell key, full text), the derived edge list, and `SOURCES.md` listing every cited source, including ones that aren't redistributed here |
 
