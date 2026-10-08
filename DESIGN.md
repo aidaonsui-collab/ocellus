@@ -256,7 +256,7 @@ Egg ──hatch──▶ Larva ──(competent + reef spot)──▶ Settling �
 |---|---|---|
 | **Egg** | Created by spawning or founder hatch. Can be traded. | Hatchable after a short incubation |
 | **Larva** | Brain is live. Each player action is one brain tick. Swims, races, scouts the reef. Does **not** feed and burns its yolk energy, as real larvae do. | Competence window opens after the minimum swim time. Mirrors the real ~3–4 h competence onset in compressed time. |
-| **Settling** | Attaches to a free reef cell (shared Reef write). Settlement is the competitive moment. | Must finish within a deadline or the larva fails |
+| **Settling** | Attaches to a free reef cell (shared Reef write). Settlement is the competitive moment. | Must finish within a deadline or the larva fails: after the window, anyone can evict the claim (`reef::evict_expired`) and the owner can retire the larva (`fail_settle`) |
 | **Metamorphosis** | **The on-chain climax.** The tail and its motor circuit are resorbed: the larval `BrainState` is cleared, and a frozen **`LarvalRecord`** keeps the final state hash, total ticks, spikes, best race times and settlement coordinates. The adult gets a reduced "adult nervous system" stub that is not stepped. | One transaction |
 | **Adult** | Sessile on its reef cell. Filter-feeds (gains energy from currents passing its cell) and can spawn. | Lifespan in days (estimate) |
 | **Fossil** | At end of life the creature becomes a frozen, non-transferable-by-default memorial in the **Tunic Bed** (graveyard). Its genome and lineage stay readable forever. | Permanent |
@@ -286,7 +286,7 @@ public struct LightRace has key {
     id: UID,
     reef: ID,
     start_ms: u64, end_ms: u64,
-    light_path_seed: u64,           // from sui::random at creation (commit), revealed at start
+    light_path_seed: u64,           // drawn from sui::random only after registration closes (reveal_seed)
     max_ticks: u32,
     entries: Table<ID, u32>,        // larva -> best distance
 }
@@ -296,7 +296,7 @@ public struct LightRace has key {
 
 ### 7.2 Activities
 
-1. **Light races.** A race defines a moving light source and a tick budget. Entrants step their own larva with `race_tick(race: &LightRace, larva: &mut Ciona, clock: &Clock)`. The race is read by immutable reference, the larva is owned, and the race's light path determines the sensor input. Each larva can only move under race rules while it is entered. When the window closes, `finalize` records the ranking from each larva's on-chain position. **No off-chain physics:** the race result is the brain's output.
+1. **Light races.** A race defines a moving light source and a tick budget. Entrants step their own larva with `race_tick(race: &LightRace, larva: &mut Ciona, clock: &Clock)`. The race is read by immutable reference, the larva is owned, and the race's light path determines the sensor input. Each larva can only move under race rules while it is entered: free `swim` is locked from entry until the race ends, entries close before the seed is drawn, and entry is paid (`enter_paid`). When the window closes, `finalize` records the ranking from each larva's on-chain position, and `claim_prize` pays the pot to the winner. **No off-chain physics:** the race result is the brain's output.
 2. **Dimming escapes.** Random "shadow" events (a passing predator) test the PR-II disinhibitory escape circuit. Larvae that dive or turn fast enough keep their energy.
 3. **Settlement competition.** Competent larvae race to claim free reef cells. Cells differ in light, current flow and neighbors. Claims are first-come within the transaction order, and a contested cell resolves by who arrived first on-chain.
 4. **Currents.** A drift field derived from `current_seed` adds displacement every tick. It is re-rolled periodically with `sui::random`. Larvae that orient well against gravity and light make better headway.

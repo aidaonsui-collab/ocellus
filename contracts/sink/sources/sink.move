@@ -4,6 +4,7 @@ module ocellus_sink::sink;
 use sui::balance::{Self, Balance};
 use sui::coin::{Self, Coin};
 use sui::object::{Self, UID};
+use sui::transfer;
 use sui::tx_context::TxContext;
 
 public struct Sink<phantom T> has key {
@@ -13,6 +14,11 @@ public struct Sink<phantom T> has key {
 
 public fun create<T>(ctx: &mut TxContext): Sink<T> {
     Sink { id: object::new(ctx), locked: balance::zero<T>() }
+}
+
+/// Sink is key-only, so only this module can share it.
+public fun share<T>(sink: Sink<T>) {
+    transfer::share_object(sink);
 }
 
 public fun deposit<T>(sink: &mut Sink<T>, coin: Coin<T>) {

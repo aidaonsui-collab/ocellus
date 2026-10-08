@@ -58,7 +58,7 @@ fun contest_settle_and_record() {
     clock::set_for_testing(&mut clock, rules::competence_ms() + rules::attach_ms());
     let hash = ciona::hash_of(&a);
     let tick = ciona::tick_of(&a);
-    ciona::complete_settle(&mut a, &clock, &mut ctx);
+    ciona::complete_settle(&mut a, &mut home, &clock, &mut ctx);
     let settled = event::events_by_type<ciona::Settled>();
     assert!(settled.length() == 1, 1);
     assert!(ciona::settled_hash(&settled[0]) == hash, 2);
@@ -101,9 +101,12 @@ fun two_racers_finalize_from_their_own_positions() {
     let mut a = hatch(&mut ctx, &clock, &conn);
     let mut b = hatch(&mut ctx, &clock, &conn);
     let seed = x"0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20";
-    let mut light = race::create(seed, &clock, &mut ctx);
+    let mut light = race::create(&clock, &mut ctx);
     ciona::enter_race(&mut a, &mut light, &clock);
     ciona::enter_race(&mut b, &mut light, &clock);
+    let (start, _end) = race::window(&light);
+    clock::set_for_testing(&mut clock, start);
+    race::reveal_for_testing(&mut light, seed, &clock);
     clock::increment_for_testing(&mut clock, 1);
     ciona::race_tick(&mut a, &light, &conn, &clock);
     clock::increment_for_testing(&mut clock, 1);

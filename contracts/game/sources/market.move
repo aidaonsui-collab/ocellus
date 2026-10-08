@@ -8,6 +8,7 @@ use std::option::{Self, Option};
 use sui::balance::{Self, Balance};
 use sui::clock::Clock;
 use sui::coin::{Self, Coin};
+use sui::event;
 use sui::object::{Self, ID, UID};
 use sui::table::{Self, Table};
 use sui::transfer;
@@ -17,6 +18,8 @@ const E_BOUNDS: u64 = 1;
 const E_PRICE: u64 = 2;
 const E_EARLY: u64 = 3;
 const E_BIND: u64 = 4;
+const E_GAME: u64 = 5;
+const E_CLOSED: u64 = 6;
 
 const HOUR: u64 = 60 * 60 * 1000;
 const DAY: u64 = 24 * HOUR;
@@ -41,18 +44,39 @@ public struct Game<phantom T> has key {
     settle_bounty: u64,
 }
 
+/// Owned by the admin who proposed it; executable on its own game after the timelock.
 public struct Proposal has key {
     id: UID,
+    game: ID,
     execute_after: u64,
     target: u64,
 }
+
+public struct TargetProposed has copy, drop { game: ID, proposal: ID, target: u64, execute_after: u64 }
+public struct TargetChanged has copy, drop { game: ID, target: u64 }
+public struct PrizePaid has copy, drop { race: ID, player: address, amount: u64 }
 
 fun init(ctx: &mut TxContext) {
     transfer::public_transfer(BindCap { id: object::new(ctx) }, ctx.sender());
     transfer::public_transfer(PriceAdminCap { id: object::new(ctx) }, ctx.sender());
 }
 
-public fun bind<T>(
+/// Binds the coin type once and shares the game and its sink.
+public fun bind_shared<T>(
+    cap: BindCap,
+    clock: &Clock,
+    min: u64,
+    price: u64,
+    max: u64,
+    target: u64,
+    ctx: &mut TxContext,
+) {
+    let (game, sink) = bind<T>(cap, clock, min, price, max, target, ctx);
+    transfer::share_object(game);
+    sink::share(sink);
+}
+
+public(package) fun bind<T>(
     cap: BindCap,
     clock: &Clock,
     min: u64,
@@ -98,7 +122,8 @@ public fun pay_hatch<T>(
     charge(game, sink, payment, option::none(), clock, ctx)
 }
 
-public fun pay_entry<T>(
+/// Entry fees are paid through ciona::enter_paid, which also enters the larva.
+public(package) fun pay_entry<T>(
     game: &mut Game<T>,
     sink: &mut Sink<T>,
     race: &LightRace,
@@ -107,36 +132,50 @@ public fun pay_entry<T>(
     ctx: &mut TxContext,
 ): Coin<T> {
     assert!(object::id(sink) == game.sink, E_BIND);
+    assert!(race::is_open(race, clock.timestamp_ms()), E_CLOSED);
     charge(game, sink, payment, option::some(race::id_of(race)), clock, ctx)
 }
 
+/// Anyone can trigger the payout once results close; the pot always goes to the winner.
 public fun claim_prize<T>(
     game: &mut Game<T>,
     race: &mut LightRace,
     clock: &Clock,
     ctx: &mut TxContext,
-): (Coin<T>, address) {
+) {
     let (player, _distance) = race::take_winner(race, clock);
     let race_id = race::id_of(race);
     assert!(table::contains(&game.pots, race_id), E_PRICE);
     let pot = table::remove(&mut game.pots, race_id);
-    (coin::from_balance(pot, ctx), player)
+    event::emit(PrizePaid { race: race_id, player, amount: balance::value(&pot) });
+    transfer::public_transfer(coin::from_balance(pot, ctx), player);
 }
 
-public fun propose(cap: &PriceAdminCap, target: u64, clock: &Clock, ctx: &mut TxContext): Proposal {
+/// Creates a proposal for this game and gives it to the admin. It can execute after one day.
+public fun propose<T>(cap: &PriceAdminCap, game: &Game<T>, target: u64, clock: &Clock, ctx: &mut TxContext) {
+    let p = new_proposal(cap, game, target, clock, ctx);
+    transfer::transfer(p, ctx.sender());
+}
+
+fun new_proposal<T>(cap: &PriceAdminCap, game: &Game<T>, target: u64, clock: &Clock, ctx: &mut TxContext): Proposal {
     let _cap = cap;
-    Proposal {
+    let p = Proposal {
         id: object::new(ctx),
+        game: object::id(game),
         execute_after: clock.timestamp_ms() + DAY,
         target,
-    }
+    };
+    event::emit(TargetProposed { game: p.game, proposal: object::id(&p), target, execute_after: p.execute_after });
+    p
 }
 
 public fun execute<T>(game: &mut Game<T>, proposal: Proposal, clock: &Clock) {
-    let Proposal { id, execute_after, target } = proposal;
+    let Proposal { id, game: gid, execute_after, target } = proposal;
+    assert!(gid == object::id(game), E_GAME);
     assert!(clock.timestamp_ms() >= execute_after, E_EARLY);
     id.delete();
     game.target = target;
+    event::emit(TargetChanged { game: gid, target });
 }
 
 public fun price_of<T>(game: &Game<T>): u64 { game.price }
@@ -196,6 +235,11 @@ public fun cap_for_test(ctx: &mut TxContext): BindCap {
 #[test_only]
 public fun admin_for_test(ctx: &mut TxContext): PriceAdminCap {
     PriceAdminCap { id: object::new(ctx) }
+}
+
+#[test_only]
+public fun propose_for_testing<T>(cap: &PriceAdminCap, game: &Game<T>, target: u64, clock: &Clock, ctx: &mut TxContext): Proposal {
+    new_proposal(cap, game, target, clock, ctx)
 }
 
 #[test_only]

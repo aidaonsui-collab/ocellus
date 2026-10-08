@@ -11,6 +11,7 @@ public fun competence_ms(): u64 { 20 * MINUTE }
 public fun settle_window_ms(): u64 { 15 * MINUTE }
 public fun attach_ms(): u64 { MINUTE }
 public fun adult_life_ms(): u64 { 14 * DAY }
+public fun race_registration_ms(): u64 { 10 * MINUTE }
 public fun race_window_ms(): u64 { 30 * MINUTE }
 public fun race_grace_ms(): u64 { 10 * MINUTE }
 public fun grid(): u64 { 16 }
