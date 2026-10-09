@@ -6,6 +6,16 @@ Each creature is a larva of the sea squirt *Ciona intestinalis*. It runs a copy 
 
 The game works with any standard Sui coin and never needs minting rights, so it fits whichever launchpad the coin launches on.
 
+## What it's for
+
+Ocellus runs a real animal's complete mapped nervous system in public. The wiring is the *Ciona* larva connectome from Ryan et al. 2016 (CC BY). Every neuron updates on every step inside Move, so anyone can reproduce a larva's behavior from its chain events, using [`replay/`](./replay) or the verifier page ([`client/index.html`](./client/index.html)).
+
+**What can be learned.** Genomes change each neuron's excitability, never its wiring. That makes it possible to ask how those differences change swimming, light response and where a larva settles, and once breeding exists, how a population drifts under selection. The published season datasets ([phase 7](./docs/BRAIN_MODES_PLAN.md#phase-7-lineage-and-population-dataset-seasons)) are meant to make that open data. They are blocked until anyone can check the connectome's hash rather than trusting the publisher's value.
+
+**Limits.** The neuron model is a simplified integer one. Most cells are excitatory only by default, because no source gives their transmitter. Dimming and gravity don't yet drive the motor neurons ([phase 0](./docs/BRAIN_MODES_PLAN.md#phase-0-brain-pathways-dimming-and-gravity-reach-the-motor-neurons)). It is not a substitute for wet-lab science. It is a public, checkable model.
+
+**Who it's for:** players, people curious about how a small brain works, students, and researchers who want an open toy model they can check line by line.
+
 ## Status
 
 **Contracts written and tested locally; nothing deployed.** `contracts/brain`, `contracts/game` and `contracts/sink` build and pass `sui move test`. `client/src/engine.js` is the integer mirror that both the verifier (`client/index.html`) and the demo (`client/demo/`) run, and `replay/replay.py` checks the same events in Python. The gas figures in `bench/` come from a throwaway local network only. No package has been published to Sui mainnet or testnet.
