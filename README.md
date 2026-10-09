@@ -8,7 +8,7 @@ The game works with any standard Sui coin and never needs minting rights, so it 
 
 ## What it's for
 
-Ocellus runs a real animal's complete mapped nervous system in public. The wiring is the *Ciona* larva connectome from Ryan et al. 2016 (CC BY). Every neuron updates on every step inside Move, so anyone can reproduce a larva's behavior from its chain events, using [`replay/`](./replay) or the verifier page ([`client/index.html`](./client/index.html)).
+Ocellus runs a real animal's complete mapped nervous system in public. The wiring is the *Ciona* larva connectome from Ryan et al. 2016 (CC BY). Every neuron updates on every step inside Move, so anyone can reproduce a larva's behavior from its chain events, using [`replay/`](./replay) or the verifier page ([`client/index.html`](./client/index.html)). It is also a worked example of a pattern that any simulation people need to trust but can't easily check can reuse: run the model as deterministic integer code on-chain, or replay it exactly from chain events, so anyone can reproduce the computation, which shows it ran as published but not that the model is biologically right.
 
 **What can be learned.** Genomes change each neuron's excitability, never its wiring. That makes it possible to ask how those differences change swimming, light response and where a larva settles, and once breeding exists, how a population drifts under selection. The published season datasets ([phase 7](./docs/BRAIN_MODES_PLAN.md#phase-7-lineage-and-population-dataset-seasons)) are meant to make that open data. They are blocked until anyone can check the connectome's hash rather than trusting the publisher's value.
 
