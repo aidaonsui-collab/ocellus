@@ -121,6 +121,7 @@ public struct Tick has copy, drop {
     shadow: bool,
     pulse: bool,
     neighbors: u64,
+    current: u64,
 }
 
 /// Held by the publisher. The free hatch exists for local testing. Players use hatch_paid.
@@ -164,7 +165,7 @@ public fun swim(
     step(ciona, connectome, clock, lure_x, lure_y, light, shadow, pulse, 0, 0);
 }
 
-public fun swim_current(
+public(package) fun swim_current(
     ciona: &mut Ciona,
     connectome: &Connectome,
     clock: &Clock,
@@ -191,6 +192,10 @@ public fun swim_reef(
     pulse: bool,
 ) {
     swim_current(ciona, connectome, clock, lure_x, lure_y, light, shadow, pulse, reef::current_of(reef));
+}
+
+public fun join_swarm(ciona: &Ciona, board: &mut SwarmBoard, clock: &Clock, ctx: &TxContext) {
+    swarm::join(board, object::id(ciona), clock, ctx);
 }
 
 public fun swim_swarm(
@@ -260,7 +265,8 @@ fun cross(a: &vector<u8>, b: &vector<u8>, rolls: &vector<u8>): vector<u8> {
     let mut i = 0;
     while (i < 64) {
         let pick = if (rolls[i] % 2 == 0) a[i] else b[i];
-        let mutated = if (rolls[64 + i] < 3) pick ^ rolls[i] else pick;
+        // Bit 0 of rolls[i] chose the parent, so the flipped bit comes from bits 1-3.
+        let mutated = if (rolls[64 + i] < 3) pick ^ (1u8 << ((rolls[i] >> 1) % 8)) else pick;
         g.push_back(mutated);
         i = i + 1;
     };
@@ -353,6 +359,7 @@ fun step(
         shadow,
         pulse,
         neighbors,
+        current,
     });
     if (ciona.marking) {
         event::emit(Spikes {
@@ -504,10 +511,18 @@ public fun enter_paid<T>(
     refund
 }
 
+fun release_expired(ciona: &mut Ciona, now: u64) {
+    if (now > ciona.race_lock_until_ms + rules::race_grace_ms()) {
+        ciona.race = option::none();
+        ciona.gauntlet = option::none();
+    };
+}
+
 public(package) fun enter_race(ciona: &mut Ciona, race: &mut LightRace, clock: &Clock) {
     assert!(ciona.stage == STAGE_LARVA, E_STAGE);
-    assert!(option::is_none(&ciona.gauntlet), E_RACE);
     let now = clock.timestamp_ms();
+    release_expired(ciona, now);
+    assert!(option::is_none(&ciona.gauntlet), E_RACE);
     // A larva can race again once its last race is finalized or its results window has passed.
     assert!(option::is_none(&ciona.race) || now > ciona.race_lock_until_ms + rules::race_grace_ms(), E_RACE);
     race::enter(race, object::id(ciona), clock);
@@ -562,10 +577,11 @@ public fun enter_gauntlet_paid<T>(
     refund
 }
 
-public fun enter_gauntlet(ciona: &mut Ciona, g: &mut Gauntlet, clock: &Clock) {
+public(package) fun enter_gauntlet(ciona: &mut Ciona, g: &mut Gauntlet, clock: &Clock) {
     assert!(ciona.stage == STAGE_LARVA, E_STAGE);
-    assert!(option::is_none(&ciona.race), E_RACE);
     let now = clock.timestamp_ms();
+    release_expired(ciona, now);
+    assert!(option::is_none(&ciona.race), E_RACE);
     assert!(option::is_none(&ciona.gauntlet) || now > ciona.race_lock_until_ms + rules::race_grace_ms(), E_RACE);
     gauntlet::enter(g, object::id(ciona), clock);
     let (_start, end) = gauntlet::window(g);

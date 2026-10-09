@@ -13,6 +13,7 @@ const cellClass = view.doc.cells.map((cell) => {
 
 const status = document.querySelector("#status");
 const track = document.querySelector("#track");
+let pristine = sample;
 let events = sample;
 let shown = 0;
 let timer = 0;
@@ -60,12 +61,13 @@ function draw(result) {
     document.querySelector("#leak").textContent = "—";
   }
   document.querySelector("#hash").textContent = larva.hash || "";
-  status.textContent = result.stoppedAt != null
+  const failed = result.stoppedAt != null || Boolean(result.error);
+  status.textContent = failed
     ? statusText(result)
     : shown === 0 && !(larva.tick > 0)
       ? "Hatched. Step to predict the first tick."
       : statusText(result);
-  status.className = "status" + (result.stoppedAt != null ? " bad" : shown ? " ok" : "");
+  status.className = "status" + (failed ? " bad" : shown ? " ok" : "");
   const decision = claimed != null
     ? { ok: false, cell: claimed, reason: `Claimed cell ${claimed}. Settlement attaches for one minute, then the record freezes the last tick.` }
     : decideClaim(larva, occupied, bornMs, nowMs);
@@ -90,7 +92,7 @@ function draw(result) {
     + (last ? `<circle cx="${last[0]}" cy="${yOf(last[1])}" r="70" fill="#f2d38a"/>` : "");
   const fired = new Set(frame && frame.fired ? frame.fired : []);
   document.querySelector("#cells").innerHTML = cellClass.map((name, i) => `<i class="${name}${fired.has(i) ? " on" : ""}"></i>`).join("");
-  document.querySelector("#step").disabled = result.stoppedAt != null || shown >= ticksOf(events).length;
+  document.querySelector("#step").disabled = failed || shown >= ticksOf(events).length;
   document.querySelector("#play").disabled = document.querySelector("#step").disabled;
 }
 
@@ -115,6 +117,7 @@ document.querySelector("#play").addEventListener("click", () => {
 });
 document.querySelector("#reset").addEventListener("click", () => {
   clearInterval(timer);
+  events = pristine;
   shown = 0;
   occupied = new Set();
   claimed = null;
@@ -131,9 +134,10 @@ document.querySelector("#claim").addEventListener("click", () => {
 });
 document.querySelector("#break").addEventListener("click", () => {
   clearInterval(timer);
-  const ticks = ticksOf(events);
+  const ticks = ticksOf(pristine);
   const index = Math.min(shown, ticks.length - 1);
-  const copy = structuredClone(events);
+  // Break from the untouched log, so a second click on the same tick stays broken.
+  const copy = structuredClone(pristine);
   const victim = ticksOf(copy)[index];
   const raw = Uint8Array.from(atob(victim.state_hash), (c) => c.charCodeAt(0));
   raw[0] ^= 0xff;
@@ -148,7 +152,8 @@ document.querySelector("#file").addEventListener("change", async (ev) => {
   const file = ev.target.files[0];
   if (!file) return;
   clearInterval(timer);
-  events = JSON.parse(await file.text());
+  pristine = JSON.parse(await file.text());
+  events = pristine;
   shown = 0;
   paint();
 });

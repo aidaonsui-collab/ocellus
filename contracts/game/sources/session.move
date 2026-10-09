@@ -111,12 +111,13 @@ public fun step_gauntlet(
     session.left = session.left - 1;
 }
 
-public fun close(session: SwimSession, clock: &Clock, ctx: &TxContext): Ciona {
+/// The owner may close at any time; anyone may close after the deadline. The larva always goes to the owner.
+public fun close(session: SwimSession, clock: &Clock, ctx: &TxContext) {
     let sender = ctx.sender();
     assert!(sender == session.owner || clock.timestamp_ms() > session.expires_ms, E_TIME);
-    let SwimSession { id, larva, owner: _, delegate: _, left: _, expires_ms: _, mode: _ } = session;
+    let SwimSession { id, larva, owner, delegate: _, left: _, expires_ms: _, mode: _ } = session;
     id.delete();
-    larva
+    transfer::public_transfer(larva, owner);
 }
 
 public fun left(session: &SwimSession): u64 { session.left }

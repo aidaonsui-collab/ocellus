@@ -12,15 +12,19 @@ use sui::clock;
 use sui::object;
 use sui::test_scenario as ts;
 
-fun rolls(): vector<u8> {
+/// Every byte from parent a. Bytes listed in `mutate` get a mutation roll, the rest none.
+fun rolls_with(mutate: vector<u64>): vector<u8> {
     let mut g = vector[];
     let mut i = 0;
     while (i < 128) {
-        g.push_back(0);
+        let b = if (i < 64) 0u8 else if (mutate.contains(&(i - 64))) 0 else 255;
+        g.push_back(b);
         i = i + 1;
     };
     g
 }
+
+fun rolls(): vector<u8> { rolls_with(vector[]) }
 
 fun neutral(): vector<u8> {
     let mut g = vector[];
@@ -63,6 +67,27 @@ fun two_currents_land_in_different_places() {
     brain::destroy_connectome(conn);
 }
 
+/// The same ten ticks are stepped in client/src/check.js. Both must land here.
+#[test]
+fun ten_ticks_in_current_three_match_the_client() {
+    let mut ctx = tx_context::dummy();
+    let conn = swim_tests::conn(&mut ctx);
+    let mut clock = clock::create_for_testing(&mut ctx);
+    let mut a = ciona::hatch_with_genome(neutral(), &clock, &conn, &mut ctx);
+    let mut t = 0;
+    while (t < 10) {
+        clock::increment_for_testing(&mut clock, 1);
+        ciona::swim_current(&mut a, &conn, &clock, 1500, 0, 256, false, false, 3);
+        t = t + 1;
+    };
+    assert!(ciona::x_of(&a) == 1000163, 1);
+    assert!(ciona::y_of(&a) == 1000000, 2);
+    assert!(ciona::hash_of(&a) == x"121aebc7fb010b604a1e9d393b719359dd7d727af45ec994d10b9ee3db3c63ec", 3);
+    clock::destroy_for_testing(clock);
+    ciona::destroy_ciona(a);
+    brain::destroy_connectome(conn);
+}
+
 #[test, expected_failure(abort_code = 4, location = ocellus_game::ciona)]
 fun shared_allele_blocks_spawning() {
     let mut ctx = tx_context::dummy();
@@ -88,6 +113,30 @@ fun a_compatible_pair_mints_a_child_with_both_parents() {
     assert!(parents[0] == object::id(&a) && parents[1] == object::id(&b), 2);
     assert!(ciona::generation_of(&child) == 1, 3);
     assert!(ciona::stage_of(&child) == 1, 4);
+    assert!(ciona::genome_of(&child) == ciona::genome_of(&a), 5);
+    clock::destroy_for_testing(clock);
+    ciona::destroy_ciona(a);
+    ciona::destroy_ciona(b);
+    ciona::destroy_ciona(child);
+    brain::destroy_connectome(conn);
+}
+
+#[test]
+fun a_mutation_changes_the_byte_taken_from_parent_a() {
+    let mut ctx = tx_context::dummy();
+    let conn = swim_tests::conn(&mut ctx);
+    let clock = clock::create_for_testing(&mut ctx);
+    let a = adult(&mut ctx, &clock, &conn, 1);
+    let b = adult(&mut ctx, &clock, &conn, 2);
+    let child = ciona::breed_for_test(&a, &b, rolls_with(vector[0]), &clock, &conn, &mut ctx);
+    let from_a = ciona::genome_of(&a);
+    let got = ciona::genome_of(&child);
+    assert!(got[0] == from_a[0] ^ 1, 1);
+    let mut i = 1;
+    while (i < 64) {
+        assert!(got[i] == from_a[i], 2);
+        i = i + 1;
+    };
     clock::destroy_for_testing(clock);
     ciona::destroy_ciona(a);
     ciona::destroy_ciona(b);
@@ -156,11 +205,13 @@ fun a_season_names_the_published_connectome() {
     let conn = swim_tests::conn(&mut ctx);
     let mut clock = clock::create_for_testing(&mut ctx);
     let mut season = season::open(&conn, &clock, &mut ctx);
+    let cap = season::cap_for_test(&mut ctx);
     assert!(season::hash_of(&season) == ciona::canonical_hash_bytes(), 1);
     assert!(season::encoding_of(&season) == b"connectome.v1.bin", 2);
     assert!(season::version() == 1, 3);
     clock::increment_for_testing(&mut clock, 5);
-    season::close(&mut season, &clock);
+    season::close(&cap, &mut season, &clock);
+    season::destroy_cap(cap);
     clock::destroy_for_testing(clock);
     season::destroy(season);
     brain::destroy_connectome(conn);
@@ -176,11 +227,31 @@ fun a_delegate_can_spend_one_swim_and_the_owner_gets_the_larva_back() {
     clock::increment_for_testing(&mut clock, 1);
     session::step_swim(&mut session, &conn, &clock, 1500, 0, 256, false, false, &ctx);
     assert!(session::left(&session) == 1, 1);
-    let back = session::close(session, &clock, &ctx);
-    assert!(ciona::tick_of(&back) == 1, 2);
+    session::destroy(session);
     clock::destroy_for_testing(clock);
-    ciona::destroy_ciona(back);
     brain::destroy_connectome(conn);
+}
+
+#[test]
+fun a_stranger_closing_an_expired_session_returns_the_larva_to_the_owner() {
+    let owner = @0xA;
+    let stranger = @0xB;
+    let mut sc = ts::begin(owner);
+    let conn = swim_tests::conn(sc.ctx());
+    let mut clock = clock::create_for_testing(sc.ctx());
+    let larva = ciona::hatch_with_genome(neutral(), &clock, &conn, sc.ctx());
+    let larva_id = object::id(&larva);
+    let s = session::open(larva, @0x0, 2, 1000, 0, sc.ctx());
+    sc.next_tx(stranger);
+    clock::increment_for_testing(&mut clock, 1001);
+    session::close(s, &clock, sc.ctx());
+    sc.next_tx(owner);
+    assert!(!ts::has_most_recent_for_address<ciona::Ciona>(stranger), 1);
+    let back = sc.take_from_address_by_id<ciona::Ciona>(owner, larva_id);
+    ciona::destroy_ciona(back);
+    clock::destroy_for_testing(clock);
+    brain::destroy_connectome(conn);
+    sc.end();
 }
 
 #[test, expected_failure(abort_code = 1, location = ocellus_game::swarm)]

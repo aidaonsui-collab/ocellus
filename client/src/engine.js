@@ -451,6 +451,7 @@ export function follow(doc, events) {
   acceptConnectome(doc);
   const view = buildView(doc);
   const hatch = events.find((e) => e.genome && e.tick == null);
+  if (!hatch) return { ok: false, stoppedAt: null, frames: [], larva: null, error: "No Hatched event in this log, so there is no genome to replay from." };
   const decoded = decodeGenome(bytesOf(hatch.genome));
   const [body, brain] = fresh(view, decoded.yolk0);
   const frames = [];
@@ -459,7 +460,7 @@ export function follow(doc, events) {
     const before = { x: body.x, y: body.y, heading: body.heading, yolk: body.yolk, hash: toHex(body.hash) };
     const neighbors = Number(e.neighbors || 0);
     const light = Math.max(0, Number(e.light) - neighbors * 16);
-    const stepped = stepLarva(body, brain, view, [Number(e.lure_x), Number(e.lure_y)], light, Boolean(e.shadow), Boolean(e.pulse), decoded);
+    const stepped = stepLarva(body, brain, view, [Number(e.lure_x), Number(e.lure_y)], light, Boolean(e.shadow), Boolean(e.pulse), decoded, Number(e.current || 0));
     const hash = toHex(body.hash);
     const chain = toHex(bytesOf(e.state_hash));
     if (e.spike_bits && !sameSpikeBits(stepped.fired, e.spike_bits)) {
@@ -500,7 +501,7 @@ export const REEF = {
 };
 
 export function depthBand(cell) {
-  return (cell % 16) * 80;
+  return (cell % 16) * 32;
 }
 
 export function cellCenter(cell) {
@@ -541,6 +542,7 @@ export function decideClaim(larva, occupied, bornMs = 0, nowMs = 0) {
 
 export function statusText(result) {
   if (!result) return "No larva loaded.";
+  if (result.error) return result.error;
   if (result.stoppedAt != null) {
     return `Stopped at tick ${result.stoppedAt}. The predicted hash does not match the chain. The larva was not moved past the last matching tick.`;
   }

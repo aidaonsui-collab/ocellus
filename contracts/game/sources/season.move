@@ -6,11 +6,18 @@ use ocellus_brain::brain::Connectome;
 use ocellus_game::ciona::canonical_hash_bytes;
 use sui::clock::Clock;
 use sui::object::{Self, ID, UID};
+use sui::transfer;
 use sui::tx_context::TxContext;
 
 const VERSION: u64 = 1;
 const E_HASH: u64 = 1;
 const E_OPEN: u64 = 2;
+
+public struct SeasonAdminCap has key, store { id: UID }
+
+fun init(ctx: &mut TxContext) {
+    transfer::public_transfer(SeasonAdminCap { id: object::new(ctx) }, ctx.sender());
+}
 
 public struct Season has key {
     id: UID,
@@ -38,7 +45,11 @@ public fun open(connectome: &Connectome, clock: &Clock, ctx: &mut TxContext): Se
     }
 }
 
-public fun close(season: &mut Season, clock: &Clock) {
+entry fun share_season(connectome: &Connectome, clock: &Clock, ctx: &mut TxContext) {
+    transfer::share_object(open(connectome, clock, ctx));
+}
+
+public fun close(_cap: &SeasonAdminCap, season: &mut Season, clock: &Clock) {
     assert!(!season.closed, E_OPEN);
     season.end_ms = clock.timestamp_ms();
     season.closed = true;
@@ -48,6 +59,17 @@ public fun version(): u64 { VERSION }
 public fun hash_of(season: &Season): vector<u8> { season.data_hash }
 public fun encoding_of(season: &Season): vector<u8> { season.encoding }
 public fun connectome_of(season: &Season): ID { season.connectome }
+
+#[test_only]
+public fun cap_for_test(ctx: &mut TxContext): SeasonAdminCap {
+    SeasonAdminCap { id: object::new(ctx) }
+}
+
+#[test_only]
+public fun destroy_cap(cap: SeasonAdminCap) {
+    let SeasonAdminCap { id } = cap;
+    id.delete();
+}
 
 #[test_only]
 public fun destroy(season: Season) {
