@@ -2,7 +2,7 @@
 
 > The player controls only inputs: light, shadow/dimming, and tilt/gravity. The on-chain brain decides the behavior. Every mode must be replayable from the events the chain already emits.
 
-This plan is grounded in the code on `main` as of 2026-10-07 (`fcb68ab`). It does not replace [DESIGN.md](../DESIGN.md). It sequences the game modes that the brain can actually drive, starting with the pathway work that makes two of them real neural behavior instead of game-layer rules.
+This plan is grounded in the code on `main` as of 2026-10-08 (`fcb68ab`). It does not replace [DESIGN.md](../DESIGN.md). It sequences the game modes that the brain can actually drive, starting with the pathway work that makes two of them real neural behavior instead of game-layer rules.
 
 Nothing here changes the token design. Every paid action stays generic over `Coin<T>` through `ocellus_game::market`, with the coin type bound once by `bind_shared<T>` and no `TreasuryCap`.
 
@@ -14,7 +14,7 @@ Nothing here changes the token design. Every paid action stays generic over `Coi
 | Sensors | `sensor_drives` feeds 23 PR-I cells from lure position, heading shade and `light` (0–256); both antenna cells from `body.tilt`; 7 PR-II cells from the `shadow` flag only. |
 | Body | `integrate` turns toward the lure while PR-I fires (`PR1_TURN`), yaws from left/right NMJ-weighted motor output, and steps `tilt` when exactly one antenna cell fires. An escape swim is a body counter: if PR-II spikes sum to ≥ 3 over 6 ticks, the body adds `ESCAPE_THRUST` (250) for 8 ticks. |
 | `ocellus_game::ciona` | `hatch_founder` (free), `swim` / `swim_tick` (player lure), `race_tick` (lure and shadow from `brain::race_lure` / `race_shadow`), `claim`, `complete_settle`, `fail_settle`, `enter_paid`, `finalize_race`, `feed`. Each tick emits `Tick` with lure, light, shadow, pulse, pose and `state_hash`. |
-| `ocellus_game::race` | Shared `LightRace`. Registration, then `reveal_seed` (non-public `entry`, `sui::random`), then ticks, then `finish` / `take_winner`. `create_race` is public and free. |
+| `ocellus_game::race` | Shared `LightRace`. Registration, then `reveal_seed` (non-public `entry`, `sui::random`), then ticks, then `finish` / `take_winner`. `create_race` is a free `entry`: not `public`, but any address can call it in a transaction. |
 | `ocellus_game::reef` | One shared `Reef` per shard, 16×16 cells (`rules::grid`), `occupy` / `attach` / `release` / `evict_expired`. `current_seed` is fixed at 1 and only read by `feed`. |
 | `ocellus_game::market` | `pay_hatch`, `pay_entry` (80% sink / 20% pot), `claim_prize`, timelocked `propose` / `execute`. |
 | Client | `client/src/engine.js` is the integer mirror (`stepLarva`, `follow`). `client/index.html` verifies events. `client/demo/` renders the pose. `replay/replay.py` checks the same events in Python. |
@@ -136,12 +136,12 @@ Work in `bench/scripts/probe_dynamics.py` and `bench/scripts/lif_model.py`, whic
 
 Three consequences for the game. From Bostwick 2020: gravity should do nothing visible until dimming opens the gate. From Kourakis 2019 (citing Salas 2018): an escape swim should be tortuous and leftward-biased, not just faster. Also from Kourakis 2019: under steady light the real larva moves away from the lamp. The current `integrate` contradicts all three.
 
-**Phototaxis direction (decide in phase 0, apply in phase 1).** Two honest options:
+**Phototaxis direction (decide before phase 1 starts, apply in phase 1).** This is a product decision, not a measurement, and phase 0's results don't settle it (see above). Two honest options:
 
 1. **Flip the convention:** the player's light is a lamp the larva flees, and courses are run by herding. The body rule's sign flips, and later, if the motor yaw carries the direction on its own, the rule is removed.
 2. **Keep "toward the light"** and label it in the UI and DESIGN as a game convention that reverses the animal's reflex.
 
-Option 1 is the one that matches the brain's claim. Either way, the `PR1_TURN` heading rule is a body rule computed from the lure's true bearing, not from motor output, and the plan should aim to replace it with motor yaw once phase 0 shows the left/right split carries direction.
+Option 1 is the one that matches the brain's claim. Either way, the `PR1_TURN` heading rule is a body rule computed from the lure's true bearing, not from motor output. Phase 0 found that the brain gets no bearing (all 23 PR-I cells share one shade term), so with the current sensor mapping motor yaw can't replace the rule. Label the rule as a game rule whichever direction is chosen.
 
 ### Acceptance tests
 
@@ -180,7 +180,7 @@ A sign change doesn't add state, but it can add spikes, and spikes add gas becau
 
 ### Depends on
 
-Nothing. Everything below depends on this, except phase 1, which can start in parallel because it only needs the PR-I pathway that already works.
+Nothing. Everything below depends on this, except phase 1, which can start in parallel once the phototaxis direction is decided, because it only needs the PR-I pathway that already works.
 
 ## Playing without a signature on every tick
 
@@ -234,12 +234,12 @@ If phase 0 picks the herding convention, a race is scored on reaching a goal reg
 - No new per-tick state. A second pure function is noise next to the brain step. Re-measure once anyway.
 - A race leg is hundreds of `race_tick` calls. Ship it with the session, sponsorship and batching path in [Playing without a signature on every tick](#playing-without-a-signature-on-every-tick), not as one wallet prompt per tick.
 - **Open item, PR #3:** `hatch_founder` is free and never calls `pay_hatch`. A racing ladder with free larvae is fine for the demo and wrong for launch. Wire founder hatching through `pay_hatch` (new `hatch_paid<T>`, mirroring `enter_paid`) before the ladder is playable against the coin, and keep `hatch_founder` behind a dev-only flag or remove it. Note `market` already has `settle_bounty`, which nothing pays out.
-- `create_race` is a public, free `entry`. Anyone can open races. Cap open races per game, or require `pay_entry`-style funding at creation, before this is public.
+- `create_race` is a free `entry`. It isn't `public`, but any address can call it in a transaction, so anyone can open races. Cap open races per game, or require `pay_entry`-style funding at creation, before this is public.
 - Shared `LightRace` is written at `enter`, `reveal_seed` and `finish` only, so the race itself doesn't hot-spot. Good; keep it that way.
 
 ### Depends on
 
-Phase 0 is not required. The PR-I pathway already tracks light level. Currents and breeding can land after the track kinds.
+Phase 0's experiments are not required, because the PR-I pathway already tracks light level. The phototaxis-direction decision is required, because herding changes how races are scored. Currents and breeding can land after the track kinds.
 
 ## Phase 2. Predator gauntlet
 
@@ -319,7 +319,7 @@ Phase 0, and phase 1's current roll if puzzles are meant to share the live curre
 
 ### What the brain must do
 
-`Brain.adapt` is a `vector<u16>`, incremented by 8,192 on every spike and decayed by 1/16 per tick, added to the threshold. It exists to stop runaway firing (PR #2). It is not a store of experience: anything it remembers is gone within a few dozen quiet ticks.
+`Brain.adapt` is a `vector<u16>`, incremented by 8,192 on every spike and decayed by 1/16 per tick, added to the threshold. It exists to stop runaway firing (PR #2). It is not a store of experience. With integer decay of 1/16 per tick, about 90% of a saturated value is gone after 36 quiet ticks. The decay also never reaches zero: `a - (a >> 4)` stops changing once `a` is below 16, so a cell that has spiked keeps a residue of up to 15, against a threshold margin of 16,384. The membrane leak behaves the same way and leaves |v − rest| below 8.
 
 Raising, honestly, means three things and no more:
 
@@ -341,7 +341,7 @@ Raising, honestly, means three things and no more:
 ### Tests and acceptance
 
 - Two larvae, identical genome: one swum through a bright window, one rested. On the next identical input, the swum one produces fewer spikes. The rested one matches the fresh golden.
-- After enough quiet ticks, the two agree again. The test measures how many ticks that takes and writes it down; it does not assert a number chosen in advance.
+- After enough quiet ticks, the two produce the same spikes again. The test measures how many ticks that takes and writes it down; it does not assert a number chosen in advance. Their internal state and state hashes never become identical, because the integer decay leaves small residues (above), so compare spikes, not hashes.
 - A test that no function changes `signs`, the connectome, or the genome. This is a property to keep true, not a feature to add.
 
 ### Gas, storage, risks
@@ -474,6 +474,7 @@ phase 4  adaptation display     independent; best after phase 0
 phase 6  replay highlights      independent; best after phases 0, 2, 3
 hash provenance                 independent; required before phase 7
 pay_hatch wiring                independent; required before any paid mode launches
+phototaxis direction            product decision (herd or chase); required before phase 1 scoring
 ```
 
 ## Open items to carry (from PR #3)
