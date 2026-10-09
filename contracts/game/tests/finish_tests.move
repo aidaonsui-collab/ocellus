@@ -12,15 +12,19 @@ use sui::clock;
 use sui::object;
 use sui::test_scenario as ts;
 
-fun rolls(): vector<u8> {
+/// Every byte from parent a. Bytes listed in `mutate` get a mutation roll, the rest none.
+fun rolls_with(mutate: vector<u64>): vector<u8> {
     let mut g = vector[];
     let mut i = 0;
     while (i < 128) {
-        g.push_back(0);
+        let b = if (i < 64) 0u8 else if (mutate.contains(&(i - 64))) 0 else 255;
+        g.push_back(b);
         i = i + 1;
     };
     g
 }
+
+fun rolls(): vector<u8> { rolls_with(vector[]) }
 
 fun neutral(): vector<u8> {
     let mut g = vector[];
@@ -63,6 +67,27 @@ fun two_currents_land_in_different_places() {
     brain::destroy_connectome(conn);
 }
 
+/// The same ten ticks are stepped in client/src/check.js. Both must land here.
+#[test]
+fun ten_ticks_in_current_three_match_the_client() {
+    let mut ctx = tx_context::dummy();
+    let conn = swim_tests::conn(&mut ctx);
+    let mut clock = clock::create_for_testing(&mut ctx);
+    let mut a = ciona::hatch_with_genome(neutral(), &clock, &conn, &mut ctx);
+    let mut t = 0;
+    while (t < 10) {
+        clock::increment_for_testing(&mut clock, 1);
+        ciona::swim_current(&mut a, &conn, &clock, 1500, 0, 256, false, false, 3);
+        t = t + 1;
+    };
+    assert!(ciona::x_of(&a) == 1000163, 1);
+    assert!(ciona::y_of(&a) == 1000000, 2);
+    assert!(ciona::hash_of(&a) == x"121aebc7fb010b604a1e9d393b719359dd7d727af45ec994d10b9ee3db3c63ec", 3);
+    clock::destroy_for_testing(clock);
+    ciona::destroy_ciona(a);
+    brain::destroy_connectome(conn);
+}
+
 #[test, expected_failure(abort_code = 4, location = ocellus_game::ciona)]
 fun shared_allele_blocks_spawning() {
     let mut ctx = tx_context::dummy();
@@ -88,6 +113,30 @@ fun a_compatible_pair_mints_a_child_with_both_parents() {
     assert!(parents[0] == object::id(&a) && parents[1] == object::id(&b), 2);
     assert!(ciona::generation_of(&child) == 1, 3);
     assert!(ciona::stage_of(&child) == 1, 4);
+    assert!(ciona::genome_of(&child) == ciona::genome_of(&a), 5);
+    clock::destroy_for_testing(clock);
+    ciona::destroy_ciona(a);
+    ciona::destroy_ciona(b);
+    ciona::destroy_ciona(child);
+    brain::destroy_connectome(conn);
+}
+
+#[test]
+fun a_mutation_changes_the_byte_taken_from_parent_a() {
+    let mut ctx = tx_context::dummy();
+    let conn = swim_tests::conn(&mut ctx);
+    let clock = clock::create_for_testing(&mut ctx);
+    let a = adult(&mut ctx, &clock, &conn, 1);
+    let b = adult(&mut ctx, &clock, &conn, 2);
+    let child = ciona::breed_for_test(&a, &b, rolls_with(vector[0]), &clock, &conn, &mut ctx);
+    let from_a = ciona::genome_of(&a);
+    let got = ciona::genome_of(&child);
+    assert!(got[0] == from_a[0] ^ 1, 1);
+    let mut i = 1;
+    while (i < 64) {
+        assert!(got[i] == from_a[i], 2);
+        i = i + 1;
+    };
     clock::destroy_for_testing(clock);
     ciona::destroy_ciona(a);
     ciona::destroy_ciona(b);

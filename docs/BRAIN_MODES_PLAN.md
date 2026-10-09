@@ -403,7 +403,7 @@ Nothing. Each larva is its own object and is stepped by its owner, exactly as no
 
 ### Landed
 
-`SwarmBoard` stores one pose per larva. Only the address that joined can post. A neighbor inside 400 units shades the next tick's light, and that count is on the `Tick` event. The shard cap is 8 until a localnet contention run replaces it. No function takes two `&mut Ciona`.
+`SwarmBoard` stores one pose per larva. Joining goes through `ciona::join_swarm`, which takes the larva itself, and posting happens only inside `swim_swarm`, so a pose on the board always belongs to a larva its poster holds. A neighbor inside 400 units shades the next tick's light, and that count is on the `Tick` event. The shard cap is 8 until a localnet contention run replaces it. No function takes two `&mut Ciona`.
 
 ### Depends on
 

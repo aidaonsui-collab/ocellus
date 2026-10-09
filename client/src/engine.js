@@ -451,6 +451,7 @@ export function follow(doc, events) {
   acceptConnectome(doc);
   const view = buildView(doc);
   const hatch = events.find((e) => e.genome && e.tick == null);
+  if (!hatch) return { ok: false, stoppedAt: null, frames: [], larva: null, error: "No Hatched event in this log, so there is no genome to replay from." };
   const decoded = decodeGenome(bytesOf(hatch.genome));
   const [body, brain] = fresh(view, decoded.yolk0);
   const frames = [];
@@ -541,6 +542,7 @@ export function decideClaim(larva, occupied, bornMs = 0, nowMs = 0) {
 
 export function statusText(result) {
   if (!result) return "No larva loaded.";
+  if (result.error) return result.error;
   if (result.stoppedAt != null) {
     return `Stopped at tick ${result.stoppedAt}. The predicted hash does not match the chain. The larva was not moved past the last matching tick.`;
   }

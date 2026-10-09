@@ -34,6 +34,26 @@ if (stopped.larva.tick !== 6) throw new Error("showed a tick past the mismatch")
 const text = statusText(stopped);
 if (!text.startsWith("Stopped at tick 7.")) throw new Error(text);
 
+// Same ten ticks as ten_ticks_in_current_three_match_the_client in contracts/game/tests/finish_tests.move.
+{
+  const g = Uint8Array.from({ length: 64 }, (_, i) => (i < 16 ? 128 : i < 24 ? 64 : i < 32 ? 85 : i < 38 ? 128 : 0));
+  const view = buildView(doc);
+  const decoded = decodeGenome(g);
+  const [body, brain] = fresh(view, decoded.yolk0);
+  for (let t = 0; t < 10; t++) stepLarva(body, brain, view, [1500, 0], 256, false, false, decoded, 3);
+  if (body.x + 1000000 !== 1000163 || body.y + 1000000 !== 1000000) throw new Error(`current x,y ${body.x},${body.y}`);
+  if (toHex(body.hash) !== "121aebc7fb010b604a1e9d393b719359dd7d727af45ec994d10b9ee3db3c63ec") throw new Error("current hash");
+}
+
+// follow must read the current off each Tick: one the chain never applied breaks the replay at that tick.
+const drifted = structuredClone(events);
+drifted.filter((e) => e.tick != null)[0].current = 3;
+const off = follow(doc, drifted);
+if (off.ok || off.stoppedAt !== 1) throw new Error(`current ignored: ${JSON.stringify({ ok: off.ok, at: off.stoppedAt })}`);
+
+const orphan = follow(doc, events.filter((e) => e.tick != null));
+if (orphan.ok || !orphan.error || !statusText(orphan).includes("Hatched")) throw new Error("missing hatch was not reported");
+
 const [c0x, c0y] = cellCenter(0);
 if (c0x !== 200 || c0y !== 200) throw new Error("cell 0 center");
 const young = decideClaim(live.larva, new Set());

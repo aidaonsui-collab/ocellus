@@ -265,7 +265,8 @@ fun cross(a: &vector<u8>, b: &vector<u8>, rolls: &vector<u8>): vector<u8> {
     let mut i = 0;
     while (i < 64) {
         let pick = if (rolls[i] % 2 == 0) a[i] else b[i];
-        let mutated = if (rolls[64 + i] < 3) pick ^ rolls[i] else pick;
+        // Bit 0 of rolls[i] chose the parent, so the flipped bit comes from bits 1-3.
+        let mutated = if (rolls[64 + i] < 3) pick ^ (1u8 << ((rolls[i] >> 1) % 8)) else pick;
         g.push_back(mutated);
         i = i + 1;
     };
