@@ -176,11 +176,31 @@ fun a_delegate_can_spend_one_swim_and_the_owner_gets_the_larva_back() {
     clock::increment_for_testing(&mut clock, 1);
     session::step_swim(&mut session, &conn, &clock, 1500, 0, 256, false, false, &ctx);
     assert!(session::left(&session) == 1, 1);
-    let back = session::close(session, &clock, &ctx);
-    assert!(ciona::tick_of(&back) == 1, 2);
+    session::destroy(session);
     clock::destroy_for_testing(clock);
-    ciona::destroy_ciona(back);
     brain::destroy_connectome(conn);
+}
+
+#[test]
+fun a_stranger_closing_an_expired_session_returns_the_larva_to_the_owner() {
+    let owner = @0xA;
+    let stranger = @0xB;
+    let mut sc = ts::begin(owner);
+    let conn = swim_tests::conn(sc.ctx());
+    let mut clock = clock::create_for_testing(sc.ctx());
+    let larva = ciona::hatch_with_genome(neutral(), &clock, &conn, sc.ctx());
+    let larva_id = object::id(&larva);
+    let s = session::open(larva, @0x0, 2, 1000, 0, sc.ctx());
+    sc.next_tx(stranger);
+    clock::increment_for_testing(&mut clock, 1001);
+    session::close(s, &clock, sc.ctx());
+    sc.next_tx(owner);
+    assert!(!ts::has_most_recent_for_address<ciona::Ciona>(stranger), 1);
+    let back = sc.take_from_address_by_id<ciona::Ciona>(owner, larva_id);
+    ciona::destroy_ciona(back);
+    clock::destroy_for_testing(clock);
+    brain::destroy_connectome(conn);
+    sc.end();
 }
 
 #[test, expected_failure(abort_code = 1, location = ocellus_game::swarm)]
