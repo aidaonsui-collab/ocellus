@@ -49,7 +49,7 @@ entry fun share_board(shard: u32, ctx: &mut TxContext) {
 
 public fun cap(): u64 { SHARD_CAP }
 
-public fun join(board: &mut SwarmBoard, larva: ID, clock: &Clock, ctx: &TxContext) {
+public(package) fun join(board: &mut SwarmBoard, larva: ID, clock: &Clock, ctx: &TxContext) {
     expire(board, clock.timestamp_ms());
     assert!(!table::contains(&board.poses, larva), E_OWNER);
     assert!(board.ids.length() < SHARD_CAP, E_CAP);
@@ -59,7 +59,7 @@ public fun join(board: &mut SwarmBoard, larva: ID, clock: &Clock, ctx: &TxContex
     });
 }
 
-public fun post(board: &mut SwarmBoard, larva: ID, x: u64, y: u64, tick: u64, clock: &Clock, ctx: &TxContext) {
+public(package) fun post(board: &mut SwarmBoard, larva: ID, x: u64, y: u64, tick: u64, clock: &Clock, ctx: &TxContext) {
     expire(board, clock.timestamp_ms());
     assert!(table::contains(&board.poses, larva), E_ABSENT);
     let pose = table::borrow_mut(&mut board.poses, larva);

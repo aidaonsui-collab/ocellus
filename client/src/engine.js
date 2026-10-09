@@ -459,7 +459,7 @@ export function follow(doc, events) {
     const before = { x: body.x, y: body.y, heading: body.heading, yolk: body.yolk, hash: toHex(body.hash) };
     const neighbors = Number(e.neighbors || 0);
     const light = Math.max(0, Number(e.light) - neighbors * 16);
-    const stepped = stepLarva(body, brain, view, [Number(e.lure_x), Number(e.lure_y)], light, Boolean(e.shadow), Boolean(e.pulse), decoded);
+    const stepped = stepLarva(body, brain, view, [Number(e.lure_x), Number(e.lure_y)], light, Boolean(e.shadow), Boolean(e.pulse), decoded, Number(e.current || 0));
     const hash = toHex(body.hash);
     const chain = toHex(bytesOf(e.state_hash));
     if (e.spike_bits && !sameSpikeBits(stepped.fired, e.spike_bits)) {
@@ -500,7 +500,7 @@ export const REEF = {
 };
 
 export function depthBand(cell) {
-  return (cell % 16) * 80;
+  return (cell % 16) * 32;
 }
 
 export function cellCenter(cell) {

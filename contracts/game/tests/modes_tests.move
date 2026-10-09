@@ -4,6 +4,7 @@ module ocellus_game::modes_tests;
 use ocellus_brain::brain;
 use ocellus_game::ciona;
 use ocellus_game::gauntlet;
+use ocellus_game::race;
 use ocellus_game::reef;
 use ocellus_game::rules;
 use ocellus_game::swim_tests;
@@ -133,12 +134,55 @@ fun claim_rejects_a_cell_that_is_close_but_deep() {
     let mut clock = clock::create_for_testing(&mut ctx);
     let mut larva = hatch(&mut ctx, &clock, &conn);
     ciona::test_ticks(&mut larva, rules::competence_ticks());
-    let (x, y) = reef::center(2);
+    let (x, y) = reef::center(8);
     ciona::test_pose(&mut larva, x, y);
     clock::set_for_testing(&mut clock, rules::competence_ms());
     let mut home = reef::create(0, &mut ctx);
-    ciona::claim(&mut larva, &mut home, 2, &clock);
+    ciona::claim(&mut larva, &mut home, 8, &clock);
     abort 0
+}
+
+#[test]
+fun the_far_column_is_claimable_at_its_own_depth() {
+    let mut ctx = tx_context::dummy();
+    let conn = swim_tests::conn(&mut ctx);
+    let mut clock = clock::create_for_testing(&mut ctx);
+    let mut larva = hatch(&mut ctx, &clock, &conn);
+    ciona::test_ticks(&mut larva, rules::competence_ticks());
+    let (x, y) = reef::center(15);
+    ciona::test_pose(&mut larva, x, y);
+    let band = rules::depth_band(15);
+    let hi = rules::depth_bias() + 512;
+    assert!(band <= hi && band >= rules::depth_bias(), 1);
+    ciona::test_depth(&mut larva, (band as u32));
+    clock::set_for_testing(&mut clock, rules::competence_ms());
+    let mut home = reef::create(0, &mut ctx);
+    ciona::claim(&mut larva, &mut home, 15, &clock);
+    assert!(ciona::stage_of(&larva) == 2, 2);
+    clock::destroy_for_testing(clock);
+    ciona::destroy_ciona(larva);
+    reef::destroy(home);
+    brain::destroy_connectome(conn);
+}
+
+#[test]
+fun a_missed_race_does_not_block_the_gauntlet() {
+    let mut ctx = tx_context::dummy();
+    let conn = swim_tests::conn(&mut ctx);
+    let mut clock = clock::create_for_testing(&mut ctx);
+    let mut larva = hatch(&mut ctx, &clock, &conn);
+    let mut light = race::create(&clock, &mut ctx);
+    ciona::enter_race(&mut larva, &mut light, &clock);
+    let (_start, end) = race::window(&light);
+    clock::set_for_testing(&mut clock, end + rules::race_grace_ms() + 1);
+    let mut g = gauntlet::create(&clock, &mut ctx);
+    ciona::enter_gauntlet(&mut larva, &mut g, &clock);
+    assert!(gauntlet::has_entered(&g, object::id(&larva)), 1);
+    clock::destroy_for_testing(clock);
+    ciona::destroy_ciona(larva);
+    race::destroy(light);
+    gauntlet::destroy(g);
+    brain::destroy_connectome(conn);
 }
 
 #[test]

@@ -44,7 +44,7 @@ def replay(events):
     if not ticks:
         raise SystemExit("no Tick events")
     for e in ticks:
-        neighbors = int(e.get("neighbors", 0))
+        neighbors = int(e.get("neighbors") or 0)
         light = int(e["light"]) - neighbors * 16
         if light < 0:
             light = 0
@@ -53,6 +53,7 @@ def replay(events):
             (int(e["lure_x"]), int(e["lure_y"])),
             light, bool(e["shadow"]), bool(e["pulse"]),
             decoded,
+            int(e.get("current") or 0),
         )
         got = body["hash"].hex()
         want = bytes_of(e["state_hash"]).hex()

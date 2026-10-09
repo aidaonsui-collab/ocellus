@@ -156,11 +156,13 @@ fun a_season_names_the_published_connectome() {
     let conn = swim_tests::conn(&mut ctx);
     let mut clock = clock::create_for_testing(&mut ctx);
     let mut season = season::open(&conn, &clock, &mut ctx);
+    let cap = season::cap_for_test(&mut ctx);
     assert!(season::hash_of(&season) == ciona::canonical_hash_bytes(), 1);
     assert!(season::encoding_of(&season) == b"connectome.v1.bin", 2);
     assert!(season::version() == 1, 3);
     clock::increment_for_testing(&mut clock, 5);
-    season::close(&mut season, &clock);
+    season::close(&cap, &mut season, &clock);
+    season::destroy_cap(cap);
     clock::destroy_for_testing(clock);
     season::destroy(season);
     brain::destroy_connectome(conn);
