@@ -40,58 +40,58 @@ canonical_id,class,sign,basis
 68,cor-ass BVIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 70,cor-ass BVIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 73,cor-ass BVIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-74,pr-AMG RN,inhibitory,Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.
+74,pr-AMG RN,inhibitory,"Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1."
 78,cor-ass BVIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 79,cor-ass BVIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-80,prRN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
+80,prRN,excitatory,"Excitatory at class level. Kourakis et al. 2019 registration predicts the six prRNs are evenly mixed between VGAT and VACHT, with low confidence in which cell is which. The VACHT- and AMPAR-positive relay neurons carry the excitatory PR-I circuit. Class from Ryan et al. 2016 Figure 1."
 82,unassigned,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 85,PNIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-86,prRN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
+86,prRN,excitatory,"Excitatory at class level. Kourakis et al. 2019 registration predicts the six prRNs are evenly mixed between VGAT and VACHT, with low confidence in which cell is which. The VACHT- and AMPAR-positive relay neurons carry the excitatory PR-I circuit. Class from Ryan et al. 2016 Figure 1."
 88,PNIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 89,unassigned,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 90,BPIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 92,BPIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 93,2 RN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-94,pr-AMG RN,inhibitory,Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.
-96,prRN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-100,prRN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
+94,pr-AMG RN,inhibitory,"Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1."
+96,prRN,excitatory,"Excitatory at class level. Kourakis et al. 2019 registration predicts the six prRNs are evenly mixed between VGAT and VACHT, with low confidence in which cell is which. The VACHT- and AMPAR-positive relay neurons carry the excitatory PR-I circuit. Class from Ryan et al. 2016 Figure 1."
+100,prRN,excitatory,"Excitatory at class level. Kourakis et al. 2019 registration predicts the six prRNs are evenly mixed between VGAT and VACHT, with low confidence in which cell is which. The VACHT- and AMPAR-positive relay neurons carry the excitatory PR-I circuit. Class from Ryan et al. 2016 Figure 1."
 101,PR-III,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 103,2 RN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 105,pr-cor RN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 106,2 RN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 107,ambiguous,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-108,pr-AMG RN,inhibitory,Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.
+108,pr-AMG RN,inhibitory,"Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1."
 110,PR-III,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 112,pr-cor RN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 113,PR-III,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 114,PR-III,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-116,pr-AMG RN,inhibitory,Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.
+116,pr-AMG RN,inhibitory,"Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1."
 119,pr-cor RN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-120,ant-cor RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.
-121,prRN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
+120,ant-cor RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.
+121,prRN,excitatory,"Excitatory at class level. Kourakis et al. 2019 registration predicts the six prRNs are evenly mixed between VGAT and VACHT, with low confidence in which cell is which. The VACHT- and AMPAR-positive relay neurons carry the excitatory PR-I circuit. Class from Ryan et al. 2016 Figure 1."
 122,2 RN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 123,pr-BTN RN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-124,pr-AMG RN,inhibitory,Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.
+124,pr-AMG RN,inhibitory,"Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1."
 125,2 RN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-126,prRN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-127,pr-AMG RN,inhibitory,Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.
+126,prRN,excitatory,"Excitatory at class level. Kourakis et al. 2019 registration predicts the six prRNs are evenly mixed between VGAT and VACHT, with low confidence in which cell is which. The VACHT- and AMPAR-positive relay neurons carry the excitatory PR-I circuit. Class from Ryan et al. 2016 Figure 1."
+127,pr-AMG RN,inhibitory,"Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1."
 130,pr-BTN RN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 131,PN RN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-134,ant1/2 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.
-135,ant2 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.
+134,ant1/2 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.
+135,ant2 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.
 138,prIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 139,unassigned,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-140,pr-AMG RN,inhibitory,Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.
-142,ant1/2 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.
-143,ant1/2 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.
-147,ant1 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.
+140,pr-AMG RN,inhibitory,"Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1."
+142,ant1/2 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.
+143,ant1/2 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.
+147,ant1 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.
 149,unassigned,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-152,ant1 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.
-153,ant2 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.
-157,pr-AMG RN,inhibitory,Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.
-159,ant2 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.
+152,ant1 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.
+153,ant2 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.
+157,pr-AMG RN,inhibitory,"Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1."
+159,ant2 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.
 160,PBV PNIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-161,ant1 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.
+161,ant1 RN,inhibitory,Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.
 162,PBV PNIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 163,PBV PNIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 164,PBV PNIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
@@ -101,18 +101,18 @@ canonical_id,class,sign,basis
 aaIN1,aaIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 aaIN2,aaIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 aaIN3,aaIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-ACIN1L,ACIN,inhibitory,Ryan et al. 2016 Figure 1 cell key: ACIN is the ascending contralateral inhibitory neuron.
-ACIN2L,ACIN,inhibitory,Ryan et al. 2016 Figure 1 cell key: ACIN is the ascending contralateral inhibitory neuron.
-ACIN2R,ACIN,inhibitory,Ryan et al. 2016 Figure 1 cell key: ACIN is the ascending contralateral inhibitory neuron.
-AMG1,AMG,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-AMG2,AMG,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-AMG3,AMG,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-AMG4,AMG,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-AMG5,AMG,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-AMG6,AMG,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-AMG7,AMG,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-Ant1,Ant,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-Ant2,Ant,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
+ACIN1L,ACIN,inhibitory,Ryan et al. 2016 Figure 1 cell key: ACIN is the ascending contralateral inhibitory neuron. Kourakis et al. 2019: the ACINs are glycinergic.
+ACIN2L,ACIN,inhibitory,Ryan et al. 2016 Figure 1 cell key: ACIN is the ascending contralateral inhibitory neuron. Kourakis et al. 2019: the ACINs are glycinergic.
+ACIN2R,ACIN,inhibitory,Ryan et al. 2016 Figure 1 cell key: ACIN is the ascending contralateral inhibitory neuron. Kourakis et al. 2019: the ACINs are glycinergic.
+AMG1,AMG,excitatory,"Contested. Kourakis et al. 2019 assigns VGAT to AMGs 1, 2, 3, 4, 6 and 7. The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response."
+AMG2,AMG,excitatory,"Contested. Kourakis et al. 2019 assigns VGAT to AMGs 1, 2, 3, 4, 6 and 7. The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response."
+AMG3,AMG,excitatory,"Contested. Kourakis et al. 2019 assigns VGAT to AMGs 1, 2, 3, 4, 6 and 7. The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response."
+AMG4,AMG,excitatory,"Contested. Kourakis et al. 2019 assigns VGAT to AMGs 1, 2, 3, 4, 6 and 7. The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response."
+AMG5,AMG,excitatory,Kourakis et al. 2019: AMG5 is VACHT-positive (cholinergic).
+AMG6,AMG,excitatory,"Contested. Kourakis et al. 2019 assigns VGAT to AMGs 1, 2, 3, 4, 6 and 7. The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response."
+AMG7,AMG,excitatory,"Contested. Kourakis et al. 2019 assigns VGAT to AMGs 1, 2, 3, 4, 6 and 7. The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response."
+Ant1,Ant,excitatory,"Kourakis et al. 2019: the two otolith antenna cells express VGLUT (glutamatergic), citing Horie et al. 2008b."
+Ant2,Ant,excitatory,"Kourakis et al. 2019: the two otolith antenna cells express VGLUT (glutamatergic), citing Horie et al. 2008b."
 ATEN1,aATEN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 ATEN2,aATEN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 ATEN3,aATEN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
@@ -135,33 +135,33 @@ coronet11,Cor,excitatory,"Default excitatory. No transmitter identity for this c
 coronet12,Cor,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 coronet14,Cor,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 coronet16,Cor,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-ddNL,ddN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-ddNR,ddN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-Em1,Em,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-Em2,Em,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
+ddNL,ddN,excitatory,Kourakis et al. 2019: the ddNs are in the motor ganglion's continuous VACHT block (cholinergic).
+ddNR,ddN,excitatory,Kourakis et al. 2019: the ddNs are in the motor ganglion's continuous VACHT block (cholinergic).
+Em1,Em,excitatory,"Contested. Kourakis et al. 2019: the eminens cells express VGAT, agreeing with earlier GAD reports (Takamura et al. 2010). The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response."
+Em2,Em,excitatory,"Contested. Kourakis et al. 2019: the eminens cells express VGAT, agreeing with earlier GAD reports (Takamura et al. 2010). The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response."
 lens6,PR-III,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 lens7,PR-III,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MGIN1L,MGIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MGIN1R,MGIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MGIN2L,MGIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MGIN2R,MGIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MGIN3L,MGIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MGIN3R,MGIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
+MGIN1L,MGIN,excitatory,"Kourakis et al. 2019: the MGINs are in the motor ganglion's continuous VACHT block, and the paper calls them cholinergic."
+MGIN1R,MGIN,excitatory,"Kourakis et al. 2019: the MGINs are in the motor ganglion's continuous VACHT block, and the paper calls them cholinergic."
+MGIN2L,MGIN,excitatory,"Kourakis et al. 2019: the MGINs are in the motor ganglion's continuous VACHT block, and the paper calls them cholinergic."
+MGIN2R,MGIN,excitatory,"Kourakis et al. 2019: the MGINs are in the motor ganglion's continuous VACHT block, and the paper calls them cholinergic."
+MGIN3L,MGIN,excitatory,"Kourakis et al. 2019: the MGINs are in the motor ganglion's continuous VACHT block, and the paper calls them cholinergic."
+MGIN3R,MGIN,excitatory,"Kourakis et al. 2019: the MGINs are in the motor ganglion's continuous VACHT block, and the paper calls them cholinergic."
 midtail1,MTN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 midtail2,MTN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 midtail3,unassigned,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 midtail4,MTN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 midtail7,MTN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MN1L,MN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MN1R,MN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MN2L,MN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MN2R,MN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MN3L,MN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MN3R,MN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MN4L,MN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MN4R,MN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MN5L,MN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-MN5R,MN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
+MN1L,MN,excitatory,"Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs."
+MN1R,MN,excitatory,"Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs."
+MN2L,MN,excitatory,"Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs."
+MN2R,MN,excitatory,"Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs."
+MN3L,MN,excitatory,"Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs."
+MN3R,MN,excitatory,"Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs."
+MN4L,MN,excitatory,"Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs."
+MN4R,MN,excitatory,"Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs."
+MN5L,MN,excitatory,"Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs."
+MN5R,MN,excitatory,"Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs."
 NeckNL,Neck,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 NeckNR,Neck,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 PMGN1,PMGN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
@@ -187,36 +187,36 @@ pns14,unassigned,excitatory,"Default excitatory. No transmitter identity for thi
 pnu,DCEN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 pnw,unassigned,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 pnx,DCEN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr1,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr2,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr3,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr4,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr5,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr6,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr7,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr8,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr9,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr10,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr11,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr12,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr13,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr14,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr15,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr16,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr17,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr18,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr19,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr20,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr21,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr22,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pr23,PR-I,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
-pra,PR-II,inhibitory,Kourakis et al. 2019: PR-II photoreceptors are GABAergic.
-prb,PR-II,inhibitory,Kourakis et al. 2019: PR-II photoreceptors are GABAergic.
-prc,PR-II,inhibitory,Kourakis et al. 2019: PR-II photoreceptors are GABAergic.
-prd,PR-II,inhibitory,Kourakis et al. 2019: PR-II photoreceptors are GABAergic.
-pre,PR-II,inhibitory,Kourakis et al. 2019: PR-II photoreceptors are GABAergic.
-prf,PR-II,inhibitory,Kourakis et al. 2019: PR-II photoreceptors are GABAergic.
-prg,PR-II,inhibitory,Kourakis et al. 2019: PR-II photoreceptors are GABAergic.
+pr1,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr2,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr3,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr4,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr5,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr6,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr7,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr8,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr9,PR-I,excitatory,"Contested. Kourakis et al. 2019 registration predicts PR-9 is VGAT-only, with high confidence. The model keeps it excitatory with the other PR-Is."
+pr10,PR-I,excitatory,Kourakis et al. 2019 registration predicts PR-10 co-expresses VGAT and VGLUT. Kept excitatory.
+pr11,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr12,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr13,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr14,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr15,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr16,PR-I,excitatory,"Kourakis et al. 2019: PR-Is other than PR-9 and PR-10 are VGLUT-only (glutamatergic), with lower confidence for PR-16."
+pr17,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr18,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr19,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr20,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr21,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr22,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pr23,PR-I,excitatory,"Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b."
+pra,PR-II,inhibitory,"Kourakis et al. 2019: PR-IIs are VGAT-positive (GABAergic), a subset co-expressing VGLUT."
+prb,PR-II,inhibitory,"Kourakis et al. 2019: PR-IIs are VGAT-positive (GABAergic), a subset co-expressing VGLUT."
+prc,PR-II,inhibitory,"Kourakis et al. 2019: PR-IIs are VGAT-positive (GABAergic), a subset co-expressing VGLUT."
+prd,PR-II,inhibitory,"Kourakis et al. 2019: PR-IIs are VGAT-positive (GABAergic), a subset co-expressing VGLUT."
+pre,PR-II,inhibitory,"Kourakis et al. 2019: PR-IIs are VGAT-positive (GABAergic), a subset co-expressing VGLUT."
+prf,PR-II,inhibitory,"Kourakis et al. 2019: PR-IIs are VGAT-positive (GABAergic), a subset co-expressing VGLUT."
+prg,PR-II,inhibitory,"Kourakis et al. 2019: PR-IIs are VGAT-positive (GABAergic), a subset co-expressing VGLUT."
 tail5,unassigned,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 trIN,trIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
 ukn,BVIN,excitatory,"Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."

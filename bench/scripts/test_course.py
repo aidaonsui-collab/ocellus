@@ -111,6 +111,33 @@ def main():
     assert tilt_trace[-1][3] < 160
     assert tilt_trace[-1][3] < tilt_trace[0][3]
 
+    # Phase 0 acceptance (docs/BRAIN_MODES_PLAN.md), measured by probe_dynamics.py.
+    # Recorded here, not asserted: the probe is the run that fails until they pass.
+    from probe_dynamics import Net, phase0_probe
+    acc = phase0_probe(Net(view))
+    d = acc["dimming_step"]
+    phase0 = {
+        "pass": acc["pass"],
+        "all_pass": acc["all_pass"],
+        "dimming_step": {k: v for k, v in d.items() if not k.startswith("spikes_by_class")},
+        "antenna_alone": acc["antenna_alone"],
+        "antenna_steers_dimming": acc["antenna_steers_dimming"],
+        "pr1_regression": acc["pr1_regression"],
+        "sustained_swimming": acc["sustained_swimming"],
+        "seizure": acc["seizure"],
+        "coverage": acc["coverage"],
+    }
+    dyn = Path(__file__).resolve().parents[1] / "results" / "dynamics.json"
+    abl = json.loads(dyn.read_text()).get("phase0", {}).get("ablations", []) if dyn.exists() else []
+    if abl:
+        phase0["ablations"] = {
+            "file": "bench/results/dynamics.json",
+            "hypotheses": len(abl),
+            "all_pass": sum(1 for a in abl if a["all_pass"]),
+            "most_tests_passed": max(sum(a["pass"].values()) for a in abl),
+            "of_tests": len(abl[0]["pass"]),
+        }
+
     out = {
         "data_hash": doc["data_hash"],
         "counts": doc["counts"],
@@ -124,6 +151,7 @@ def main():
             "control_displacement": control_d,
             "tilt_after_80": tilt_trace[-1][3],
         },
+        "phase0_acceptance": phase0,
         "constants": CONST,
     }
     (RES / "phase0_behavior.json").write_text(json.dumps(out, indent=1) + "\n")

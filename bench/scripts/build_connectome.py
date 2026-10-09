@@ -105,17 +105,57 @@ CROSS = [
     ("antIN", "16 24 33 38 60 68 70 73 79 138".split()),
 ]
 
-# Inhibitory presynaptic cells. Everyone else is an explicit default.
+# Inhibitory presynaptic cells. Everyone else is excitatory, with a cited basis
+# below where one exists and an explicit default otherwise.
+K19 = "Kourakis et al. 2019"
 INHIB_BASIS = {}
 for c in "pra prb prc prd pre prf prg".split():
-    INHIB_BASIS[c] = "Kourakis et al. 2019: PR-II photoreceptors are GABAergic."
+    INHIB_BASIS[c] = f"{K19}: PR-IIs are VGAT-positive (GABAergic), a subset co-expressing VGLUT."
 for c in "74 94 108 116 124 127 140 157".split():
-    INHIB_BASIS[c] = "Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1."
+    INHIB_BASIS[c] = (f"{K19}: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, "
+                      "two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is "
+                      "inhibitory. Class from Ryan et al. 2016 Figure 1.")
 for c in "147 152 161 135 153 159 120 134 142 143".split():
-    INHIB_BASIS[c] = "Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1."
+    INHIB_BASIS[c] = (f"Bostwick et al. 2020: antenna relay neurons are inhibitory. {K19} registration predicts eight of "
+                      "ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.")
 for c in ("ACIN1L", "ACIN2L", "ACIN2R"):
-    INHIB_BASIS[c] = "Ryan et al. 2016 Figure 1 cell key: ACIN is the ascending contralateral inhibitory neuron."
+    INHIB_BASIS[c] = (f"Ryan et al. 2016 Figure 1 cell key: ACIN is the ascending contralateral inhibitory neuron. "
+                      f"{K19}: the ACINs are glycinergic.")
 DEFAULT_BASIS = "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020."
+# Excitatory cells the papers do describe. Strings that start "Contested." are
+# cells the model keeps excitatory although a cited paper reports an inhibitory
+# transmitter. Phase 0 (docs/BRAIN_MODES_PLAN.md) measured those flips and did
+# not ship them; see bench/results/dynamics.json.
+EXC_BASIS = {}
+for i in range(1, 24):
+    EXC_BASIS[f"pr{i}"] = (f"{K19}: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread "
+                           "VGLUT in the ocellus reported by Horie et al. 2008b.")
+EXC_BASIS["pr9"] = (f"Contested. {K19} registration predicts PR-9 is VGAT-only, with high confidence. The model keeps it "
+                    "excitatory with the other PR-Is.")
+EXC_BASIS["pr10"] = f"{K19} registration predicts PR-10 co-expresses VGAT and VGLUT. Kept excitatory."
+EXC_BASIS["pr16"] = (f"{K19}: PR-Is other than PR-9 and PR-10 are VGLUT-only (glutamatergic), with lower confidence "
+                     "for PR-16.")
+for c in ("Ant1", "Ant2"):
+    EXC_BASIS[c] = f"{K19}: the two otolith antenna cells express VGLUT (glutamatergic), citing Horie et al. 2008b."
+for c in "80 86 96 100 121 126".split():
+    EXC_BASIS[c] = (f"Excitatory at class level. {K19} registration predicts the six prRNs are evenly mixed between VGAT "
+                    "and VACHT, with low confidence in which cell is which. The VACHT- and AMPAR-positive relay neurons "
+                    "carry the excitatory PR-I circuit. Class from Ryan et al. 2016 Figure 1.")
+for c in [f"MN{i}{s}" for i in range(1, 6) for s in "LR"]:
+    EXC_BASIS[c] = (f"{K19}: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three "
+                    "MN pairs, the ddNs and the MGINs.")
+for c in [f"MGIN{i}{s}" for i in (1, 2, 3) for s in "LR"]:
+    EXC_BASIS[c] = f"{K19}: the MGINs are in the motor ganglion's continuous VACHT block, and the paper calls them cholinergic."
+for c in ("ddNL", "ddNR"):
+    EXC_BASIS[c] = f"{K19}: the ddNs are in the motor ganglion's continuous VACHT block (cholinergic)."
+EXC_BASIS["AMG5"] = f"{K19}: AMG5 is VACHT-positive (cholinergic)."
+for c in ("AMG1", "AMG2", "AMG3", "AMG4", "AMG6", "AMG7"):
+    EXC_BASIS[c] = (f"Contested. {K19} assigns VGAT to AMGs 1, 2, 3, 4, 6 and 7. The model keeps them excitatory: "
+                    "phase 0 found the flip does not produce the dimming or gravity response.")
+for c in ("Em1", "Em2"):
+    EXC_BASIS[c] = (f"Contested. {K19}: the eminens cells express VGAT, agreeing with earlier GAD reports (Takamura et al. "
+                    "2010). The model keeps them excitatory: phase 0 found the flip does not produce the dimming or "
+                    "gravity response.")
 
 
 def canonical(label):
@@ -316,7 +356,7 @@ def build():
     for cid in sorted(neurons, key=nat):
         row = neurons[cid]
         sign = "inhibitory" if cid in INHIB_BASIS else "excitatory"
-        basis = INHIB_BASIS.get(cid, DEFAULT_BASIS)
+        basis = INHIB_BASIS[cid] if cid in INHIB_BASIS else EXC_BASIS.get(cid, DEFAULT_BASIS)
         # Gap edges on 90 and 92 arrived through the BPN order pairing.
         # 165 and 166 have no positive gap entries, so the neck alias moves nothing.
         confidence = "medium" if cid in {"90", "92"} else row["confidence"]

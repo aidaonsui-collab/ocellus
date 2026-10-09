@@ -16,10 +16,10 @@ All of these files come from, or are derived from, an article published under th
 | `graph.json` | Edge list built by `bench/scripts/build_graph.py` from the two Figure 16 matrices | **Derived (modified):** integer weights = depth ÷ 0.06 µm; labels not reconciled. Benchmark only |
 | `matrix_stats.json` | Non-zero entry counts per matrix, from the same script | Derived |
 | `reconcile.csv` | One row per source label, from `bench/scripts/build_connectome.py` | **Derived.** Alias decisions for Cor/coronet, BPN/90/92, and neck cells 165/166 |
-| `signs.csv` | Excitatory/inhibitory sign per canonical cell | **Derived.** 28 inhibitory cells cited to Kourakis 2019, Bostwick 2020, or the Ryan cell key. Every other cell is an explicit default |
+| `signs.csv` | Excitatory/inhibitory sign per canonical cell, written by `bench/scripts/build_connectome.py` | **Derived.** 28 inhibitory cells cited to Kourakis 2019, Bostwick 2020, or the Ryan cell key. 49 excitatory cells cite Kourakis 2019 (and Horie 2008b for the ocellus and antenna cells). 9 are "Contested": kept excitatory although Kourakis 2019 reports VGAT (PR-9, AMG1–4, AMG6, AMG7, Em1, Em2). The other 138 are an explicit default |
 | `connectome.v1.json` | Canonical cells, edges, roles, and `data_hash` | **Derived.** This is the graph a frozen Connectome will store |
 | `connectome.v1.bin` | Canonical binary whose blake2b256 is `data_hash` | Derived |
-| `phase0_behavior.json` | Course and probe results from `bench/scripts/test_course.py` | Derived |
+| `phase0_behavior.json` | Course, probe and phase 0 acceptance results from `bench/scripts/test_course.py` | Derived |
 
 ## Not included (listed for reference)
 
@@ -27,7 +27,7 @@ All of these files come from, or are derived from, an article published under th
 |---|---|---|
 | Ryan et al. 2016, Figure 3 source data 1 (`elife-16962-fig3-data1.xlsx`, summary of all neurons) | CC BY, but a 2.8 MB binary that nothing in this repo uses yet. Download it if needed. | https://cdn.elifesciences.org/articles/16962/elife-16962-fig3-data1-v1.xlsx |
 | PMC web page for Ryan et al. 2016 | Our saved copy was NCBI site markup, not article content. The XML above covers the article. | https://pmc.ncbi.nlm.nih.gov/articles/PMC5140270/ |
-| Kourakis MJ et al. (2019). *Parallel visual circuitry in a basal chordate.* eLife 8:e44753 | Cited for neurotransmitter identities. CC BY, but not downloaded. | https://pmc.ncbi.nlm.nih.gov/articles/PMC6499539/ |
+| Kourakis MJ et al. (2019). *Parallel visual circuitry in a basal chordate.* eLife 8:e44753 | Cited for neurotransmitter identities. CC BY, but not downloaded. The 2026-10-08 basis strings were checked against the Europe PMC full text (the PMC page serves a captcha). | https://pmc.ncbi.nlm.nih.gov/articles/PMC6499539/ · https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6499539/fullTextXML |
 | Bostwick M et al. (2020). *Antagonistic inhibitory circuits integrate visual and gravitactic behaviors.* Curr Biol 30(4):600–609 | Journal copyright (Elsevier); the PMC copy is an author manuscript. Not redistributable here. | https://pmc.ncbi.nlm.nih.gov/articles/PMC7066595/ · https://doi.org/10.1016/j.cub.2019.12.017 |
 | Hotta K, Dauga D, Manni L (2020). *The ontology of the anatomy and development of the solitary ascidian Ciona.* Sci Rep 10:17916 | Cited for larval timing. CC BY, but not downloaded. | https://www.nature.com/articles/s41598-020-73544-9 |
 | Harada Y et al. (2008). *Mechanism of self-sterility in a hermaphroditic chordate.* Science 320:548–550 | Paywalled | https://doi.org/10.1126/science.1152488 |

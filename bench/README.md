@@ -12,7 +12,7 @@ This is a prototype, unoptimized Move implementation of the fixed-point leaky in
 | `tests/bench_tests.move` | Unit tests with the full graph embedded (generated). They assert spike totals from the Python reference, so they check Move against `lif_model.py` exactly |
 | `graph_csr.json` | CSR arrays fed to the localnet run (generated). `gw` holds the raw gap weights, `gc` the v1 coupling coefficients the Move code uses |
 | `scripts/lif_model.py` | Exact integer Python reference of `step()`, for both v0 and v1 parameters |
-| `scripts/probe_dynamics.py` | Behavioural probe (DESIGN §9.3): light then dark, drive sweep, pulsed light, dimming, antenna only, seizure recovery, activity census. Writes `results/dynamics.json` |
+| `scripts/probe_dynamics.py` | Behavioural probe (DESIGN §9.3): light then dark, drive sweep, pulsed light, dimming, antenna only, seizure recovery, activity census, on the bench graph. On the reconciled graph it also runs the phase 0 acceptance tests, a 3-hop pathway trace and the ablations (`docs/BRAIN_MODES_PLAN.md`). Writes `results/dynamics.json`, and exits non-zero while the shipped graph fails phase 0 |
 | `scripts/build_graph.py` | eLife Figure 16 spreadsheets (`../research/`) → `../research/graph.json`, `matrix_stats.json` |
 | `scripts/gen_bench.py` | `graph.json` → `graph_csr.json` + `tests/bench_tests.move` (sets the inhibitory cells and sensory inputs) |
 | `scripts/run_localnet.py` | Spins up an isolated localnet, publishes, measures `step()` gas, writes `results/run-*.json`, then tears everything down |
@@ -99,7 +99,7 @@ Parameters came from a grid search over gain, leak, adaptation strength and deca
 **Still open (DESIGN §9.3):**
 
 - **Bouts, not continuous swimming.** Steady light gives swim bouts of about 15 ticks separated by quiet spells, and brighter light makes bouts more frequent. Real larvae do swim episodically, but bout timing isn't fitted to any data.
-- **Dimming and gravity don't reach the motor neurons.** Neither PR-II drive nor antenna drive produces motor output, so the dimming-response and gravity-gating tests fail. The likely culprits are the sign table, where every cell not known to be inhibitory defaults to excitatory, and the per-class gains that the genome is meant to set (§5.1).
+- **Dimming and gravity don't reach the motor neurons.** Neither PR-II drive nor antenna drive produces motor output, so the dimming-response and gravity-gating tests fail. Phase 0 of `docs/BRAIN_MODES_PLAN.md` tested the sign-table explanation on the reconciled graph: 89 one-at-a-time sign flips, tonic drives and leak or adaptation changes, and none produces a PR-II-driven swim (`results/dynamics.json`, `phase0`).
 - **Storage.** The `adapt` vector raised the storage cost of each brain write by about 7.2 M MIST, 99% rebated. Packing it as `u16` would reduce this.
 
 ## Data
