@@ -13,7 +13,7 @@ export const CONST = {
   ant_tonic: 1500, ant_gain: 6400, pr2_drive: 12000, pr2_window: 6, pr2_trigger: 3,
   escape_ticks: 8, escape_cooldown: 40, escape_thrust: 250, bout_bridge: 3,
   thrust_base: 40, thrust_div: 100, yaw_div: 800, yaw_cap: 400, pr1_turn: 180,
-  tilt_step: 40, tilt_cap: 512, yolk0: 100000,
+  tilt_step: 40, tilt_cap: 512, depth_step: 40, depth_cap: 512, yolk0: 100000,
   burn_idle: 12, burn_bout: 26, burn_pulse: 18, burn_escape: 20, drive_cap: 20000,
 };
 const GROUP = {
@@ -302,12 +302,12 @@ function hashTick(prev, tick, drives, fired, n) {
 // A newly hatched larva: body at the origin, membranes at rest, zero hash.
 export function fresh(view, yolk0) {
   return [{
-    x: 0, y: 0, heading: 0, tilt: 0, yolk: yolk0 ?? CONST.yolk0,
+    x: 0, y: 0, heading: 0, tilt: 0, depth: 0, yolk: yolk0 ?? CONST.yolk0,
     bout: 0, escape: 0, escapeCd: 0, pr2Hist: [], hash: new Uint8Array(32),
   }, new Brain(view.graph)];
 }
 
-export function stepLarva(body, brain, view, lure, light, shadow, pulse, decoded) {
+export function stepLarva(body, brain, view, lure, light, shadow, pulse, decoded, current = 0) {
   const gains = decoded ? decoded.gains : null;
   const [leak, theta] = decoded ? physiology(view, decoded) : [null, null];
   const drives = sensorDrives(body, view, lure, light, shadow, gains);
@@ -344,6 +344,11 @@ export function stepLarva(body, brain, view, lure, light, shadow, pulse, decoded
     if (yaw < -c.yaw_cap) yaw = -c.yaw_cap;
     body.heading = (body.heading + yaw) & 65535;
   }
+  // Depth moves only while dimmed. It is a game rule on tilt, and it is not part of the hash.
+  if ((light === 0 || shadow) && body.tilt) {
+    const dir = body.tilt > 0 ? 1 : -1;
+    body.depth = Math.max(-c.depth_cap, Math.min(c.depth_cap, (body.depth || 0) + dir * c.depth_step));
+  }
   if (ant1 && !ant2) body.tilt -= c.tilt_step;
   else if (ant2 && !ant1) body.tilt += c.tilt_step;
   if (body.tilt > c.tilt_cap) body.tilt = c.tilt_cap;
@@ -360,9 +365,76 @@ export function stepLarva(body, brain, view, lure, light, shadow, pulse, decoded
   if (pulse) burn += c.burn_pulse;
   if (escaping) burn += c.burn_escape;
   body.yolk = body.yolk > burn ? body.yolk - burn : 0;
+  if (current) {
+    const [dx, dy] = drift(current, body.x + 1000000, body.y + 1000000);
+    body.x += dx;
+    body.y += dy;
+  }
   const tick = (body.tick = (body.tick || 0) + 1);
   body.hash = hashTick(body.hash, tick, drives, fired, view.graph.n);
   return { fired, drives, left, right, thrust };
+}
+
+// Kind 0 is the original two-axis drift. 1 fixed, 2 x-axis drift, 3 loop, 4 blink.
+export function raceLureAt(seed, tick, kind) {
+  if (seed.length < 4 || kind > 4) throw new Error("race lure");
+  const a = seed[0], b = seed[1];
+  const axis = (base, span, step) => base + ((a * 40 + step) % span);
+  if (kind === 0) return [800 + ((a * 40 + tick * 30) % 4000), 200 + ((b * 25 + tick * 17) % 2000), 256];
+  if (kind === 1) return [800 + ((a * 40) % 4000), 200 + ((b * 25) % 2000), 256];
+  if (kind === 2) return [axis(800, 4000, tick * 30), 200 + ((b * 25) % 2000), 256];
+  if (kind === 3) {
+    const [s, c] = sinCos((tick * 2048) % 65536);
+    const cx = 2400 + ((a * 4) % 800);
+    const cy = 1200 + ((b * 3) % 400);
+    const place = (base, trig) => {
+      const delta = Math.floor(600 * Math.abs(trig) / 256);
+      return trig < 0 ? base - delta : base + delta;
+    };
+    return [place(cx, c), place(cy, s), 256];
+  }
+  const phase = (tick + seed[3]) % 16;
+  return [800 + ((a * 40) % 4000), 200 + ((b * 25) % 2000), phase < 8 ? 256 : 0];
+}
+
+export function drift(seed, x, y) {
+  if (!seed) return [0, 0];
+  const dx = ((seed + (x % 997)) % 5) + 1;
+  const dy = (seed + (y % 991)) % 3;
+  return [dx, dy];
+}
+
+export const CANONICAL_HASH = "9004dac630dbed5d88438c892deab08bb3a927f75e6337301cc720eeac65cf16";
+
+export function acceptConnectome(doc) {
+  const hash = String(doc.data_hash || "").replace(/^0x/, "");
+  if (hash !== CANONICAL_HASH) throw new Error("connectome hash does not match connectome.v1.bin");
+  return hash;
+}
+
+export function spikeBits(fired) {
+  const words = [0n, 0n, 0n, 0n];
+  for (const i of fired) words[Math.floor(i / 64)] |= 1n << BigInt(i % 64);
+  return words.map((w) => w.toString());
+}
+
+export function sameSpikeBits(fired, bits) {
+  const got = spikeBits(fired);
+  return bits.length === 4 && bits.every((w, i) => BigInt(w) === BigInt(got[i]));
+}
+
+export function shadowCircle(seed, tick) {
+  if (seed.length < 4) throw new Error("shadow circle");
+  return [
+    (seed[0] * 30 + tick * 80) % 2400,
+    (seed[1] * 20 + tick * 40) % 1200,
+    500 + (seed[2] % 200),
+  ];
+}
+
+export function raceShadow(seed, tick) {
+  if (seed.length < 4) throw new Error("race shadow");
+  return (tick + seed[2]) % 40 >= 30;
 }
 
 export function bytesOf(value) {
@@ -376,6 +448,7 @@ export function bytesOf(value) {
 
 // Walk the chain events. On a hash mismatch, stop. The larva stays at the last tick that matched.
 export function follow(doc, events) {
+  acceptConnectome(doc);
   const view = buildView(doc);
   const hatch = events.find((e) => e.genome && e.tick == null);
   const decoded = decodeGenome(bytesOf(hatch.genome));
@@ -384,30 +457,51 @@ export function follow(doc, events) {
   const ticks = events.filter((e) => e.lure_x != null && e.tick != null);
   for (const e of ticks) {
     const before = { x: body.x, y: body.y, heading: body.heading, yolk: body.yolk, hash: toHex(body.hash) };
-    stepLarva(body, brain, view, [Number(e.lure_x), Number(e.lure_y)], Number(e.light), Boolean(e.shadow), Boolean(e.pulse), decoded);
+    const neighbors = Number(e.neighbors || 0);
+    const light = Math.max(0, Number(e.light) - neighbors * 16);
+    const stepped = stepLarva(body, brain, view, [Number(e.lure_x), Number(e.lure_y)], light, Boolean(e.shadow), Boolean(e.pulse), decoded);
     const hash = toHex(body.hash);
     const chain = toHex(bytesOf(e.state_hash));
+    if (e.spike_bits && !sameSpikeBits(stepped.fired, e.spike_bits)) {
+      const larva = frames.at(-1) ?? { tick: 0, x: 0, y: 0, heading: 0, yolk: decoded.yolk0, hash: toHex(new Uint8Array(32)) };
+      return { ok: false, stoppedAt: Number(e.tick), frames, larva };
+    }
     if (hash !== chain || body.x + 1000000 !== Number(e.x) || (body.tick || 0) !== Number(e.tick)) {
       const larva = frames.at(-1) ?? { tick: 0, x: 0, y: 0, heading: 0, yolk: decoded.yolk0, hash: toHex(new Uint8Array(32)) };
       return { ok: false, stoppedAt: Number(e.tick), frames, larva };
     }
-    frames.push(frameOf(body, hash));
+    let pr2 = 0;
+    const fired = new Set(stepped.fired);
+    for (const i of view.pr2) if (fired.has(i)) pr2++;
+    let adaptSum = 0;
+    for (const i of view.pr1) adaptSum += brain.a[i] || 0;
+    frames.push(frameOf(body, hash, {
+      shadow: Boolean(e.shadow),
+      pr2,
+      adapt: Math.round(adaptSum / view.pr1.length),
+      fired: stepped.fired,
+    }));
   }
   const larva = frames.at(-1) ?? { tick: 0, x: 0, y: 0, heading: 0, yolk: decoded.yolk0, hash: toHex(new Uint8Array(32)) };
   return { ok: true, stoppedAt: null, frames, larva };
 }
 
-function frameOf(body, hash) {
-  return { tick: body.tick || 0, x: body.x, y: body.y, heading: body.heading, yolk: body.yolk, hash };
+function frameOf(body, hash, extra = {}) {
+  return { tick: body.tick || 0, x: body.x, y: body.y, heading: body.heading, depth: body.depth || 0, yolk: body.yolk, hash, ...extra };
 }
 
 export const REEF = {
   grid: 16,
   span: 400,
   radius: 250,
+  depthRadius: 80,
   competenceTicks: 1200,
   competenceMs: 20 * 60 * 1000,
 };
+
+export function depthBand(cell) {
+  return (cell % 16) * 80;
+}
 
 export function cellCenter(cell) {
   const g = REEF.grid;
@@ -427,14 +521,20 @@ export function decideClaim(larva, occupied, bornMs = 0, nowMs = 0) {
     return { ok: false, cell: null, reason: "The competence clock has not finished." };
   }
   const x = larva.x, y = larva.y;
+  const depth = larva.depth || 0;
   const limit = REEF.radius * REEF.radius;
   let best = null;
+  let depthMiss = false;
   for (let cell = 0; cell < REEF.grid * REEF.grid; cell++) {
     const [cx, cy] = cellCenter(cell);
     const d2 = (x - cx) ** 2 + (y - cy) ** 2;
-    if (d2 <= limit && (best == null || d2 < best.d2)) best = { cell, d2 };
+    if (d2 > limit) continue;
+    if (Math.abs(depth - depthBand(cell)) > REEF.depthRadius) { depthMiss = true; continue; }
+    if (best == null || d2 < best.d2) best = { cell, d2 };
   }
-  if (!best) return { ok: false, cell: null, reason: "Not within 250 of a reef cell." };
+  if (!best) {
+    return { ok: false, cell: null, reason: depthMiss ? "Close on the reef, but not at that cell's depth." : "Not within 250 of a reef cell." };
+  }
   if (occupied.has(best.cell)) return { ok: false, cell: best.cell, reason: `Cell ${best.cell} is already taken.` };
   return { ok: true, cell: best.cell, reason: `Claim cell ${best.cell}.` };
 }

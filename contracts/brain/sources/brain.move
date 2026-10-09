@@ -50,6 +50,9 @@ const YAW_CAP: u64 = 400;
 const PR1_TURN: u64 = 180;
 const TILT_STEP: u32 = 40;
 const TILT_CAP: u32 = 512;
+const DEPTH_BIAS: u32 = 1024;
+const DEPTH_STEP: u32 = 40;
+const DEPTH_CAP: u32 = 512;
 const BURN_IDLE: u64 = 12;
 const BURN_BOUT: u64 = 26;
 const BURN_PULSE: u64 = 18;
@@ -107,6 +110,7 @@ public struct Body has store, drop {
     escape_cd: u16,
     pr2_hist: vector<u8>,
     escape_thrust: u64,
+    depth: u32,
 }
 
 /// One larva. The connectome stays a separate frozen object.
@@ -286,6 +290,7 @@ fun new_body(yolk0: u64): Body {
         escape_cd: 0,
         pr2_hist: vector[],
         escape_thrust: 0,
+        depth: DEPTH_BIAS,
     }
 }
 
@@ -370,7 +375,7 @@ entry fun measure_seizure(
 ) {
     assert!(SEIZURE_HOOK, E_HOOK);
     let p = baseline_params();
-    let _d = tick_inner(c, &mut larva.brain, &mut larva.body, &p, lure_x, lure_y, light, shadow, pulse, true);
+    let _d = tick_inner(c, &mut larva.brain, &mut larva.body, &p, lure_x, lure_y, light, shadow, pulse, 0, true);
 }
 
 public fun tick(
@@ -383,7 +388,7 @@ public fun tick(
     shadow: bool,
     pulse: bool,
 ) {
-    let _d = tick_inner(c, &mut larva.brain, &mut larva.body, p, lure_x, lure_y, light, shadow, pulse, false);
+    let _d = tick_inner(c, &mut larva.brain, &mut larva.body, p, lure_x, lure_y, light, shadow, pulse, 0, false);
 }
 
 public fun new_state(c: &Connectome, p: &Params): (Brain, Body) {
@@ -401,7 +406,32 @@ public fun tick_state(
     shadow: bool,
     pulse: bool,
 ): u32 {
-    tick_inner(c, brain, body, p, lure_x, lure_y, light, shadow, pulse, false)
+    tick_current(c, brain, body, p, lure_x, lure_y, light, shadow, pulse, 0)
+}
+
+public fun tick_current(
+    c: &Connectome,
+    brain: &mut Brain,
+    body: &mut Body,
+    p: &Params,
+    lure_x: u64,
+    lure_y: u64,
+    light: u16,
+    shadow: bool,
+    pulse: bool,
+    current: u64,
+): u32 {
+    tick_inner(c, brain, body, p, lure_x, lure_y, light, shadow, pulse, current, false)
+}
+
+/// A zero seed adds nothing, so the published course is unchanged.
+public fun drift(seed: u64, x: u64, y: u64): (u64, u64) {
+    if (seed == 0) (0, 0)
+    else {
+        let dx = ((seed + (x % 997)) % 5) + 1;
+        let dy = (seed + (y % 991)) % 3;
+        (dx, dy)
+    }
 }
 
 fun tick_inner(
@@ -414,6 +444,7 @@ fun tick_inner(
     light: u16,
     shadow: bool,
     pulse: bool,
+    current: u64,
     force_all: bool,
 ): u32 {
     assert!(light <= 256, E_LIGHT);
@@ -522,7 +553,10 @@ fun tick_inner(
 
     let left = left * factor_l / 1000;
     let right = right * factor_r / 1000;
-    integrate(body, lure_x, lure_y, light, pulse, left, right, pr1_n, pr2_n, ant1, ant2);
+    integrate(body, lure_x, lure_y, light, shadow, pulse, left, right, pr1_n, pr2_n, ant1, ant2);
+    let (dx, dy) = drift(current, body.x, body.y);
+    body.x = body.x + dx;
+    body.y = body.y + dy;
 
     let prev = copy_bytes(&brain.state_hash);
     let digest = digest_of(&drives);
@@ -603,6 +637,7 @@ fun integrate(
     lure_x: u64,
     lure_y: u64,
     light: u16,
+    shadow: bool,
     pulse: bool,
     left: u64,
     right: u64,
@@ -642,6 +677,21 @@ fun integrate(
         body.heading = add_heading(body.heading, yaw.neg, mag);
     };
 
+    // Depth is a game rule on the existing tilt. Dimming opens it. It is not a motor readout,
+    // and it is not hashed: the next tick's sensors do not read it.
+    if (light == 0 || shadow) {
+        let hi = DEPTH_BIAS + DEPTH_CAP;
+        let lo = DEPTH_BIAS - DEPTH_CAP;
+        if (body.tilt > TILT_BIAS && body.depth < hi) {
+            let room = hi - body.depth;
+            let step = if (DEPTH_STEP < room) DEPTH_STEP else room;
+            body.depth = body.depth + step;
+        } else if (body.tilt < TILT_BIAS && body.depth > lo) {
+            let room = body.depth - lo;
+            let step = if (DEPTH_STEP < room) DEPTH_STEP else room;
+            body.depth = body.depth - step;
+        };
+    };
     if (ant1 && !ant2) {
         if (body.tilt >= TILT_STEP) body.tilt = body.tilt - TILT_STEP;
     } else if (ant2 && !ant1) {
@@ -807,12 +857,53 @@ fun zero_ok(s: S): S {
 }
 
 public fun race_lure(seed: &vector<u8>, tick: u64): (u64, u64) {
+    let (x, y, _) = race_lure_at(seed, tick, 0);
+    (x, y)
+}
+
+/// Kind 0 is the original two-axis drift, so races created before kinds keep their lure.
+/// 1 fixed lamp, 2 drift on x only, 3 a loop, 4 a fixed lamp that blinks. Light is 0 or 256.
+public fun race_lure_at(seed: &vector<u8>, tick: u64, kind: u8): (u64, u64, u16) {
     assert!(seed.length() >= 4, E_LEN);
+    assert!(kind <= 4, E_LEN);
     let a = seed[0] as u64;
     let b = seed[1] as u64;
-    let x = 800 + ((a * 40 + tick * 30) % 4000);
-    let y = 200 + ((b * 25 + tick * 17) % 2000);
-    (x, y)
+    if (kind == 0) {
+        (800 + ((a * 40 + tick * 30) % 4000), 200 + ((b * 25 + tick * 17) % 2000), 256u16)
+    } else if (kind == 1) {
+        (800 + ((a * 40) % 4000), 200 + ((b * 25) % 2000), 256u16)
+    } else if (kind == 2) {
+        (800 + ((a * 40 + tick * 30) % 4000), 200 + ((b * 25) % 2000), 256u16)
+    } else if (kind == 3) {
+        let ang = (((tick * 2048) % 65536) as u16);
+        let (s, cos) = sin_cos(ang);
+        let cx = 2400 + ((a * 4) % 800);
+        let cy = 1200 + ((b * 3) % 400);
+        (place(cx, cos, 600), place(cy, s, 600), 256u16)
+    } else {
+        let x = 800 + ((a * 40) % 4000);
+        let y = 200 + ((b * 25) % 2000);
+        let phase = (tick + (seed[3] as u64)) % 16;
+        let light = if (phase < 8) 256u16 else 0u16;
+        (x, y, light)
+    }
+}
+
+fun place(base: u64, trig: S, radius: u64): u64 {
+    let delta = radius * trig.mag / 256;
+    if (!trig.neg) base + delta
+    else {
+        assert!(base >= delta, E_RANGE);
+        base - delta
+    }
+}
+
+public fun shadow_circle(seed: &vector<u8>, tick: u64): (u64, u64, u64) {
+    assert!(seed.length() >= 4, E_LEN);
+    let x = ((seed[0] as u64) * 30 + tick * 80) % 2400;
+    let y = ((seed[1] as u64) * 20 + tick * 40) % 1200;
+    let radius = 500 + ((seed[2] as u64) % 200);
+    (x, y, radius)
 }
 
 public fun race_shadow(seed: &vector<u8>, tick: u64): bool {
@@ -838,6 +929,16 @@ public fun clear(b: &mut Brain) {
 }
 
 public fun state_hash_bytes(b: &Brain): vector<u8> { copy_bytes(&b.state_hash) }
+
+public fun spike_bits(b: &Brain): vector<u64> {
+    let mut out = vector[];
+    let mut i = 0;
+    while (i < b.spiked.length()) {
+        out.push_back(b.spiked[i]);
+        i = i + 1;
+    };
+    out
+}
 public fun spike_count(b: &Brain): u64 { b.spikes_total }
 public fun brain_tick(b: &Brain): u64 { b.tick }
 public fun body_x(b: &Body): u64 { b.x }
@@ -853,6 +954,8 @@ public fun heading_of(l: &Larva): u16 { l.body.heading }
 public fun tilt_of(l: &Larva): u32 { l.body.tilt }
 public fun yolk_of(l: &Larva): u64 { l.body.yolk }
 public fun escape_thrust_of(l: &Larva): u64 { l.body.escape_thrust }
+public fun body_depth(b: &Body): u32 { b.depth }
+public fun depth_bias(): u32 { DEPTH_BIAS }
 public fun pos_bias(): u64 { POS_BIAS }
 public fun tilt_bias(): u32 { TILT_BIAS }
 public fun gain_at(p: &Params, i: u64): u64 { p.gains[i] }
@@ -920,6 +1023,26 @@ public fun new_for_test(
         n, row_ptr, col, w, inhib, gap_ptr, gap_col, gap_w, nmj_l, nmj_r, class_group, data_hash, ctx,
     )
 }
+
+#[test_only]
+public fun blank_pr2_for_test(c: &mut Connectome) {
+    let mut i = 0;
+    while (i < c.pr2.length()) {
+        let idx = c.pr2[i] as u64;
+        *&mut c.class_group[idx] = 15;
+        i = i + 1;
+    };
+    c.pr2 = vector[];
+}
+
+#[test_only]
+public fun set_body_tilt(b: &mut Body, tilt: u32) { b.tilt = tilt; }
+
+#[test_only]
+public fun set_body_depth(b: &mut Body, depth: u32) { b.depth = depth; }
+
+#[test_only]
+public fun set_body_heading(b: &mut Body, heading: u16) { b.heading = heading; }
 
 #[test_only]
 public fun set_tilt(l: &mut Larva, real_tilt: u32) {

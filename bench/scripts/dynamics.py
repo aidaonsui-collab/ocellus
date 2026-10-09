@@ -219,7 +219,7 @@ def _csr(n, edges):
 
 def new_body():
     return dict(
-        x=0, y=0, heading=0, tilt=0, yolk=CONST["yolk0"],
+        x=0, y=0, heading=0, tilt=0, depth=0, yolk=CONST["yolk0"],
         bout=0, escape=0, escape_cd=0, pr2_hist=[],
         hash=bytes(32), tick=0,
         escape_thrust_total=0,
@@ -293,7 +293,15 @@ def _hash_tick(prev, tick, drives, fired, n):
     return hashlib.blake2b(raw, digest_size=32).digest()
 
 
-def step(body, brain, view, lure, light_level=256, shadow=False, pulse=False, decoded=None):
+def drift(seed, x, y):
+    if not seed:
+        return 0, 0
+    dx = ((seed + (x % 997)) % 5) + 1
+    dy = (seed + (y % 991)) % 3
+    return dx, dy
+
+
+def step(body, brain, view, lure, light_level=256, shadow=False, pulse=False, decoded=None, current=0):
     """One tick. Mutates body and brain. Returns the fired cell indices.
 
     `decoded` is the genome physiology from genome.decode. Omitted, the tick
@@ -351,6 +359,10 @@ def step(body, brain, view, lure, light_level=256, shadow=False, pulse=False, de
             yaw = -c["yaw_cap"]
         body["heading"] = (body["heading"] + yaw) & 65535
 
+    # Depth moves only while dimmed. Game rule on tilt. Not part of the hash.
+    if (light_level == 0 or shadow) and body["tilt"]:
+        step = c["tilt_step"] if body["tilt"] > 0 else -c["tilt_step"]
+        body["depth"] = max(-c["tilt_cap"], min(c["tilt_cap"], body["depth"] + step))
     if ant1 and not ant2:
         body["tilt"] -= c["tilt_step"]
     elif ant2 and not ant1:
@@ -381,6 +393,9 @@ def step(body, brain, view, lure, light_level=256, shadow=False, pulse=False, de
     if escaping:
         burn += c["burn_escape"]
     body["yolk"] = body["yolk"] - burn if body["yolk"] > burn else 0
+    dx, dy = drift(current, body["x"] + 1_000_000, body["y"] + 1_000_000)
+    body["x"] += dx
+    body["y"] += dy
 
     body["tick"] += 1
     body["hash"] = _hash_tick(body["hash"], body["tick"], drives, fired, view["graph"]["n"])

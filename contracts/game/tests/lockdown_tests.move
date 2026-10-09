@@ -34,6 +34,7 @@ fun ready(ctx: &mut TxContext, clock: &clock::Clock, conn: &brain::Connectome, c
     ciona::test_ticks(&mut c, rules::competence_ticks());
     let (x, y) = reef::center(cell);
     ciona::test_pose(&mut c, x, y);
+    ciona::test_depth(&mut c, (rules::depth_band(cell) as u32));
     c
 }
 
@@ -123,7 +124,7 @@ fun a_finalized_larva_can_enter_the_next_race() {
     let mut second = race::create(&clock, &mut ctx);
     ciona::enter_race(&mut a, &mut second, &clock);
     assert!(race::has_entered(&second, sui::object::id(&a)), 1);
-    assert!(ciona::best_of(&a) == 1000000000, 2);
+    assert!(!ciona::has_score(&a), 2);
     clock::destroy_for_testing(clock);
     ciona::destroy_ciona(a);
     race::destroy(first);

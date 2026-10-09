@@ -16,14 +16,13 @@ use sui::table::{Self, Table};
 use sui::transfer;
 use sui::tx_context::TxContext;
 
-const NO_BEST: u64 = 1000000000;
-
 const E_WINDOW: u64 = 1;
 const E_ENTERED: u64 = 2;
 const E_ABSENT: u64 = 3;
 const E_DONE: u64 = 4;
 const E_SEED: u64 = 5;
 const E_CLOSED: u64 = 6;
+const E_KIND: u64 = 7;
 
 public struct Slot has store, drop {
     done: bool,
@@ -35,8 +34,9 @@ public struct LightRace has key {
     seed: vector<u8>,
     start_ms: u64,
     end_ms: u64,
+    kind: u8,
     entries: Table<ID, Slot>,
-    best_distance: u64,
+    best_distance: Option<u64>,
     best_player: Option<address>,
     awarded: bool,
 }
@@ -47,14 +47,20 @@ public struct SeedRevealed has copy, drop {
 }
 
 public(package) fun create(clock: &Clock, ctx: &mut TxContext): LightRace {
+    create_kind(0, clock, ctx)
+}
+
+public(package) fun create_kind(kind: u8, clock: &Clock, ctx: &mut TxContext): LightRace {
+    assert!(kind <= 4, E_KIND);
     let start = clock.timestamp_ms() + rules::race_registration_ms();
     LightRace {
         id: object::new(ctx),
         seed: vector[],
         start_ms: start,
         end_ms: start + rules::race_window_ms(),
+        kind,
         entries: table::new(ctx),
-        best_distance: NO_BEST,
+        best_distance: option::none(),
         best_player: option::none(),
         awarded: false,
     }
@@ -62,6 +68,10 @@ public(package) fun create(clock: &Clock, ctx: &mut TxContext): LightRace {
 
 entry fun create_race(clock: &Clock, ctx: &mut TxContext) {
     transfer::share_object(create(clock, ctx));
+}
+
+entry fun create_race_kind(kind: u8, clock: &Clock, ctx: &mut TxContext) {
+    transfer::share_object(create_kind(kind, clock, ctx));
 }
 
 /// Anyone can reveal once registration has closed. Non-public entry, as sui::random requires.
@@ -112,8 +122,10 @@ public(package) fun finish(race: &mut LightRace, larva: ID, distance: u64, playe
     assert!(!slot.done, E_DONE);
     slot.done = true;
     slot.distance = distance;
-    if (distance < race.best_distance) {
-        race.best_distance = distance;
+    let better = option::is_none(&race.best_distance)
+        || distance < *option::borrow(&race.best_distance);
+    if (better) {
+        race.best_distance = option::some(distance);
         race.best_player = option::some(player);
     };
 }
@@ -124,8 +136,10 @@ public(package) fun take_winner(race: &mut LightRace, clock: &Clock): (address, 
     assert!(!race.awarded, E_DONE);
     assert!(option::is_some(&race.best_player), E_ABSENT);
     race.awarded = true;
-    (*option::borrow(&race.best_player), race.best_distance)
+    (*option::borrow(&race.best_player), *option::borrow(&race.best_distance))
 }
+
+public fun kind_of(race: &LightRace): u8 { race.kind }
 
 public fun distance_of(race: &LightRace, larva: ID): u64 {
     table::borrow(&race.entries, larva).distance
@@ -140,7 +154,9 @@ public fun reveal_for_testing(race: &mut LightRace, seed: vector<u8>, clock: &Cl
 
 #[test_only]
 public fun destroy(race: LightRace) {
-    let LightRace { id, seed: _, start_ms: _, end_ms: _, entries, best_distance: _, best_player: _, awarded: _ } = race;
+    let LightRace {
+        id, seed: _, start_ms: _, end_ms: _, kind: _, entries, best_distance: _, best_player: _, awarded: _,
+    } = race;
     table::drop(entries);
     id.delete();
 }

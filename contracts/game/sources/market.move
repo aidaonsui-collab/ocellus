@@ -2,6 +2,7 @@
 /// Hard bounds are fixed in `bind`. The live price can only step by one eighth.
 module ocellus_game::market;
 
+use ocellus_game::gauntlet::{Self, Gauntlet};
 use ocellus_game::race::{Self, LightRace};
 use ocellus_sink::sink::{Self, Sink};
 use std::option::{Self, Option};
@@ -123,6 +124,20 @@ public fun pay_hatch<T>(
 }
 
 /// Entry fees are paid through ciona::enter_paid, which also enters the larva.
+public(package) fun pay_listed<T>(
+    game: &mut Game<T>,
+    sink: &mut Sink<T>,
+    pot: ID,
+    open: bool,
+    payment: Coin<T>,
+    clock: &Clock,
+    ctx: &mut TxContext,
+): Coin<T> {
+    assert!(object::id(sink) == game.sink, E_BIND);
+    assert!(open, E_CLOSED);
+    charge(game, sink, payment, option::some(pot), clock, ctx)
+}
+
 public(package) fun pay_entry<T>(
     game: &mut Game<T>,
     sink: &mut Sink<T>,
@@ -131,12 +146,17 @@ public(package) fun pay_entry<T>(
     clock: &Clock,
     ctx: &mut TxContext,
 ): Coin<T> {
-    assert!(object::id(sink) == game.sink, E_BIND);
-    assert!(race::is_open(race, clock.timestamp_ms()), E_CLOSED);
-    charge(game, sink, payment, option::some(race::id_of(race)), clock, ctx)
+    pay_listed(game, sink, race::id_of(race), race::is_open(race, clock.timestamp_ms()), payment, clock, ctx)
 }
 
 /// Anyone can trigger the payout once results close; the pot always goes to the winner.
+fun pay_out<T>(game: &mut Game<T>, pot_id: ID, player: address, ctx: &mut TxContext) {
+    assert!(table::contains(&game.pots, pot_id), E_PRICE);
+    let pot = table::remove(&mut game.pots, pot_id);
+    event::emit(PrizePaid { race: pot_id, player, amount: balance::value(&pot) });
+    transfer::public_transfer(coin::from_balance(pot, ctx), player);
+}
+
 public fun claim_prize<T>(
     game: &mut Game<T>,
     race: &mut LightRace,
@@ -144,11 +164,17 @@ public fun claim_prize<T>(
     ctx: &mut TxContext,
 ) {
     let (player, _distance) = race::take_winner(race, clock);
-    let race_id = race::id_of(race);
-    assert!(table::contains(&game.pots, race_id), E_PRICE);
-    let pot = table::remove(&mut game.pots, race_id);
-    event::emit(PrizePaid { race: race_id, player, amount: balance::value(&pot) });
-    transfer::public_transfer(coin::from_balance(pot, ctx), player);
+    pay_out(game, race::id_of(race), player, ctx);
+}
+
+public fun claim_gauntlet<T>(
+    game: &mut Game<T>,
+    g: &mut Gauntlet,
+    clock: &Clock,
+    ctx: &mut TxContext,
+) {
+    let (player, _travel) = gauntlet::take_winner(g, clock);
+    pay_out(game, gauntlet::id_of(g), player, ctx);
 }
 
 /// Creates a proposal for this game and gives it to the admin. It can execute after one day.

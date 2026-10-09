@@ -255,9 +255,9 @@ button{font:inherit;color:inherit}
       <span>Hatch · Settle on a free reef cell</span><span>Space · E · A</span>
       <span>Brain panel · Hide HUD</span><span>B · H</span>
       <span>Cinematic camera</span><span>C · Y</span>
-      <span>Pause · Mute</span><span>Esc · M · Start</span>
+      <span>Pause · Mute · Mark a clip</span><span>Esc · M · K</span>
     </div>
-    <p class="note">The larva turns toward your light while its photoreceptors fire, and swims in bouts. Pass the seven light gates, reach the settlement shelf, and claim a free reef cell once the larva has 1,200 ticks, before rival larvae take the cells.</p>
+    <p class="note">The larva turns toward your light while its photoreceptors fire, and swims in bouts. That turn is a game rule: the published wiring does not carry a bearing, and the animal's reflex points the other way. Pass the seven light gates, reach the settlement shelf, and claim a free reef cell once the larva has 1,200 ticks, before rival larvae take the cells. Pause and pick a race track to lock the lamp to one of the chain's courses.</p>
     <div class="actions"><button class="btn primary" data-close>Got it</button></div>
   </div>
 </section>
@@ -266,7 +266,7 @@ button{font:inherit;color:inherit}
   <div class="card" role="dialog" aria-labelledby="aboutH">
     <h2 id="aboutH">The brain</h2>
     <p>The larva runs the reconciled 224-cell connectome in <span class="num">research/connectome.v1.json</span>, built from Ryan et al. 2016: 3,010 chemical connections, 428 gap junctions and 28 inhibitory cells. Every tick is <span class="num">stepLarva</span> from <span class="num">client/src/engine.js</span>, the integer mirror of <span class="num">contracts/brain/sources/brain.move</span> that the larva verifier also uses. The genome sets each cell group's threshold and leak, the sensory gains and a left/right motor bias. The body integrator turns spikes into heading, tilt, thrust, escape swims and yolk burn.</p>
-    <p>Each tick takes what a <span class="num">swim_tick</span> transaction carries: the light's position as unsigned integers, its level (0 to 256), a shadow flag and a pulse flag. PR-I photoreceptors read the light, shaded by where the ocellus faces, and turn the larva toward it while they fire. A passing shadow drives the PR-II cells, and enough PR-II spikes start an escape swim.</p>
+    <p>Each tick takes what a <span class="num">swim_tick</span> transaction carries: the light's position as unsigned integers, its level (0 to 256), a shadow flag and a pulse flag. PR-I photoreceptors read the light, shaded by where the ocellus faces, and turn the larva toward it while they fire. That turn is a game rule. A passing shadow drives the PR-II cells, and enough of those spikes start an escape swim through the body's counter, not through the motor neurons. Depth changes only while the light is dimmed, from the tilt the antenna cells already set. Spike adaptation stays after a swim. It is not memory, and it does not make the next swim quieter.</p>
     <p class="note" id="aboutCheck"></p>
     <p class="note">Simulated here: the genome (drawn in the browser in place of <span class="num">sui::random</span>), the reef cells, rivals, gates and the shadow's path. The 20-minute competence clock is skipped, and nothing is written to a chain. Ticks run at 20 per second; on-chain each tick is one transaction. The larva's depth, roll and tail beat are drawn over the integer pose, at 80 engine units to the millimetre. The pulse flag only costs yolk in brain.move, so the demo never sets it.</p>
     <p class="note">Wiring data: Ryan K, Lu Z, Meinertzhagen IA (2016) eLife 5:e16962, CC BY 4.0. Sign assignments after Kourakis et al. 2019 and Bostwick et al. 2020.</p>
@@ -282,8 +282,10 @@ button{font:inherit;color:inherit}
       <div class="seg" id="qualSeg"><button data-q="low">Low</button><button data-q="medium">Med</button><button data-q="high">High</button><button data-q="ultra">Ultra</button></div>
       <span>Sound</span>
       <div class="seg" id="sndSeg"><button data-s="on">On</button><button data-s="off">Off</button></div>
+      <span>Race track</span>
+      <div class="seg" id="trackSeg"><button data-k="steer" class="on">Steer</button><button data-k="0">Drift</button><button data-k="1">Fixed</button><button data-k="2">Axis</button><button data-k="3">Loop</button><button data-k="4">Blink</button></div>
     </div>
-    <div class="actions"><button class="btn primary" data-act="resume">Resume</button><button class="btn" data-act="restart">Restart run</button><button class="btn" data-act="controls">Controls</button><button class="btn" data-act="about">The brain</button></div>
+    <div class="actions"><button class="btn primary" data-act="resume">Resume</button><button class="btn" data-act="mark">Mark clip</button><button class="btn" data-act="restart">Restart run</button><button class="btn" data-act="controls">Controls</button><button class="btn" data-act="about">The brain</button></div>
   </div>
 </section>
 
@@ -294,7 +296,7 @@ button{font:inherit;color:inherit}
     <dl class="kv" id="recKv"></dl>
     <div class="rec-genome" id="recGenome"></div>
     <p class="note">Demo record, not on-chain. The state hash, ticks, spikes and pose are what brain.move would hold after this run's inputs. Save the run and open it in the <a href="../" style="color:inherit">larva verifier</a> to replay every tick. On Sui this becomes a frozen LarvalRecord object and the adult keeps its reef cell (DESIGN §6).</p>
-    <div class="actions"><button class="btn primary" data-act="again">Swim again · new genome</button><button class="btn" data-act="orbit">Look around</button><button class="btn" data-act="save">Save run as events</button></div>
+    <div class="actions"><button class="btn primary" data-act="again">Swim again · new genome</button><button class="btn" data-act="orbit">Look around</button><button class="btn" data-act="save">Save run as events</button><button class="btn" data-act="range">Save this range</button></div>
   </div>
 </section>
 
@@ -325,7 +327,7 @@ button{font:inherit;color:inherit}
 
 <script type="module">
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
-import { CONST, REEF, buildView, bytesOf, decodeGenome, follow, fresh, stepLarva, toHex } from '../src/engine.js';
+import { CONST, REEF, buildView, bytesOf, decodeGenome, follow, fresh, raceLureAt, shadowCircle, stepLarva, toHex } from '../src/engine.js';
 import CONNECTOME from '../../research/connectome.v1.json';
 import SAMPLE from '../../bench/results/phase2-events.json';
 
@@ -2397,8 +2399,9 @@ const G = {
   hatchT: -1, metaT: 0, cell: null, failT: 0, hud: true, cine: false, u: 0, uIdx: 0, hudT: 0,
   manta: { on: false, t: 0, dur: 11, a: new THREE.Vector2(), b: new THREE.Vector2(), n: new THREE.Vector2(), c0: new THREE.Vector2(), off: 0, y: 70, ang: 0, slowDone: false },
   eggPos: new THREE.Vector3(), mySlot: null, rec: null, titleT: 0, orbit: false, verify: null, autopilot: false, autoDim: false,
+  trackKind: null,
 };
-let hero, lureMesh, lureHalo;
+let hero, lureMesh, lureHalo, predator;
 
 // Engine plane <-> world. The larva hatches at the engine origin. The axes are turned so the whole course
 // lies in x >= 0, y >= 0, because swim_tick takes the lure position as unsigned integers.
@@ -2487,10 +2490,22 @@ function resetRun() {
 function larvaTick() {
   const L = G.L, b = L.body;
   if (b.yolk === 0) return; // swim_tick aborts with E_YOLK once the yolk is gone
-  const [ex, ey] = worldToEngine(lureMesh.position);
-  const lx = Math.max(0, Math.round(ex)), ly = Math.max(0, Math.round(ey)); // u64 on chain
-  const light = G.dim ? 0 : LIGHT_FULL;
-  const shadow = mantaShadowAt(hero.pos) > 0.35;
+  let lx, ly, light;
+  if (G.trackKind != null) {
+    const course = raceLureAt(LADDER_SEED, (b.tick || 0) + 1, G.trackKind);
+    lx = course[0]; ly = course[1]; light = course[2];
+  } else {
+    const [ex, ey] = worldToEngine(lureMesh.position);
+    lx = Math.max(0, Math.round(ex)); ly = Math.max(0, Math.round(ey)); // u64 on chain
+    light = G.dim ? 0 : LIGHT_FULL;
+  }
+  let shadow = mantaShadowAt(hero.pos) > 0.35;
+  if (predator && GAUNTLET) {
+    const [cx, cy, radius] = shadowCircle(LADDER_SEED, (b.tick || 0) + 1);
+    shadow = (b.x - cx) ** 2 + (b.y - cy) ** 2 <= radius * radius;
+    engineToWorld(cx, cy, predator.position);
+    predator.visible = true;
+  } else if (predator) predator.visible = false;
   const wasEscaping = b.escape > 0;
   G.prev.x = b.x; G.prev.y = b.y; G.prev.heading = b.heading; G.prev.tilt = b.tilt;
   const { fired, left, right, thrust } = tickLarva(L, lx, ly, light, shadow, false);
@@ -2555,9 +2570,22 @@ function buildLure() {
   lureHalo.scale.setScalar(1.8);
   scene.add(lureMesh, lureHalo);
   lureMesh.visible = lureHalo.visible = false;
+  predator = new THREE.Mesh(new THREE.SphereGeometry(0.35, 16, 12), new THREE.MeshBasicMaterial({ color: 0x2a2040, transparent: true, opacity: 0.45 }));
+  predator.visible = false;
+  scene.add(predator);
 }
 const camF = new THREE.Vector3(), camR = new THREE.Vector3(), camU = new THREE.Vector3(), _lt = new THREE.Vector3();
+const LADDER_SEED = Uint8Array.from({ length: 32 }, (_, i) => i + 1);
 function updateLure(dt, steer, dim) {
+  if (G.trackKind != null && G.L) {
+    const [x, y, lv] = raceLureAt(LADDER_SEED, (G.L.body.tick || 0) + 1, G.trackKind);
+    engineToWorld(x, y, _lt);
+    _lt.y = Math.max(hero.pos.y + 0.3, heightAt(_lt.x, _lt.z) + 0.6);
+    lureMesh.position.copy(_lt);
+    G.dim = lv === 0;
+    G.lureTarget = lv === 0 ? 0.1 : 1;
+    return;
+  }
   camera.getWorldDirection(camF); camF.y = 0; camF.normalize(); camR.crossVectors(camF, _up).normalize();
   _lt.copy(hero.pos).addScaledVector(camF, 4.4 + steer.y * 2.4).addScaledVector(camR, steer.x * 3.6);
   const [ex, ey] = worldToEngine(_lt);
@@ -2589,7 +2617,8 @@ function presentLarva(dt) {
   engineToWorld(lerp(G.prev.x, b.x, f), lerp(G.prev.y, b.y, f), L.pos);
   let dh = (b.heading - G.prev.heading) & 65535; if (dh >= 32768) dh -= 65536;
   headingToWorld(G.prev.heading + dh * f, _hd);
-  G.alt = damp(G.alt, pathQuery(L.pos.x, L.pos.z).y, 1.6, dt);
+  const depth = (G.L.body.depth || 0) / 80;
+  G.alt = damp(G.alt, pathQuery(L.pos.x, L.pos.z).y + depth, 1.6, dt);
   L.pos.y = clearHeight(L.pos.x, L.pos.z, G.alt, 0.55); // applied at once, so the larva is never drawn inside rock
   // pitch shows the integer tilt that the antenna cells read
   const pitch = clamp(lerp(G.prev.tilt, b.tilt, f) / CONST.tilt_cap, -1, 1) * 0.35;
@@ -2987,6 +3016,7 @@ function update(dt, rdt) {
   // global toggles
   if (pressed('Escape', 'KeyP', 'PadStart') && st !== 'title' && st !== 'boot') togglePause();
   if (pressed('KeyM')) setMuted(!sfx.muted);
+  if (pressed('KeyK') && G.L) { G.rangeTick = G.L.body.tick || 0; caption('Range marked', 'Save this range keeps the ticks from here', 3); }
   if (pressed('KeyH')) { G.hud = !G.hud; hudEl.style.visibility = G.hud ? '' : 'hidden'; }
   if (pressed('KeyB')) $('brainPanel').hidden = !$('brainPanel').hidden;
   if (pressed('KeyC', 'PadY')) G.cine = !G.cine;
@@ -3097,16 +3127,27 @@ $('pause').addEventListener('click', (e) => {
   const b = e.target.closest('button'); if (!b) return;
   if (b.dataset.q) setQuality(b.dataset.q);
   if (b.dataset.s) setMuted(b.dataset.s === 'off');
+  if (b.dataset.k) setTrack(b.dataset.k);
+  if (b.dataset.act === 'mark') { G.rangeTick = G.L ? G.L.body.tick || 0 : 0; caption('Range marked', 'Save this range keeps the ticks from here', 3); }
   if (b.dataset.act === 'resume') togglePause(false);
   if (b.dataset.act === 'restart') { togglePause(false); startGame(); }
   if (b.dataset.act === 'controls') openSheet('controls');
   if (b.dataset.act === 'about') openSheet('about');
 });
 document.querySelectorAll('[data-act="again"]').forEach((b) => b.addEventListener('click', () => { $('record').hidden = true; $('fail').hidden = true; startGame(); }));
-$('record').querySelector('[data-act="save"]').addEventListener('click', () => {
-  const url = URL.createObjectURL(new Blob([JSON.stringify(G.events)], { type: 'application/json' }));
-  const a = document.createElement('a'); a.href = url; a.download = `ocellus-run-${G.gid.slice(1).toLowerCase()}.json`;
+function saveEvents(list, name) {
+  const url = URL.createObjectURL(new Blob([JSON.stringify(list)], { type: 'application/json' }));
+  const a = document.createElement('a'); a.href = url; a.download = name;
   document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+$('record').querySelector('[data-act="save"]').addEventListener('click', () => {
+  saveEvents(G.events, `ocellus-run-${G.gid.slice(1).toLowerCase()}.json`);
+});
+$('record').querySelector('[data-act="range"]').addEventListener('click', () => {
+  const from = G.rangeTick || 0;
+  const hatch = G.events.filter((e) => e.genome && e.tick == null);
+  const ticks = G.events.filter((e) => e.tick != null && Number(e.tick) >= from);
+  saveEvents(hatch.concat(ticks), `ocellus-range-${from}-${G.gid.slice(1).toLowerCase()}.json`);
 });
 $('record').querySelector('[data-act="orbit"]').addEventListener('click', () => { $('record').hidden = true; G.orbit = true; caption('Your adult on the reef', 'Press Esc for the menu', 4); });
 function setMuted(m) {
@@ -3200,8 +3241,14 @@ function loop(now, manual) {
   if (!AUTORUN) dynamicRes(rdt);
   input.pressed.clear();
 }
+function setTrack(name) {
+  G.trackKind = name === 'steer' ? null : Number(name);
+  document.querySelectorAll('#trackSeg button').forEach((b) => b.classList.toggle('on', b.dataset.k === name));
+}
 const AUTORUN = /[?&]autorun/.test(location.search); // local testing only: keep simulating while the tab is hidden
+const GAUNTLET = /[?&]gauntlet/.test(location.search);
 const PARAMS = new URLSearchParams(location.search); // with autorun, genome=<128 hex chars> fixes the egg
+if (/^[0-4]$/.test(PARAMS.get('kind') || '')) setTrack(PARAMS.get('kind'));
 // autorun only: play sec of game time without rendering, e.g. __oc.sim(60)
 function sim(sec, step = 1 / 30) {
   for (let i = 0, n = Math.round(sec / step); i < n; i++) {

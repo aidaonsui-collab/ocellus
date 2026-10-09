@@ -202,6 +202,10 @@ Today every brain step is its own transaction (`swim_tick` or `race_tick`), sign
 
 **Goal.** A series of shared light races where the only thing a player controls is where the light is, and the brain's PR-I pathway does the swimming. Genomes differ in excitability, so larvae steer differently, and breeding is how you get a larva that steers the way you want.
 
+### Decision (2026-10-08)
+
+Scoring stays distance to the lamp, and `PR1_TURN` still turns the heading toward it. That heading rule is a game convention: Kourakis 2019 reports negative phototaxis, and phase 0 found the brain gets no bearing of its own. Herding would flip the rule and move every golden. It was not taken for this slice. Track kinds 0–4 (drift, fixed, axis, loop, blink) are in `race_lure_at`, `LightRace.kind`, and `race_tick`. A missing score is `Option`, not a distance sentinel, and pose distance is measured in biased coordinates so a body below the origin does not abort. Currents, breeding, and paid founder hatch are still later.
+
 ### What the brain must do
 
 Nothing new beyond phase 0's phototaxis decision. `race_tick` already steps the brain with a lure from `brain::race_lure(seed, tick)` and a shadow from `brain::race_shadow`. The ladder adds track variety by replacing that one formula with a family of them, all pure functions of `(seed, tick)`.
@@ -233,7 +237,7 @@ If phase 0 picks the herding convention, a race is scored on reaching a goal reg
 
 - No new per-tick state. A second pure function is noise next to the brain step. Re-measure once anyway.
 - A race leg is hundreds of `race_tick` calls. Ship it with the session, sponsorship and batching path in [Playing without a signature on every tick](#playing-without-a-signature-on-every-tick), not as one wallet prompt per tick.
-- **Open item, PR #3:** `hatch_founder` is free and never calls `pay_hatch`. A racing ladder with free larvae is fine for the demo and wrong for launch. Wire founder hatching through `pay_hatch` (new `hatch_paid<T>`, mirroring `enter_paid`) before the ladder is playable against the coin, and keep `hatch_founder` behind a dev-only flag or remove it. Note `market` already has `settle_bounty`, which nothing pays out.
+- **Founder hatch.** `hatch_paid<T>` charges `pay_hatch`. `hatch_founder` takes `FounderCap`, which `init` gives to the publisher, so a localnet script can still mint a free larva and a player cannot. `market.settle_bounty` is still unpaid.
 - `create_race` is a free `entry`. It isn't `public`, but any address can call it in a transaction, so anyone can open races. Cap open races per game, or require `pay_entry`-style funding at creation, before this is public.
 - Shared `LightRace` is written at `enter`, `reveal_seed` and `finish` only, so the race itself doesn't hot-spot. Good; keep it that way.
 
@@ -273,6 +277,10 @@ Phase 0's dimming result: a shadow must change motor output and heading inside `
 - If phase 0's dimming burst makes the tick much more expensive, the gauntlet is the first place it hurts, because every tick in the window is a dimming tick. Re-measure before building the mode.
 - Don't let the gauntlet mint rewards by itself. Payouts reuse `claim_prize`.
 
+### Landed
+
+The gauntlet is built on the body's escape counter. Phase 0 found no motor-neuron burst, so `escape` stays. `shadow_circle` is the predator. A larva with PR-II removed travels less and keeps more yolk. Empty yolk is marked failed and the larva is not deleted. The payout uses the same pot path as `claim_prize`.
+
 ### Depends on
 
 Phase 0. Without it, this mode is the existing 8-tick thrust counter with a new name.
@@ -308,6 +316,10 @@ Phase 0's antenna result: tilt changes the motor left/right split only during a 
 - Puzzles are free-swim stretches driven by the player's light and dimming. They use `session::swim` under the same one-signature path (see [Playing without a signature on every tick](#playing-without-a-signature-on-every-tick)).
 - `Ciona` and `Body` are stored structs. Adding a field is fine now and a migration later. Land it before any deployment.
 - The 20-minute competence clock (`rules::competence_ms`) and the 1,200-tick minimum are unchanged. Puzzles have to be solvable inside the remaining yolk, which the tests should check.
+
+### Landed
+
+`Body.depth` moves only while the light is off or a shadow is on, from the tilt the larva already holds. It is not hashed. A cell's depth band and current are pure functions of its index. Claim rejects a larva that is close in x/y and far in depth. Feed pays `cell_current`. The live reef current is still not rolled.
 
 ### Depends on
 
@@ -349,6 +361,10 @@ Raising, honestly, means three things and no more:
 - The existing `adapt` vector is already the expensive part of the write (PR #2: 11.4 M to 18.6 M MIST, 99% rebated). A second vector of the same size roughly doubles that line. Measure before adding one.
 - The biological risk is over-claiming. The README and the demo text need a sentence that says this is the model's spike-adaptation variable, not a model of memory.
 
+### Landed
+
+Decay is unchanged. A fresh larva's first bright tick fires 0 spikes. After four bright ticks the next identical input fires more, not fewer, because the membrane is already charged. Sixteen quiet ticks on chain still leave a 9-spike probe. The copy says adaptation is not memory and does not make the next swim quieter. No second adapt vector was added.
+
 ### Depends on
 
 Nothing structural. Better after phase 0 so the numbers mean something, but it can be prototyped on the current model.
@@ -385,6 +401,10 @@ Nothing. Each larva is its own object and is stepped by its owner, exactly as no
 - Stale poses: a larva that stops ticking leaves its last pose up. Expire entries older than a set number of milliseconds using `Clock`, or the board fills with ghosts.
 - Replay now depends on other players' transactions. Publish the board events alongside the tick events or verification is impossible after the fact.
 
+### Landed
+
+`SwarmBoard` stores one pose per larva. Only the address that joined can post. A neighbor inside 400 units shades the next tick's light, and that count is on the `Tick` event. The shard cap is 8 until a localnet contention run replaces it. No function takes two `&mut Ciona`.
+
 ### Depends on
 
 Phases 1 and 2 for the modes worth crowding. The board itself can be built earlier.
@@ -418,6 +438,10 @@ Nothing new. The `Tick` event already carries `state_hash`, `spikes` (the cumula
 
 - 32 bytes more per tick event, forever, for every larva. Measure the event size once and decide whether it's every tick or only marked ranges. Marked ranges are the cheaper default and probably enough.
 - Clips can be faked visually but not numerically: the verifier is the whole feature, so the clip format should be exactly the event JSON and nothing prettier.
+
+### Landed
+
+Spike bits are emitted only while a highlight is open. `mark` records the start tick and hash, then the end. The verifier draws the fired cells and rejects a clip whose spike bits disagree. The demo saves the marked range.
 
 ### Depends on
 
@@ -454,6 +478,10 @@ Nothing directly. The dataset is events plus the connectome they were run on.
 - Seasons are snapshots of rules as well as of larvae. Record the package id, or a dataset from before a rule change will be replayed with the wrong code.
 - Don't publish datasets that include anything but what's already public on-chain.
 
+### Landed
+
+`ciona::spawn` crosses two adults, blocks a shared self-sterility allele, and emits both parents. The connectome hash is checked off-chain against `connectome.v1.bin`; Move does not rehash the graph. A `Season` names that encoding, the hash, and package version 1. `replay/season.py` writes one file per larva. Currents are `drift`, and a zero seed adds nothing, so the old goldens stay put. A session wraps one larva for swim, race, or gauntlet ticks.
+
 ### Depends on
 
 Phase 1 for parentage worth publishing, and the hash-provenance fix, which can be done on its own at any time.
@@ -481,7 +509,7 @@ phototaxis direction            product decision (herd or chase); required befor
 
 | Item | Where it bites |
 |---|---|
-| `hatch_founder` is free and never calls `pay_hatch`, even though `pay_hatch` is implemented and tested. | Phase 1, before the ladder is played with the coin. Add `hatch_paid<T>` and stop exposing the free path. |
+| `hatch_founder` was a free public entry. | Done. `hatch_paid<T>` charges `pay_hatch`. `hatch_founder` now requires `FounderCap`, which `init` gives to the publisher. |
 | `Connectome.data_hash` is whatever the publisher passes in. `ciona` only checks it against a hard-coded constant. | Phase 7, and any public claim that the on-chain brain is the published one. |
 | `market.settle_bounty` is set in `bind` and never paid. | Phase 3, if settlement is going to be rewarded. Either pay it or remove it. |
 | `Reef.current_seed` is fixed at 1. | Phases 1 and 3. |

@@ -23,6 +23,13 @@
     dt { color: var(--dim); font: 12px/1 sans-serif; letter-spacing: 0.04em; text-transform: uppercase; }
     dd { margin: 6px 0 0; font-variant-numeric: tabular-nums; }
     svg { width: 100%; height: 280px; background: #0c1a18; border: 1px solid var(--line); border-radius: 12px; margin-top: 16px; }
+    .cells { display: grid; grid-template-columns: repeat(28, 1fr); gap: 2px; margin-top: 14px; }
+    .cells i { display: block; aspect-ratio: 1; background: #16302c; border-radius: 1px; }
+    .cells i.on { background: #f2d38a; }
+    .cells i.pr1.on { background: #9ad7ff; }
+    .cells i.pr2.on { background: #d7b4ff; }
+    .cells i.ant.on { background: #ffb4a8; }
+    .cells i.mn.on { background: #b7f0c8; }
     .hash { font: 12px/1.4 ui-monospace, monospace; color: var(--dim); word-break: break-all; margin-top: 12px; }
     input { display: none; }
   </style>
@@ -47,8 +54,14 @@
       <div class="cell"><dt>y</dt><dd id="y">0</dd></div>
       <div class="cell"><dt>Heading</dt><dd id="heading">0°</dd></div>
       <div class="cell"><dt>Yolk</dt><dd id="yolk">100000</dd></div>
+      <div class="cell"><dt>Gain</dt><dd id="gain">—</dd></div>
+      <div class="cell"><dt>Leak</dt><dd id="leak">—</dd></div>
+      <div class="cell"><dt>Depth</dt><dd id="depth">0</dd></div>
     </dl>
+    <p id="pr2" class="lede"></p>
+    <p id="adapt" class="lede">Spike adaptation stays on a larva after it swims. It is not memory, and it does not make the next swim quieter.</p>
     <svg id="track" viewBox="0 0 800 280" role="img" aria-label="Path of the larva"></svg>
+    <div id="cells" class="cells" aria-label="Cells that fired on the latest tick"></div>
     <p id="hash" class="hash"></p>
   </main>
   <script type="module" src="/src/main.js"></script>

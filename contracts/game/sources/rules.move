@@ -17,4 +17,10 @@ public fun race_grace_ms(): u64 { 10 * MINUTE }
 public fun grid(): u64 { 16 }
 public fun cell_span(): u64 { 400 }
 public fun claim_radius(): u64 { 250 }
+public fun depth_bias(): u64 { 1024 }
+public fun depth_radius(): u64 { 80 }
+public fun depth_band(cell: u32): u64 { 1024 + ((cell as u64) % 16) * 80 }
+public fun cell_current(cell: u32): u64 { 1 + ((cell as u64) % 10) }
 public fun feed_gap_ms(): u64 { 60 * MINUTE }
+public fun spawn_gap_ms(): u64 { 60 * MINUTE }
+public fun current_window_ms(): u64 { 60 * MINUTE }

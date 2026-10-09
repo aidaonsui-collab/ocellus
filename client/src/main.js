@@ -1,6 +1,15 @@
 import doc from "../../research/connectome.v1.json";
 import sample from "../../bench/results/phase2-events.json";
-import { REEF, cellCenter, decideClaim, follow, statusText } from "./engine.js";
+import { REEF, buildView, bytesOf, cellCenter, decideClaim, decodeGenome, follow, statusText } from "./engine.js";
+
+const view = buildView(doc);
+const cellClass = view.doc.cells.map((cell) => {
+  if (cell.class === "PR-I") return "pr1";
+  if (cell.class === "PR-II") return "pr2";
+  if (cell.class === "Ant") return "ant";
+  if (cell.class === "MN" || cell.class === "MGIN") return "mn";
+  return "";
+});
 
 const status = document.querySelector("#status");
 const track = document.querySelector("#track");
@@ -34,6 +43,22 @@ function draw(result) {
   document.querySelector("#y").textContent = String(larva.y);
   document.querySelector("#heading").textContent = `${Math.round((larva.heading || 0) / 65536 * 360)}°`;
   document.querySelector("#yolk").textContent = String(larva.yolk);
+  const frame = result.frames.at(-1);
+  document.querySelector("#depth").textContent = String(frame ? frame.depth || 0 : 0);
+  const shadows = result.frames.filter((f) => f.shadow);
+  const pr2 = shadows.reduce((s, f) => s + (f.pr2 || 0), 0);
+  document.querySelector("#pr2").textContent = shadows.length
+    ? `PR-II fired ${pr2} times across ${shadows.length} shadow ticks. The escape swim is the body's counter, not a motor-neuron burst.`
+    : "";
+  const hatch = hatchOf(events);
+  if (hatch) {
+    const decoded = decodeGenome(bytesOf(hatch.genome));
+    document.querySelector("#gain").textContent = String(decoded.gains[0]);
+    document.querySelector("#leak").textContent = String(decoded.leaks[0]);
+  } else {
+    document.querySelector("#gain").textContent = "—";
+    document.querySelector("#leak").textContent = "—";
+  }
   document.querySelector("#hash").textContent = larva.hash || "";
   status.textContent = result.stoppedAt != null
     ? statusText(result)
@@ -63,6 +88,8 @@ function draw(result) {
   track.innerHTML = cells
     + (d ? `<path d="${d}" fill="none" stroke="#d7fff0" stroke-width="28"/>` : "")
     + (last ? `<circle cx="${last[0]}" cy="${yOf(last[1])}" r="70" fill="#f2d38a"/>` : "");
+  const fired = new Set(frame && frame.fired ? frame.fired : []);
+  document.querySelector("#cells").innerHTML = cellClass.map((name, i) => `<i class="${name}${fired.has(i) ? " on" : ""}"></i>`).join("");
   document.querySelector("#step").disabled = result.stoppedAt != null || shown >= ticksOf(events).length;
   document.querySelector("#play").disabled = document.querySelector("#step").disabled;
 }

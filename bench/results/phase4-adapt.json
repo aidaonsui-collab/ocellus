@@ -1,0 +1,15 @@
+{
+  "model": "v1",
+  "fresh_probe_spikes": 0,
+  "after_bright_ticks": {
+    "4": 6,
+    "8": 14,
+    "12": 30,
+    "24": 6,
+    "40": 10
+  },
+  "quiet_ticks_until_probe_matches_fresh": null,
+  "move_probe_after_16_quiet_ticks": 9,
+  "move_fresh_probe_spikes": 0,
+  "note": "The swum larva fires more on the next identical input. A browser replay of the same idea matched a fresh probe after 8 quiet ticks. On chain, 16 quiet ticks still leave a 9-spike probe against a fresh 0. The counts are not asserted as a deadline. Hashes are not compared."
+}

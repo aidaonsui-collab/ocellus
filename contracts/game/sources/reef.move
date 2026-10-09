@@ -4,6 +4,7 @@ module ocellus_game::reef;
 
 use ocellus_game::rules;
 use sui::clock::Clock;
+use sui::random::{Self, Random};
 use sui::event;
 use sui::object::{Self, ID, UID};
 use sui::table::{Self, Table};
@@ -30,6 +31,7 @@ public struct Reef has key {
     shard: u32,
     cells: Table<u32, Occupant>,
     current_seed: u64,
+    current_until_ms: u64,
 }
 
 public struct CellReleased has copy, drop {
@@ -44,6 +46,7 @@ public(package) fun create(shard: u32, ctx: &mut TxContext): Reef {
         shard,
         cells: table::new(ctx),
         current_seed: 1,
+        current_until_ms: 0,
     }
 }
 
@@ -104,11 +107,30 @@ public fun center(cell: u32): (u64, u64) {
 
 public fun current_of(reef: &Reef): u64 { reef.current_seed }
 
+/// Draws the next drift seed. A zero seed is rejected so drift stays distinct from the no-current swim.
+entry fun roll_current(reef: &mut Reef, r: &Random, clock: &Clock, ctx: &mut TxContext) {
+    assert!(clock.timestamp_ms() >= reef.current_until_ms, E_NOT_EXPIRED);
+    let mut gen = r.new_generator(ctx);
+    let bytes = gen.generate_bytes(8);
+    let mut seed = 0u64;
+    let mut i = 0;
+    while (i < 8) {
+        seed = (seed << 8) | (bytes[i] as u64);
+        i = i + 1;
+    };
+    if (seed == 0) seed = 1;
+    reef.current_seed = seed;
+    reef.current_until_ms = clock.timestamp_ms() + rules::current_window_ms();
+}
+
 public fun id_of(reef: &Reef): ID { object::id(reef) }
 
 #[test_only]
+public fun set_current(reef: &mut Reef, seed: u64) { reef.current_seed = seed; }
+
+#[test_only]
 public fun destroy(reef: Reef) {
-    let Reef { id, shard: _, cells, current_seed: _ } = reef;
+    let Reef { id, shard: _, cells, current_seed: _, current_until_ms: _ } = reef;
     table::drop(cells);
     id.delete();
 }

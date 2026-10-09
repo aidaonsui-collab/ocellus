@@ -96,12 +96,16 @@ def main():
         blocks = published if isinstance(published, list) else [published]
         pkgs = {}
         cap = None
+        founder = None
         for block in blocks:
             for o in block.get("objectChanges") or []:
                 if o.get("type") == "published":
                     pkgs[o.get("packageId")] = o
-                if o.get("type") == "created" and str(o.get("objectType", "")).endswith("PublisherCap"):
+                kind = str(o.get("objectType", ""))
+                if o.get("type") == "created" and kind.endswith("PublisherCap"):
                     cap = o["objectId"]
+                if o.get("type") == "created" and kind.endswith("FounderCap"):
+                    founder = o["objectId"]
         if not cap:
             raise SystemExit("no PublisherCap in " + json.dumps(blocks)[:600])
         # The brain package is the one that owns PublisherCap.
@@ -141,8 +145,10 @@ def main():
         if not conn:
             raise SystemExit("no connectome: " + json.dumps(created["objectChanges"])[:500])
         print("connectome", conn, "clock", clock_ms())
+        if not founder:
+            raise SystemExit("no FounderCap; the free hatch is no longer a public entry")
         hatched = run(["call", "--package", game_pkg, "--module", "ciona", "--function", "hatch_founder",
-                       "--args", RANDOM, CLOCK, conn])
+                       "--args", founder, RANDOM, CLOCK, conn])
         events = events_of(hatched)
         ciona = next(o["objectId"] for o in hatched["objectChanges"] if o.get("objectType", "").endswith("::Ciona"))
         print("ciona", ciona, "hatch events", [e["kind"] for e in events])
