@@ -48,6 +48,155 @@
   "control_displacement": 926,
   "tilt_after_80": 140
  },
+ "phase0_acceptance": {
+  "pass": {
+   "dimming_step": false,
+   "dimming_left_bias": false,
+   "antenna_alone": true,
+   "antenna_steers_dimming": false,
+   "pr1_regression": true,
+   "seizure": true,
+   "no_input_from_rest": true
+  },
+  "all_pass": false,
+  "dimming_step": {
+   "onsets": [
+    80,
+    85,
+    90,
+    95,
+    100,
+    105
+   ],
+   "intensity": 8000,
+   "shadow_ticks": 30,
+   "motor_mean_before": 1227.4,
+   "motor_mean_first_10_after": 0.0,
+   "motor_mean_first_10_after_without_pr2": 0.0,
+   "motor_mean_dark": 0.0,
+   "onsets_where_pr2_raised_first_10": 0,
+   "burst_left_nmj": 0,
+   "burst_right_nmj": 0
+  },
+  "antenna_alone": {
+   "intensity": 8000,
+   "tilt": 512,
+   "motor_mean_tilt_0": 1259.9,
+   "motor_mean_tilt_up": 237.9,
+   "motor_mean_tilt_down": 899.6,
+   "left_minus_right_tilt_0": -7037,
+   "left_minus_right_tilt_up": 107,
+   "left_minus_right_tilt_down": -14748,
+   "motor_mean_dark_tilt_up": 0.0,
+   "motor_mean_dark_tilt_down": 0.0
+  },
+  "antenna_steers_dimming": {
+   "tilt": 512,
+   "burst_left_right_tilt_0": [
+    0,
+    0
+   ],
+   "burst_left_right_tilt_up": [
+    6435,
+    10676
+   ],
+   "burst_left_right_tilt_down": [
+    0,
+    0
+   ],
+   "motor_mean_first_10_tilt_up": 285.2,
+   "motor_mean_first_10_tilt_down": 0.0
+  },
+  "pr1_regression": {
+   "drive": [
+    0,
+    1500,
+    2500,
+    4000,
+    6000,
+    8000,
+    10000,
+    15000,
+    20000
+   ],
+   "motor_mean": [
+    0.0,
+    0.0,
+    0.0,
+    708.4,
+    925.2,
+    1247.1,
+    979.2,
+    1139.4,
+    1373.2
+   ],
+   "spearman_rho_motor_mean": 0.932,
+   "motor_mean_light": 1259.9,
+   "motor_mean_dark": 0.0,
+   "ticks_to_silence_after_off": 0
+  },
+  "sustained_swimming": {
+   "drive": [
+    0,
+    1500,
+    2500,
+    4000,
+    6000,
+    8000,
+    10000,
+    15000,
+    20000
+   ],
+   "share_of_ticks_swimming": [
+    0.0,
+    0.0,
+    0.0,
+    0.17,
+    0.23,
+    0.35,
+    0.26,
+    0.31,
+    0.4
+   ],
+   "swim_bouts_per_400_ticks": [
+    0,
+    0,
+    0,
+    5,
+    6,
+    8,
+    6,
+    8,
+    10
+   ],
+   "mean_bout_ticks": [
+    0.0,
+    0.0,
+    0.0,
+    13.8,
+    15.7,
+    17.6,
+    17.3,
+    15.6,
+    15.8
+   ]
+  },
+  "seizure": {
+   "ticks_to_silence": 12,
+   "spikes_last_50": 0
+  },
+  "coverage": {
+   "cells_fired_once_or_more": 121,
+   "of": 224
+  },
+  "ablations": {
+   "file": "bench/results/dynamics.json",
+   "hypotheses": 89,
+   "all_pass": 0,
+   "most_tests_passed": 5,
+   "of_tests": 7
+  }
+ },
  "constants": {
   "drive": 8000,
   "near2": 16000000,

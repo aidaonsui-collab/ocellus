@@ -182,5 +182,5944 @@
     "of": 237
    }
   }
+ },
+ "phase0": {
+  "graph": "research/connectome.v1.json",
+  "data_hash": "9004dac630dbed5d88438c892deab08bb3a927f75e6337301cc720eeac65cf16",
+  "inputs": "dynamics.sensor_drives for a larva facing the light; shadow quarters PR-I shade and drives PR-II at PR2_DRIVE",
+  "trace": {
+   "pr2": {
+    "layers": [
+     {
+      "new_cells": 24,
+      "motor_cells": [],
+      "by_class": {
+       "PR-I": {
+        "cells": 10,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 1
+       },
+       "pr-AMG RN": {
+        "cells": 6,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "pr-cor RN": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 2,
+        "contested": 0
+       },
+       "pr-BTN RN": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 2,
+        "contested": 0
+       },
+       "BPIN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "prIN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "trIN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "Ant": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       }
+      }
+     },
+     {
+      "new_cells": 96,
+      "motor_cells": [
+       "MGIN1L",
+       "MGIN1R",
+       "MGIN2L",
+       "MGIN2R",
+       "MN1L",
+       "MN1R",
+       "MN2L",
+       "MN3L",
+       "MN4L"
+      ],
+      "by_class": {
+       "PR-I": {
+        "cells": 12,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "cor-ass BVIN": {
+        "cells": 9,
+        "sign": "excitatory",
+        "default_excitatory": 9,
+        "contested": 0
+       },
+       "cil-BVIN": {
+        "cells": 7,
+        "sign": "excitatory",
+        "default_excitatory": 7,
+        "contested": 0
+       },
+       "prRN": {
+        "cells": 6,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "AMG": {
+        "cells": 6,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 6
+       },
+       "PNIN": {
+        "cells": 5,
+        "sign": "excitatory",
+        "default_excitatory": 5,
+        "contested": 0
+       },
+       "2 RN": {
+        "cells": 5,
+        "sign": "excitatory",
+        "default_excitatory": 5,
+        "contested": 0
+       },
+       "MN": {
+        "cells": 5,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "BTN": {
+        "cells": 4,
+        "sign": "excitatory",
+        "default_excitatory": 4,
+        "contested": 0
+       },
+       "MGIN": {
+        "cells": 4,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "ant1/2 RN": {
+        "cells": 3,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "ant2 RN": {
+        "cells": 3,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "ant1 RN": {
+        "cells": 3,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "PBV PNIN": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 3,
+        "contested": 0
+       },
+       "aaIN": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 3,
+        "contested": 0
+       },
+       "pr-AMG RN": {
+        "cells": 2,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "PR-III": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 2,
+        "contested": 0
+       },
+       "Cor": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 2,
+        "contested": 0
+       },
+       "Em": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 2
+       },
+       "BPIN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "pr-cor RN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "ant-cor RN": {
+        "cells": 1,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "PN RN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "Ant": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "ddN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "Neck": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "RTEN-b": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "BVIN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "vacIN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       }
+      }
+     },
+     {
+      "new_cells": 65,
+      "motor_cells": [
+       "MGIN3L",
+       "MGIN3R",
+       "MN2R",
+       "MN3R",
+       "MN4R",
+       "MN5L",
+       "MN5R"
+      ],
+      "by_class": {
+       "Cor": {
+        "cells": 8,
+        "sign": "excitatory",
+        "default_excitatory": 8,
+        "contested": 0
+       },
+       "cor-ass BVIN": {
+        "cells": 5,
+        "sign": "excitatory",
+        "default_excitatory": 5,
+        "contested": 0
+       },
+       "PNIN": {
+        "cells": 5,
+        "sign": "excitatory",
+        "default_excitatory": 5,
+        "contested": 0
+       },
+       "MN": {
+        "cells": 5,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "RTEN-b": {
+        "cells": 5,
+        "sign": "excitatory",
+        "default_excitatory": 5,
+        "contested": 0
+       },
+       "cil-BVIN": {
+        "cells": 4,
+        "sign": "excitatory",
+        "default_excitatory": 4,
+        "contested": 0
+       },
+       "RTEN-a": {
+        "cells": 4,
+        "sign": "excitatory",
+        "default_excitatory": 4,
+        "contested": 0
+       },
+       "aATEN": {
+        "cells": 4,
+        "sign": "excitatory",
+        "default_excitatory": 4,
+        "contested": 0
+       },
+       "PR-III": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 3,
+        "contested": 0
+       },
+       "MTN": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 3,
+        "contested": 0
+       },
+       "unassigned": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 3,
+        "contested": 0
+       },
+       "ACIN": {
+        "cells": 3,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "MGIN": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "ambiguous": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 2,
+        "contested": 0
+       },
+       "prIN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "ddN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "Neck": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "pATEN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "PMGN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "PR-I": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "PBV PNIN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "BVIN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "AMG": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       }
+      }
+     }
+    ],
+    "routes_to_motor_by_net_sign": {
+     "2 hops": {
+      "inhibitory": {
+       "routes": 38,
+       "weight": 105
+      },
+      "excitatory": {
+       "routes": 22,
+       "weight": 117
+      }
+     },
+     "3 hops": {
+      "inhibitory": {
+       "routes": 718,
+       "weight": 1815
+      },
+      "excitatory": {
+       "routes": 932,
+       "weight": 2589
+      }
+     }
+    },
+    "top_route_patterns_by_weight": {
+     "pr-AMG RN > pr-AMG RN": {
+      "routes": 86,
+      "weight": 335,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "pr-AMG RN > Em": {
+      "routes": 65,
+      "weight": 283,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 1,
+      "first_inhibitory_relay": 1
+     },
+     "pr-AMG RN > BTN": {
+      "routes": 72,
+      "weight": 267,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 1,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "pr-AMG RN > AMG": {
+      "routes": 62,
+      "weight": 181,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 1,
+      "first_inhibitory_relay": 1
+     },
+     "pr-AMG RN > ddN": {
+      "routes": 42,
+      "weight": 171,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "PR-I > pr-BTN RN": {
+      "routes": 98,
+      "weight": 151,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 1,
+      "contested_relays": 0,
+      "first_inhibitory_relay": null
+     },
+     "pr-cor RN > prRN": {
+      "routes": 50,
+      "weight": 147,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 1,
+      "contested_relays": 0,
+      "first_inhibitory_relay": null
+     },
+     "pr-AMG RN > pr-cor RN": {
+      "routes": 43,
+      "weight": 147,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 1,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "pr-BTN RN > ant1 RN": {
+      "routes": 52,
+      "weight": 144,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 1,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 2
+     },
+     "pr-BTN RN > ant1/2 RN": {
+      "routes": 57,
+      "weight": 139,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 1,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 2
+     },
+     "pr-AMG RN > prRN": {
+      "routes": 34,
+      "weight": 130,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "PR-I > pr-AMG RN": {
+      "routes": 75,
+      "weight": 126,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 2
+     },
+     "pr-AMG RN": {
+      "routes": 22,
+      "weight": 117,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "pr-AMG RN > pr-BTN RN": {
+      "routes": 42,
+      "weight": 116,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 1,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "Ant > ant1 RN": {
+      "routes": 48,
+      "weight": 115,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 2
+     },
+     "pr-BTN RN > pr-cor RN": {
+      "routes": 44,
+      "weight": 106,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 2,
+      "contested_relays": 0,
+      "first_inhibitory_relay": null
+     },
+     "pr-cor RN > pr-BTN RN": {
+      "routes": 40,
+      "weight": 105,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 2,
+      "contested_relays": 0,
+      "first_inhibitory_relay": null
+     },
+     "PR-I > prRN": {
+      "routes": 56,
+      "weight": 105,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": null
+     },
+     "pr-AMG RN > ant1 RN": {
+      "routes": 27,
+      "weight": 102,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "pr-BTN RN > prRN": {
+      "routes": 34,
+      "weight": 97,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 1,
+      "contested_relays": 0,
+      "first_inhibitory_relay": null
+     }
+    }
+   },
+   "antenna": {
+    "layers": [
+     {
+      "new_cells": 42,
+      "motor_cells": [],
+      "by_class": {
+       "cor-ass BVIN": {
+        "cells": 6,
+        "sign": "excitatory",
+        "default_excitatory": 6,
+        "contested": 0
+       },
+       "PR-I": {
+        "cells": 4,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "cil-BVIN": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 3,
+        "contested": 0
+       },
+       "2 RN": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 3,
+        "contested": 0
+       },
+       "prRN": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "ant1/2 RN": {
+        "cells": 3,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "ant2 RN": {
+        "cells": 3,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "ant1 RN": {
+        "cells": 3,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "aaIN": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 3,
+        "contested": 0
+       },
+       "prIN": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 2,
+        "contested": 0
+       },
+       "pr-AMG RN": {
+        "cells": 2,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "BPIN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "PR-III": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "ant-cor RN": {
+        "cells": 1,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "pr-BTN RN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "PR-II": {
+        "cells": 1,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "trIN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "vacIN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       }
+      }
+     },
+     {
+      "new_cells": 98,
+      "motor_cells": [
+       "MGIN1L",
+       "MGIN1R",
+       "MGIN2L",
+       "MGIN2R",
+       "MN1L",
+       "MN1R",
+       "MN2R",
+       "MN3L",
+       "MN3R"
+      ],
+      "by_class": {
+       "PR-I": {
+        "cells": 17,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 1
+       },
+       "cor-ass BVIN": {
+        "cells": 8,
+        "sign": "excitatory",
+        "default_excitatory": 8,
+        "contested": 0
+       },
+       "cil-BVIN": {
+        "cells": 8,
+        "sign": "excitatory",
+        "default_excitatory": 8,
+        "contested": 0
+       },
+       "PNIN": {
+        "cells": 7,
+        "sign": "excitatory",
+        "default_excitatory": 7,
+        "contested": 0
+       },
+       "pr-AMG RN": {
+        "cells": 6,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "AMG": {
+        "cells": 5,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 4
+       },
+       "MN": {
+        "cells": 5,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "PR-III": {
+        "cells": 4,
+        "sign": "excitatory",
+        "default_excitatory": 4,
+        "contested": 0
+       },
+       "Cor": {
+        "cells": 4,
+        "sign": "excitatory",
+        "default_excitatory": 4,
+        "contested": 0
+       },
+       "MGIN": {
+        "cells": 4,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "PR-II": {
+        "cells": 4,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "prRN": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "pr-cor RN": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 3,
+        "contested": 0
+       },
+       "PBV PNIN": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 3,
+        "contested": 0
+       },
+       "BTN": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 3,
+        "contested": 0
+       },
+       "2 RN": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 2,
+        "contested": 0
+       },
+       "Em": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 2
+       },
+       "BVIN": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 2,
+        "contested": 0
+       },
+       "unassigned": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "BPIN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "ambiguous": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "pr-BTN RN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "PN RN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "aATEN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "Neck": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "RTEN-b": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       }
+      }
+     },
+     {
+      "new_cells": 56,
+      "motor_cells": [
+       "MGIN3L",
+       "MGIN3R",
+       "MN2L",
+       "MN4L",
+       "MN4R",
+       "MN5L",
+       "MN5R"
+      ],
+      "by_class": {
+       "Cor": {
+        "cells": 6,
+        "sign": "excitatory",
+        "default_excitatory": 6,
+        "contested": 0
+       },
+       "MN": {
+        "cells": 5,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "RTEN-b": {
+        "cells": 5,
+        "sign": "excitatory",
+        "default_excitatory": 5,
+        "contested": 0
+       },
+       "pATEN": {
+        "cells": 4,
+        "sign": "excitatory",
+        "default_excitatory": 4,
+        "contested": 0
+       },
+       "RTEN-a": {
+        "cells": 4,
+        "sign": "excitatory",
+        "default_excitatory": 4,
+        "contested": 0
+       },
+       "MTN": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 3,
+        "contested": 0
+       },
+       "unassigned": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 3,
+        "contested": 0
+       },
+       "ACIN": {
+        "cells": 3,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "aATEN": {
+        "cells": 3,
+        "sign": "excitatory",
+        "default_excitatory": 3,
+        "contested": 0
+       },
+       "cil-BVIN": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 2,
+        "contested": 0
+       },
+       "PNIN": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 2,
+        "contested": 0
+       },
+       "ddN": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "MGIN": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "PMGN": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 2,
+        "contested": 0
+       },
+       "PR-I": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "PR-II": {
+        "cells": 2,
+        "sign": "inhibitory",
+        "default_excitatory": 0,
+        "contested": 0
+       },
+       "AMG": {
+        "cells": 2,
+        "sign": "excitatory",
+        "default_excitatory": 0,
+        "contested": 2
+       },
+       "Neck": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "PBV PNIN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "ambiguous": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       },
+       "BTN": {
+        "cells": 1,
+        "sign": "excitatory",
+        "default_excitatory": 1,
+        "contested": 0
+       }
+      }
+     }
+    ],
+    "routes_to_motor_by_net_sign": {
+     "2 hops": {
+      "inhibitory": {
+       "routes": 65,
+       "weight": 1146
+      },
+      "excitatory": {
+       "routes": 21,
+       "weight": 63
+      }
+     },
+     "3 hops": {
+      "excitatory": {
+       "routes": 1166,
+       "weight": 4107
+      },
+      "inhibitory": {
+       "routes": 1097,
+       "weight": 4247
+      }
+     }
+    },
+    "top_route_patterns_by_weight": {
+     "ant1/2 RN > ant1 RN": {
+      "routes": 96,
+      "weight": 473,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "ant1/2 RN": {
+      "routes": 26,
+      "weight": 435,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "ant1/2 RN > ant1/2 RN": {
+      "routes": 52,
+      "weight": 423,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "aaIN > ant1/2 RN": {
+      "routes": 50,
+      "weight": 322,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 1,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 2
+     },
+     "ant1 RN": {
+      "routes": 21,
+      "weight": 317,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "aaIN > ant1 RN": {
+      "routes": 64,
+      "weight": 308,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 1,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 2
+     },
+     "ant-cor RN": {
+      "routes": 6,
+      "weight": 307,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "ant1/2 RN > Em": {
+      "routes": 46,
+      "weight": 278,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 1,
+      "first_inhibitory_relay": 1
+     },
+     "ant1/2 RN > pr-BTN RN": {
+      "routes": 60,
+      "weight": 252,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 1,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "ant-cor RN > prRN": {
+      "routes": 30,
+      "weight": 246,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "ant1 RN > ant1/2 RN": {
+      "routes": 47,
+      "weight": 245,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "ant1/2 RN > prRN": {
+      "routes": 58,
+      "weight": 244,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "ant1/2 RN > ant-cor RN": {
+      "routes": 12,
+      "weight": 196,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "ant1 RN > ant1 RN": {
+      "routes": 43,
+      "weight": 193,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "prRN > ant1 RN": {
+      "routes": 64,
+      "weight": 177,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 2
+     },
+     "ant1 RN > prRN": {
+      "routes": 45,
+      "weight": 175,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "ant-cor RN > ant1/2 RN": {
+      "routes": 26,
+      "weight": 166,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     },
+     "Ant > ant1/2 RN": {
+      "routes": 26,
+      "weight": 164,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 2
+     },
+     "trIN > ant1 RN": {
+      "routes": 32,
+      "weight": 164,
+      "net_sign": "inhibitory",
+      "default_excitatory_relays": 1,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 2
+     },
+     "ant-cor RN > ant1 RN": {
+      "routes": 32,
+      "weight": 156,
+      "net_sign": "excitatory",
+      "default_excitatory_relays": 0,
+      "contested_relays": 0,
+      "first_inhibitory_relay": 1
+     }
+    }
+   }
+  },
+  "as_is": {
+   "dimming_step": {
+    "onsets": [
+     80,
+     85,
+     90,
+     95,
+     100,
+     105
+    ],
+    "intensity": 8000,
+    "shadow_ticks": 30,
+    "motor_mean_before": 1227.4,
+    "motor_mean_first_10_after": 0.0,
+    "motor_mean_first_10_after_without_pr2": 0.0,
+    "motor_mean_dark": 0.0,
+    "onsets_where_pr2_raised_first_10": 0,
+    "burst_left_nmj": 0,
+    "burst_right_nmj": 0,
+    "spikes_by_class_before": {
+     "PR-I": 710,
+     "MN": 176,
+     "BTN": 116,
+     "MGIN": 113,
+     "AMG": 111,
+     "prRN": 82,
+     "pr-AMG RN": 63,
+     "ddN": 57,
+     "pr-BTN RN": 42,
+     "PBV PNIN": 32,
+     "Em": 32,
+     "pr-cor RN": 31,
+     "ant1 RN": 29,
+     "MTN": 29,
+     "ACIN": 25,
+     "PMGN": 22,
+     "PN RN": 17,
+     "PR-II": 12,
+     "PNIN": 12,
+     "pATEN": 11,
+     "Neck": 7,
+     "cor-ass BVIN": 6,
+     "trIN": 6,
+     "ant1/2 RN": 6,
+     "aaIN": 5,
+     "BPIN": 3
+    },
+    "spikes_by_class_first_10": {
+     "PR-II": 125,
+     "PR-I": 6,
+     "prRN": 5,
+     "pr-cor RN": 1,
+     "ant1 RN": 1,
+     "pr-BTN RN": 1
+    }
+   },
+   "antenna_alone": {
+    "intensity": 8000,
+    "tilt": 512,
+    "motor_mean_tilt_0": 1259.9,
+    "motor_mean_tilt_up": 237.9,
+    "motor_mean_tilt_down": 899.6,
+    "left_minus_right_tilt_0": -7037,
+    "left_minus_right_tilt_up": 107,
+    "left_minus_right_tilt_down": -14748,
+    "motor_mean_dark_tilt_up": 0.0,
+    "motor_mean_dark_tilt_down": 0.0
+   },
+   "antenna_steers_dimming": {
+    "tilt": 512,
+    "burst_left_right_tilt_0": [
+     0,
+     0
+    ],
+    "burst_left_right_tilt_up": [
+     6435,
+     10676
+    ],
+    "burst_left_right_tilt_down": [
+     0,
+     0
+    ],
+    "motor_mean_first_10_tilt_up": 285.2,
+    "motor_mean_first_10_tilt_down": 0.0
+   },
+   "pr1_regression": {
+    "drive": [
+     0,
+     1500,
+     2500,
+     4000,
+     6000,
+     8000,
+     10000,
+     15000,
+     20000
+    ],
+    "motor_mean": [
+     0.0,
+     0.0,
+     0.0,
+     708.4,
+     925.2,
+     1247.1,
+     979.2,
+     1139.4,
+     1373.2
+    ],
+    "spearman_rho_motor_mean": 0.932,
+    "motor_mean_light": 1259.9,
+    "motor_mean_dark": 0.0,
+    "ticks_to_silence_after_off": 0
+   },
+   "sustained_swimming": {
+    "drive": [
+     0,
+     1500,
+     2500,
+     4000,
+     6000,
+     8000,
+     10000,
+     15000,
+     20000
+    ],
+    "share_of_ticks_swimming": [
+     0.0,
+     0.0,
+     0.0,
+     0.17,
+     0.23,
+     0.35,
+     0.26,
+     0.31,
+     0.4
+    ],
+    "swim_bouts_per_400_ticks": [
+     0,
+     0,
+     0,
+     5,
+     6,
+     8,
+     6,
+     8,
+     10
+    ],
+    "mean_bout_ticks": [
+     0.0,
+     0.0,
+     0.0,
+     13.8,
+     15.7,
+     17.6,
+     17.3,
+     15.6,
+     15.8
+    ]
+   },
+   "seizure": {
+    "ticks_to_silence": 12,
+    "spikes_last_50": 0
+   },
+   "no_input_from_rest": {
+    "spikes": 0,
+    "motor_spikes_dark": 0,
+    "spikes_dark": 0
+   },
+   "coverage": {
+    "cells_fired_once_or_more": 121,
+    "of": 224
+   },
+   "test_course_probes": {
+    "pr1_drive_8000_motor_mean": 1298.6,
+    "dimming_motor_mean": 0.0,
+    "antenna_only_motor_mean": 0.0
+   },
+   "pass": {
+    "dimming_step": false,
+    "dimming_left_bias": false,
+    "antenna_alone": true,
+    "antenna_steers_dimming": false,
+    "pr1_regression": true,
+    "seizure": true,
+    "no_input_from_rest": true
+   },
+   "all_pass": false,
+   "pr2_in_dark": {
+    "motor_mean_without_pr2": 0.0,
+    "motor_mean_with_pr2": 0.0,
+    "motor_mean_after": 0.0
+   }
+  },
+  "ablations": [
+   {
+    "name": "flip prRN to inhibitory",
+    "kind": "sign",
+    "dimming_before_first10_without_pr2_dark": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     0,
+     0
+    ],
+    "motor_mean_light_8000": 0.0,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     0.0,
+     0.0,
+     210.9
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.822,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 57,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "flip MGIN to inhibitory",
+    "kind": "sign",
+    "dimming_before_first10_without_pr2_dark": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     0,
+     0
+    ],
+    "motor_mean_light_8000": 0.0,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.0,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 9,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 62,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "flip AMG to inhibitory",
+    "kind": "sign",
+    "dimming_before_first10_without_pr2_dark": [
+     1493.2,
+     574.1,
+     573.2,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     5641,
+     28910
+    ],
+    "motor_mean_light_8000": 929.3,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     929.3,
+     0.0,
+     672.3
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      465,
+      7286
+     ],
+     [
+      3450,
+      9083
+     ]
+    ],
+    "spearman_rho": 0.966,
+    "ticks_to_silence_after_off": 20,
+    "seizure_ticks_to_silence": 11,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 110,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "flip Em to inhibitory",
+    "kind": "sign",
+    "dimming_before_first10_without_pr2_dark": [
+     407.8,
+     259.4,
+     259.4,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     15565,
+     0
+    ],
+    "motor_mean_light_8000": 241.0,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     241.0,
+     0.0,
+     304.6
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      14123,
+      0
+     ]
+    ],
+    "spearman_rho": 0.966,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 21,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 82,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": true,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "flip PNIN to inhibitory",
+    "kind": "sign",
+    "dimming_before_first10_without_pr2_dark": [
+     990.3,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     0,
+     0
+    ],
+    "motor_mean_light_8000": 1074.2,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1074.2,
+     0.0,
+     803.1
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      6435,
+      10676
+     ],
+     [
+      21490,
+      37711
+     ]
+    ],
+    "spearman_rho": 0.966,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 13,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 117,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "flip ddN to inhibitory",
+    "kind": "sign",
+    "dimming_before_first10_without_pr2_dark": [
+     42.0,
+     18.0,
+     18.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     1080,
+     0
+    ],
+    "motor_mean_light_8000": 32.4,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     32.4,
+     3.6,
+     28.8
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      1080,
+      0
+     ]
+    ],
+    "spearman_rho": 0.932,
+    "ticks_to_silence_after_off": 1,
+    "seizure_ticks_to_silence": 8,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 65,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": true,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "flip Cor to inhibitory",
+    "kind": "sign",
+    "dimming_before_first10_without_pr2_dark": [
+     1227.4,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     0,
+     0
+    ],
+    "motor_mean_light_8000": 1259.9,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1259.9,
+     237.9,
+     899.6
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      6435,
+      10676
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.932,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "flip AMG1-4, AMG6, AMG7 to inhibitory (Kourakis 2019 VGAT)",
+    "kind": "sign",
+    "dimming_before_first10_without_pr2_dark": [
+     1655.9,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     0,
+     0
+    ],
+    "motor_mean_light_8000": 1161.3,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1161.3,
+     0.0,
+     895.9
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      3450,
+      12371
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.983,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 112,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "flip AMG1-4, AMG6, AMG7 and Em to inhibitory (Kourakis 2019 VGAT)",
+    "kind": "sign",
+    "dimming_before_first10_without_pr2_dark": [
+     281.3,
+     431.3,
+     431.3,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     29943,
+     0
+    ],
+    "motor_mean_light_8000": 321.3,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     321.3,
+     44.9,
+     306.8
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.966,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 11,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 81,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": true,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "Kourakis 2019 VGAT signs + tonic 4096 on pr-AMG RN",
+    "kind": "sign+tonic",
+    "dimming_before_first10_without_pr2_dark": [
+     224.4,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     0,
+     0
+    ],
+    "motor_mean_light_8000": 308.3,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     308.3,
+     0.0,
+     230.6
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.996,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 87,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "Kourakis 2019 VGAT signs + tonic 4096 on pr-AMG RN + 2048 on its MGIN targets",
+    "kind": "sign+tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     259.0,
+     253.4,
+     253.4,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     15203,
+     0
+    ],
+    "motor_mean_light_8000": 408.4,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     408.4,
+     253.5,
+     345.1
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      4401,
+      0
+     ]
+    ],
+    "spearman_rho": 0.979,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 11,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 88,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": true,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "Kourakis 2019 VGAT signs + tonic 4096 on pr-AMG RN + 3072 on its MGIN targets",
+    "kind": "sign+tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1032.9,
+     955.1,
+     955.1,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     23287,
+     52171
+    ],
+    "motor_mean_light_8000": 424.6,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     424.6,
+     208.1,
+     386.0
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      16464,
+      0
+     ]
+    ],
+    "spearman_rho": 0.979,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 11,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 88,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "Kourakis 2019 VGAT signs + tonic 8192 on pr-AMG RN",
+    "kind": "sign+tonic",
+    "dimming_before_first10_without_pr2_dark": [
+     320.0,
+     153.9,
+     153.9,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     9233,
+     0
+    ],
+    "motor_mean_light_8000": 218.1,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     218.1,
+     40.7,
+     224.5
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.957,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 10,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 87,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": true,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "Kourakis 2019 VGAT signs + tonic 8192 on pr-AMG RN + 2048 on its MGIN targets",
+    "kind": "sign+tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     184.1,
+     389.3,
+     389.3,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     23356,
+     0
+    ],
+    "motor_mean_light_8000": 297.0,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     297.0,
+     131.9,
+     303.1
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.979,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 10,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 87,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": true,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "Kourakis 2019 VGAT signs + tonic 8192 on pr-AMG RN + 3072 on its MGIN targets",
+    "kind": "sign+tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     443.6,
+     49.8,
+     49.8,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     2985,
+     0
+    ],
+    "motor_mean_light_8000": 359.7,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     359.7,
+     154.4,
+     395.5
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      19753,
+      0
+     ]
+    ],
+    "spearman_rho": 0.979,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 10,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 87,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": true,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 1024 on pr-AMG RN",
+    "kind": "tonic",
+    "dimming_before_first10_without_pr2_dark": [
+     945.2,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     0,
+     0
+    ],
+    "motor_mean_light_8000": 1110.7,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1110.7,
+     211.4,
+     847.7
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      35074,
+      59063
+     ]
+    ],
+    "spearman_rho": 0.929,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 120,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 2048 on pr-AMG RN",
+    "kind": "tonic",
+    "dimming_before_first10_without_pr2_dark": [
+     1018.9,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     0,
+     0
+    ],
+    "motor_mean_light_8000": 934.8,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     934.8,
+     228.3,
+     667.7
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      64228,
+      103896
+     ]
+    ],
+    "spearman_rho": 0.966,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 123,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 3072 on pr-AMG RN",
+    "kind": "tonic",
+    "dimming_before_first10_without_pr2_dark": [
+     1804.7,
+     53.7,
+     53.7,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     1416,
+     1807
+    ],
+    "motor_mean_light_8000": 868.9,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     868.9,
+     200.4,
+     1031.0
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      28353,
+      30435
+     ]
+    ],
+    "spearman_rho": 0.966,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 13,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 4096 on pr-AMG RN",
+    "kind": "tonic",
+    "dimming_before_first10_without_pr2_dark": [
+     1048.0,
+     1912.7,
+     1912.7,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     59298,
+     78992
+    ],
+    "motor_mean_light_8000": 902.9,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     902.9,
+     0.0,
+     877.3
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.946,
+    "ticks_to_silence_after_off": 20,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 123,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 6144 on pr-AMG RN",
+    "kind": "tonic",
+    "dimming_before_first10_without_pr2_dark": [
+     563.4,
+     2130.5,
+     2041.9,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 2,
+    "dimming_burst_left_right": [
+     70477,
+     94640
+    ],
+    "motor_mean_light_8000": 989.6,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     989.6,
+     0.0,
+     903.8
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      59995,
+      64148
+     ]
+    ],
+    "spearman_rho": 0.966,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 13,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 120,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 8192 on pr-AMG RN",
+    "kind": "tonic",
+    "dimming_before_first10_without_pr2_dark": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     0,
+     0
+    ],
+    "motor_mean_light_8000": 906.8,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     906.8,
+     0.0,
+     626.3
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      53981,
+      82157
+     ]
+    ],
+    "spearman_rho": 0.94,
+    "ticks_to_silence_after_off": 24,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 119,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 2048 on antenna relay neurons",
+    "kind": "tonic",
+    "dimming_before_first10_without_pr2_dark": [
+     1670.4,
+     72.4,
+     72.4,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     4343,
+     0
+    ],
+    "motor_mean_light_8000": 848.2,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     848.2,
+     0.0,
+     617.6
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      22825,
+      42976
+     ]
+    ],
+    "spearman_rho": 0.996,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": true,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 3072 on antenna relay neurons",
+    "kind": "tonic",
+    "dimming_before_first10_without_pr2_dark": [
+     1874.8,
+     585.9,
+     553.2,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     15489,
+     21626
+    ],
+    "motor_mean_light_8000": 661.5,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     661.5,
+     0.0,
+     726.5
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      31364,
+      32018
+     ]
+    ],
+    "spearman_rho": 0.966,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 125,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 4096 on antenna relay neurons",
+    "kind": "tonic",
+    "dimming_before_first10_without_pr2_dark": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     0,
+     0
+    ],
+    "motor_mean_light_8000": 438.9,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     438.9,
+     0.0,
+     446.4
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.949,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 4096 on pr-AMG RN + 2048 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1474.7,
+     592.9,
+     593.9,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     26784,
+     32130
+    ],
+    "motor_mean_light_8000": 1268.0,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1268.0,
+     208.3,
+     1289.4
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      51561,
+      64260
+     ]
+    ],
+    "spearman_rho": 0.979,
+    "ticks_to_silence_after_off": 9,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 125,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 4096 on pr-AMG RN + 2560 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1259.1,
+     1912.0,
+     1907.4,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     65358,
+     91238
+    ],
+    "motor_mean_light_8000": 1222.3,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1222.3,
+     422.7,
+     1247.1
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      29278,
+      30221
+     ],
+     [
+      27709,
+      33710
+     ]
+    ],
+    "spearman_rho": 0.979,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 4096 on pr-AMG RN + 3072 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1078.5,
+     2154.6,
+     2037.2,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 2,
+    "dimming_burst_left_right": [
+     73668,
+     101869
+    ],
+    "motor_mean_light_8000": 1431.4,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1431.4,
+     829.0,
+     1481.0
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      48243,
+      62341
+     ]
+    ],
+    "spearman_rho": 0.979,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 120,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 4096 on pr-AMG RN + 4096 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1427.0,
+     1739.2,
+     1725.4,
+     1400.9
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     79326,
+     87354
+    ],
+    "motor_mean_light_8000": 1448.7,
+    "pr2_in_dark_without_with_after": [
+     2372.6,
+     2140.2,
+     894.8
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1448.7,
+     1064.8,
+     1492.4
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      47906,
+      69423
+     ],
+     [
+      82533,
+      94583
+     ]
+    ],
+    "spearman_rho": 0.883,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 68681,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 4096 on pr-AMG RN + 2048 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     705.7,
+     1994.8,
+     1995.2,
+     6.0
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     59511,
+     82434
+    ],
+    "motor_mean_light_8000": 991.5,
+    "pr2_in_dark_without_with_after": [
+     2147.1,
+     2102.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     991.5,
+     402.5,
+     811.8
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      3760,
+      12595
+     ]
+    ],
+    "spearman_rho": 0.883,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 1080,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 4096 on pr-AMG RN + 2560 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1672.9,
+     685.0,
+     685.0,
+     12.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     27373,
+     30323
+    ],
+    "motor_mean_light_8000": 1008.8,
+    "pr2_in_dark_without_with_after": [
+     36.0,
+     36.0,
+     731.2
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1008.8,
+     643.3,
+     979.9
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      4320,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 1.0,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 66005,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 4096 on pr-AMG RN + 3072 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1694.3,
+     1626.1,
+     1626.1,
+     575.6
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     40242,
+     64260
+    ],
+    "motor_mean_light_8000": 1065.7,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     36.0,
+     1586.7
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1065.7,
+     652.3,
+     1047.0
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      80839,
+      95857
+     ],
+     [
+      32632,
+      53581
+     ]
+    ],
+    "spearman_rho": 0.9,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 61563,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 4096 on pr-AMG RN + 4096 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1915.4,
+     146.4,
+     146.4,
+     1095.3
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     3476,
+     5309
+    ],
+    "motor_mean_light_8000": 1081.3,
+    "pr2_in_dark_without_with_after": [
+     2211.4,
+     1914.7,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1081.3,
+     634.4,
+     1041.5
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      33088,
+      31916
+     ],
+     [
+      5145,
+      1695
+     ]
+    ],
+    "spearman_rho": 0.95,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 64295,
+    "cells_fired": 127,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 4096 on pr-AMG RN + 2048 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     825.9,
+     851.4,
+     851.4,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     28993,
+     34314
+    ],
+    "motor_mean_light_8000": 1509.6,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1509.6,
+     610.0,
+     1311.4
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      29148,
+      35802
+     ],
+     [
+      30872,
+      34097
+     ]
+    ],
+    "spearman_rho": 0.912,
+    "ticks_to_silence_after_off": 7,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 4096 on pr-AMG RN + 2560 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1767.2,
+     1621.8,
+     1621.8,
+     1633.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     61314,
+     65262
+    ],
+    "motor_mean_light_8000": 1399.2,
+    "pr2_in_dark_without_with_after": [
+     2212.0,
+     2183.0,
+     1662.8
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1399.2,
+     1207.1,
+     1439.6
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      2798,
+      55
+     ],
+     [
+      104528,
+      122411
+     ]
+    ],
+    "spearman_rho": 0.967,
+    "ticks_to_silence_after_off": 18,
+    "seizure_ticks_to_silence": 13,
+    "motor_spikes_dark_from_rest": 69694,
+    "cells_fired": 123,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 4096 on pr-AMG RN + 3072 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     2016.2,
+     1853.7,
+     1834.1,
+     1516.1
+    ],
+    "onsets_where_pr2_raised_first_10": 2,
+    "dimming_burst_left_right": [
+     89597,
+     114694
+    ],
+    "motor_mean_light_8000": 1582.6,
+    "pr2_in_dark_without_with_after": [
+     2206.9,
+     2438.1,
+     1767.6
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1582.6,
+     1153.4,
+     1523.2
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      70959,
+      48153
+     ],
+     [
+      131884,
+      169809
+     ]
+    ],
+    "spearman_rho": 0.817,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": 13,
+    "motor_spikes_dark_from_rest": 77308,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 4096 on pr-AMG RN + 4096 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1920.2,
+     1141.8,
+     1141.8,
+     1640.3
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     150977,
+     158511
+    ],
+    "motor_mean_light_8000": 1860.2,
+    "pr2_in_dark_without_with_after": [
+     1844.4,
+     2015.4,
+     1468.6
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1860.2,
+     1542.4,
+     1794.9
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      159248,
+      143060
+     ],
+     [
+      150418,
+      183678
+     ]
+    ],
+    "spearman_rho": 0.683,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": null,
+    "motor_spikes_dark_from_rest": 132370,
+    "cells_fired": 123,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": false,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 6144 on pr-AMG RN + 2048 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1246.7,
+     2035.2,
+     2005.9,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     85804,
+     117732
+    ],
+    "motor_mean_light_8000": 1198.3,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1198.3,
+     397.4,
+     1005.2
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      41962,
+      66023
+     ],
+     [
+      60009,
+      85714
+     ]
+    ],
+    "spearman_rho": 0.996,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 15,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 6144 on pr-AMG RN + 2560 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     450.4,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     0,
+     0
+    ],
+    "motor_mean_light_8000": 1324.7,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1324.7,
+     665.2,
+     1315.8
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      11324,
+      24854
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.962,
+    "ticks_to_silence_after_off": 21,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 6144 on pr-AMG RN + 3072 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1433.0,
+     2190.6,
+     2069.7,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 2,
+    "dimming_burst_left_right": [
+     92631,
+     121788
+    ],
+    "motor_mean_light_8000": 1322.5,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1322.5,
+     808.5,
+     1116.0
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      11324,
+      24854
+     ],
+     [
+      30667,
+      50249
+     ]
+    ],
+    "spearman_rho": 0.929,
+    "ticks_to_silence_after_off": 24,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 124,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 6144 on pr-AMG RN + 4096 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1179.8,
+     2046.0,
+     2029.5,
+     761.0
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     76633,
+     107280
+    ],
+    "motor_mean_light_8000": 1619.6,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     255.5,
+     123.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1619.6,
+     873.4,
+     1336.3
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      1390,
+      5309
+     ],
+     [
+      5504,
+      5469
+     ]
+    ],
+    "spearman_rho": 0.95,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 63356,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 6144 on pr-AMG RN + 2048 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1965.2,
+     316.1,
+     316.1,
+     6.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     8006,
+     10958
+    ],
+    "motor_mean_light_8000": 855.9,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     767.9
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     855.9,
+     205.4,
+     855.7
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      30749,
+      35802
+     ]
+    ],
+    "spearman_rho": 0.983,
+    "ticks_to_silence_after_off": 10,
+    "seizure_ticks_to_silence": 15,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 6144 on pr-AMG RN + 2560 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     12.0,
+     282.1,
+     300.1,
+     87.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     122367,
+     128782
+    ],
+    "motor_mean_light_8000": 1048.8,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     54.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1048.8,
+     615.7,
+     842.7
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      21614,
+      21352
+     ],
+     [
+      157695,
+      173069
+     ]
+    ],
+    "spearman_rho": 0.883,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 15,
+    "motor_spikes_dark_from_rest": 69428,
+    "cells_fired": 126,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 6144 on pr-AMG RN + 3072 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1872.4,
+     1155.0,
+     1153.1,
+     36.0
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     35092,
+     34209
+    ],
+    "motor_mean_light_8000": 1077.8,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     36.0,
+     1346.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1077.8,
+     639.1,
+     1000.5
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      27528,
+      32028
+     ],
+     [
+      88753,
+      121445
+     ]
+    ],
+    "spearman_rho": 0.883,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 13,
+    "motor_spikes_dark_from_rest": 66396,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": true,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 6144 on pr-AMG RN + 4096 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1766.1,
+     49.8,
+     49.8,
+     1055.8
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     2985,
+     0
+    ],
+    "motor_mean_light_8000": 1050.9,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     755.3,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1050.9,
+     810.7,
+     890.5
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      67410,
+      74834
+     ],
+     [
+      63944,
+      91363
+     ]
+    ],
+    "spearman_rho": 0.95,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 13,
+    "motor_spikes_dark_from_rest": 69428,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": true,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 6144 on pr-AMG RN + 2048 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1898.2,
+     1035.1,
+     918.8,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     24697,
+     43302
+    ],
+    "motor_mean_light_8000": 1147.0,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1147.0,
+     656.7,
+     1391.5
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      15204,
+      28688
+     ],
+     [
+      35396,
+      36019
+     ]
+    ],
+    "spearman_rho": 0.996,
+    "ticks_to_silence_after_off": 21,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 120,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 6144 on pr-AMG RN + 2560 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     955.8,
+     2000.1,
+     2000.1,
+     1131.1
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     89876,
+     110646
+    ],
+    "motor_mean_light_8000": 1517.4,
+    "pr2_in_dark_without_with_after": [
+     450.3,
+     2242.0,
+     1065.2
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1517.4,
+     1030.6,
+     1471.8
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      13013,
+      18122
+     ],
+     [
+      36590,
+      32954
+     ]
+    ],
+    "spearman_rho": 0.95,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": 13,
+    "motor_spikes_dark_from_rest": 73561,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 6144 on pr-AMG RN + 3072 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1264.3,
+     1964.6,
+     1911.4,
+     1785.1
+    ],
+    "onsets_where_pr2_raised_first_10": 2,
+    "dimming_burst_left_right": [
+     128971,
+     145282
+    ],
+    "motor_mean_light_8000": 1621.2,
+    "pr2_in_dark_without_with_after": [
+     1584.1,
+     1641.1,
+     1814.8
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1621.2,
+     1126.7,
+     1633.6
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      88148,
+      77063
+     ],
+     [
+      136342,
+      153973
+     ]
+    ],
+    "spearman_rho": 0.983,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": 13,
+    "motor_spikes_dark_from_rest": 85871,
+    "cells_fired": 123,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 6144 on pr-AMG RN + 4096 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     2010.5,
+     1437.0,
+     1323.3,
+     1577.6
+    ],
+    "onsets_where_pr2_raised_first_10": 2,
+    "dimming_burst_left_right": [
+     163744,
+     172804
+    ],
+    "motor_mean_light_8000": 1871.8,
+    "pr2_in_dark_without_with_after": [
+     1206.8,
+     1206.8,
+     1586.2
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1871.8,
+     1523.4,
+     1619.1
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      163849,
+      187832
+     ],
+     [
+      116942,
+      124307
+     ]
+    ],
+    "spearman_rho": 0.783,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": null,
+    "motor_spikes_dark_from_rest": 133715,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": false,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 8192 on pr-AMG RN + 2048 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1547.9,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     0,
+     0
+    ],
+    "motor_mean_light_8000": 1261.6,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1261.6,
+     223.8,
+     858.6
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      39294,
+      64260
+     ]
+    ],
+    "spearman_rho": 0.979,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 124,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 8192 on pr-AMG RN + 2560 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1100.8,
+     1306.8,
+     1306.8,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     51874,
+     62453
+    ],
+    "motor_mean_light_8000": 1298.8,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1298.8,
+     435.8,
+     1269.3
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      33088,
+      30323
+     ]
+    ],
+    "spearman_rho": 0.979,
+    "ticks_to_silence_after_off": 20,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 119,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 8192 on pr-AMG RN + 3072 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1480.4,
+     891.6,
+     855.6,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     61256,
+     62453
+    ],
+    "motor_mean_light_8000": 1392.1,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1392.1,
+     825.6,
+     1300.6
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      30513,
+      32130
+     ]
+    ],
+    "spearman_rho": 0.929,
+    "ticks_to_silence_after_off": 8,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 8192 on pr-AMG RN + 4096 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1089.2,
+     1890.0,
+     1899.1,
+     84.8
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     65634,
+     82382
+    ],
+    "motor_mean_light_8000": 1493.7,
+    "pr2_in_dark_without_with_after": [
+     1831.6,
+     1771.2,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1493.7,
+     1033.0,
+     1291.3
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      7049,
+      16155
+     ],
+     [
+      28353,
+      32130
+     ]
+    ],
+    "spearman_rho": 0.733,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 18195,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 8192 on pr-AMG RN + 2048 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1229.2,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     0,
+     0
+    ],
+    "motor_mean_light_8000": 1067.4,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1067.4,
+     204.9,
+     855.9
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      1080,
+      0
+     ],
+     [
+      73484,
+      107121
+     ]
+    ],
+    "spearman_rho": 0.983,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 120,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": true,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 8192 on pr-AMG RN + 2560 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1452.0,
+     1807.0,
+     1837.8,
+     6.0
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     47504,
+     73735
+    ],
+    "motor_mean_light_8000": 859.1,
+    "pr2_in_dark_without_with_after": [
+     36.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     859.1,
+     426.9,
+     832.2
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      16874,
+      5197
+     ],
+     [
+      32914,
+      57368
+     ]
+    ],
+    "spearman_rho": 0.983,
+    "ticks_to_silence_after_off": 13,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 118,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 8192 on pr-AMG RN + 3072 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1869.9,
+     207.7,
+     207.7,
+     6.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     1668,
+     10791
+    ],
+    "motor_mean_light_8000": 876.6,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     876.6,
+     7.2,
+     1011.8
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      60411,
+      74664
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.883,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 66653,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 8192 on pr-AMG RN + 4096 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1669.7,
+     0.0,
+     0.0,
+     314.5
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     0,
+     0
+    ],
+    "motor_mean_light_8000": 1063.3,
+    "pr2_in_dark_without_with_after": [
+     99.5,
+     1502.2,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1063.3,
+     565.5,
+     846.2
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      35248,
+      30221
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.867,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 13,
+    "motor_spikes_dark_from_rest": 69700,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 8192 on pr-AMG RN + 2048 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     913.2,
+     2157.1,
+     2128.1,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 2,
+    "dimming_burst_left_right": [
+     81390,
+     106401
+    ],
+    "motor_mean_light_8000": 1447.7,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1447.7,
+     178.1,
+     1271.0
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      57477,
+      77355
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.979,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 13,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 8192 on pr-AMG RN + 2560 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1516.1,
+     2200.4,
+     2200.4,
+     1018.5
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     112958,
+     137577
+    ],
+    "motor_mean_light_8000": 1477.5,
+    "pr2_in_dark_without_with_after": [
+     581.3,
+     849.9,
+     35.5
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1477.5,
+     903.1,
+     1568.9
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      25330,
+      19647
+     ],
+     [
+      57223,
+      65215
+     ]
+    ],
+    "spearman_rho": 0.917,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": 16,
+    "motor_spikes_dark_from_rest": 73561,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 8192 on pr-AMG RN + 3072 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1537.0,
+     1978.9,
+     1978.9,
+     1982.8
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     101976,
+     130495
+    ],
+    "motor_mean_light_8000": 1547.2,
+    "pr2_in_dark_without_with_after": [
+     2313.7,
+     2431.5,
+     1967.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1547.2,
+     1080.9,
+     1516.1
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      41678,
+      54026
+     ],
+     [
+      121327,
+      141435
+     ]
+    ],
+    "spearman_rho": 0.983,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": 25,
+    "motor_spikes_dark_from_rest": 71269,
+    "cells_fired": 123,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 8192 on pr-AMG RN + 4096 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1429.4,
+     2263.2,
+     2143.7,
+     1875.5
+    ],
+    "onsets_where_pr2_raised_first_10": 3,
+    "dimming_burst_left_right": [
+     136679,
+     164055
+    ],
+    "motor_mean_light_8000": 1764.3,
+    "pr2_in_dark_without_with_after": [
+     1673.5,
+     1643.9,
+     1708.5
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1764.3,
+     1571.0,
+     1735.2
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      122183,
+      103980
+     ],
+     [
+      130998,
+      146087
+     ]
+    ],
+    "spearman_rho": 0.933,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": null,
+    "motor_spikes_dark_from_rest": 134137,
+    "cells_fired": 125,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": false,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 12288 on pr-AMG RN + 2048 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1115.6,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     0,
+     0
+    ],
+    "motor_mean_light_8000": 1145.7,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1145.7,
+     0.0,
+     858.8
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      11301,
+      16254
+     ]
+    ],
+    "spearman_rho": 0.905,
+    "ticks_to_silence_after_off": 10,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 119,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 12288 on pr-AMG RN + 2560 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1983.8,
+     461.4,
+     391.7,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 2,
+    "dimming_burst_left_right": [
+     10066,
+     17620
+    ],
+    "motor_mean_light_8000": 1099.5,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1099.5,
+     417.6,
+     1087.2
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      30103,
+      30221
+     ],
+     [
+      6739,
+      7119
+     ]
+    ],
+    "spearman_rho": 0.996,
+    "ticks_to_silence_after_off": 22,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 119,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 12288 on pr-AMG RN + 3072 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     907.9,
+     1757.7,
+     1775.7,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     74257,
+     94583
+    ],
+    "motor_mean_light_8000": 1249.3,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1249.3,
+     873.5,
+     1097.1
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      28198,
+      30221
+     ],
+     [
+      64215,
+      64148
+     ]
+    ],
+    "spearman_rho": 0.979,
+    "ticks_to_silence_after_off": 14,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 12288 on pr-AMG RN + 4096 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     840.0,
+     1362.3,
+     1394.0,
+     18.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     55658,
+     64260
+    ],
+    "motor_mean_light_8000": 1364.8,
+    "pr2_in_dark_without_with_after": [
+     36.0,
+     36.0,
+     27.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1364.8,
+     1045.5,
+     1275.3
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      47392,
+      64148
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.917,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 1080,
+    "cells_fired": 119,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 12288 on pr-AMG RN + 2048 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     0.0,
+     643.0,
+     611.2,
+     359.8
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     30536,
+     35802
+    ],
+    "motor_mean_light_8000": 892.4,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     892.4,
+     210.3,
+     766.4
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      32573,
+      35530
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.95,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 14,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 12288 on pr-AMG RN + 2560 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1769.2,
+     99.5,
+     99.5,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     2470,
+     3502
+    ],
+    "motor_mean_light_8000": 837.8,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     653.9,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     837.8,
+     3.6,
+     828.5
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      1080,
+      0
+     ],
+     [
+      1080,
+      0
+     ]
+    ],
+    "spearman_rho": 0.933,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 14,
+    "motor_spikes_dark_from_rest": 62543,
+    "cells_fired": 119,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 12288 on pr-AMG RN + 3072 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1619.0,
+     1258.2,
+     1272.0,
+     12.0
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     31033,
+     50249
+    ],
+    "motor_mean_light_8000": 682.6,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     682.6,
+     212.8,
+     821.4
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      28663,
+      39304
+     ]
+    ],
+    "spearman_rho": 0.983,
+    "ticks_to_silence_after_off": 14,
+    "seizure_ticks_to_silence": 14,
+    "motor_spikes_dark_from_rest": 62350,
+    "cells_fired": 125,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 12288 on pr-AMG RN + 4096 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1226.2,
+     1854.2,
+     1919.3,
+     277.5
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     63763,
+     87636
+    ],
+    "motor_mean_light_8000": 831.0,
+    "pr2_in_dark_without_with_after": [
+     36.0,
+     36.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     831.0,
+     221.6,
+     835.7
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      1080,
+      0
+     ],
+     [
+      94405,
+      101927
+     ]
+    ],
+    "spearman_rho": 0.933,
+    "ticks_to_silence_after_off": 12,
+    "seizure_ticks_to_silence": 14,
+    "motor_spikes_dark_from_rest": 67516,
+    "cells_fired": 123,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 12288 on pr-AMG RN + 2048 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1666.0,
+     915.5,
+     991.8,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     54975,
+     64689
+    ],
+    "motor_mean_light_8000": 1301.8,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1301.8,
+     648.0,
+     1195.0
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      67143,
+      87195
+     ],
+     [
+      36197,
+      48714
+     ]
+    ],
+    "spearman_rho": 0.946,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 13,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 12288 on pr-AMG RN + 2560 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1039.8,
+     2198.2,
+     2116.6,
+     551.0
+    ],
+    "onsets_where_pr2_raised_first_10": 2,
+    "dimming_burst_left_right": [
+     92504,
+     116065
+    ],
+    "motor_mean_light_8000": 1544.7,
+    "pr2_in_dark_without_with_after": [
+     83.4,
+     83.4,
+     721.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1544.7,
+     666.9,
+     1290.0
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      1171,
+      0
+     ],
+     [
+      5905,
+      8345
+     ]
+    ],
+    "spearman_rho": 0.967,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": 13,
+    "motor_spikes_dark_from_rest": 73196,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 12288 on pr-AMG RN + 3072 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     910.4,
+     2169.5,
+     2194.7,
+     1446.5
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     136576,
+     165095
+    ],
+    "motor_mean_light_8000": 1585.2,
+    "pr2_in_dark_without_with_after": [
+     2187.8,
+     2404.0,
+     1254.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1585.2,
+     816.7,
+     1519.9
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      21338,
+      34107
+     ],
+     [
+      32870,
+      30291
+     ]
+    ],
+    "spearman_rho": 0.933,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": 13,
+    "motor_spikes_dark_from_rest": 70342,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 12288 on pr-AMG RN + 4096 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1974.0,
+     1362.5,
+     1441.4,
+     1295.4
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     108778,
+     137492
+    ],
+    "motor_mean_light_8000": 1749.7,
+    "pr2_in_dark_without_with_after": [
+     835.0,
+     943.7,
+     1295.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1749.7,
+     1407.5,
+     1540.5
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      163927,
+      157580
+     ],
+     [
+      123424,
+      112265
+     ]
+    ],
+    "spearman_rho": 0.95,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": null,
+    "motor_spikes_dark_from_rest": 132135,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": false,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 16384 on pr-AMG RN + 2048 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1538.0,
+     1656.8,
+     1674.8,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     48371,
+     71821
+    ],
+    "motor_mean_light_8000": 881.2,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     881.2,
+     0.0,
+     937.9
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      79922,
+      105204
+     ]
+    ],
+    "spearman_rho": 0.983,
+    "ticks_to_silence_after_off": 17,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 118,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 16384 on pr-AMG RN + 2560 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1332.5,
+     330.9,
+     426.2,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     31493,
+     33825
+    ],
+    "motor_mean_light_8000": 1274.2,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1274.2,
+     311.2,
+     967.0
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "spearman_rho": 0.983,
+    "ticks_to_silence_after_off": 3,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 16384 on pr-AMG RN + 3072 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     144.0,
+     658.4,
+     640.4,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     26448,
+     32130
+    ],
+    "motor_mean_light_8000": 1280.1,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1280.1,
+     468.0,
+     1152.5
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      32391,
+      55493
+     ]
+    ],
+    "spearman_rho": 0.962,
+    "ticks_to_silence_after_off": 20,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 118,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 16384 on pr-AMG RN + 4096 on pr-AMG RN's MN/MGIN targets",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     767.0,
+     640.4,
+     640.4,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     31616,
+     32232
+    ],
+    "motor_mean_light_8000": 1377.5,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     36.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1377.5,
+     850.3,
+     1332.7
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      66225,
+      89002
+     ],
+     [
+      34814,
+      37327
+     ]
+    ],
+    "spearman_rho": 0.95,
+    "ticks_to_silence_after_off": 13,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 16384 on pr-AMG RN + 2048 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     1080,
+     0
+    ],
+    "motor_mean_light_8000": 431.9,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     431.9,
+     210.5,
+     652.1
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      29278,
+      32018
+     ]
+    ],
+    "spearman_rho": 0.957,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 118,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": true,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 16384 on pr-AMG RN + 2560 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     544.7,
+     2013.8,
+     2046.5,
+     345.8
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     70192,
+     96275
+    ],
+    "motor_mean_light_8000": 569.7,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     569.7,
+     201.3,
+     724.9
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      1080,
+      0
+     ],
+     [
+      66380,
+      90911
+     ]
+    ],
+    "spearman_rho": 0.915,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 64083,
+    "cells_fired": 119,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 16384 on pr-AMG RN + 3072 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1105.3,
+     1912.6,
+     1878.2,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     58244,
+     77083
+    ],
+    "motor_mean_light_8000": 810.5,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     810.5,
+     3.6,
+     631.9
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      3240,
+      0
+     ]
+    ],
+    "spearman_rho": 0.983,
+    "ticks_to_silence_after_off": 2,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 118,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 16384 on pr-AMG RN + 4096 on AMG",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     22.6,
+     1518.1,
+     1515.9,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 2,
+    "dimming_burst_left_right": [
+     117198,
+     137107
+    ],
+    "motor_mean_light_8000": 894.8,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     894.8,
+     223.4,
+     680.0
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      105879,
+      130599
+     ]
+    ],
+    "spearman_rho": 0.933,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 14,
+    "motor_spikes_dark_from_rest": 66324,
+    "cells_fired": 122,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 16384 on pr-AMG RN + 2048 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1074.8,
+     528.8,
+     607.7,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     28812,
+     32402
+    ],
+    "motor_mean_light_8000": 1290.3,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1290.3,
+     405.0,
+     1084.8
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      25102,
+      1695
+     ]
+    ],
+    "spearman_rho": 0.996,
+    "ticks_to_silence_after_off": 6,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 119,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 16384 on pr-AMG RN + 2560 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1628.2,
+     1983.9,
+     1724.9,
+     435.7
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     62761,
+     90440
+    ],
+    "motor_mean_light_8000": 1312.4,
+    "pr2_in_dark_without_with_after": [
+     402.0,
+     402.0,
+     132.4
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1312.4,
+     872.7,
+     1338.7
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      68093,
+      84077
+     ],
+     [
+      43584,
+      41883
+     ]
+    ],
+    "spearman_rho": 1.0,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": 13,
+    "motor_spikes_dark_from_rest": 68183,
+    "cells_fired": 120,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 16384 on pr-AMG RN + 3072 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1079.1,
+     1559.0,
+     1581.5,
+     727.2
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     107976,
+     152562
+    ],
+    "motor_mean_light_8000": 1563.9,
+    "pr2_in_dark_without_with_after": [
+     2203.0,
+     2239.0,
+     1330.5
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1563.9,
+     1198.9,
+     1469.7
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      47841,
+      66679
+     ],
+     [
+      90011,
+      109325
+     ]
+    ],
+    "spearman_rho": 0.9,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": 14,
+    "motor_spikes_dark_from_rest": 63424,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "tonic 16384 on pr-AMG RN + 4096 on all MN and MGIN",
+    "kind": "tonic+baseline",
+    "dimming_before_first10_without_pr2_dark": [
+     1686.3,
+     1688.4,
+     1610.4,
+     1354.4
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     154819,
+     165753
+    ],
+    "motor_mean_light_8000": 1689.5,
+    "pr2_in_dark_without_with_after": [
+     627.9,
+     627.9,
+     1333.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1689.5,
+     1366.1,
+     1656.0
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      121665,
+      118158
+     ],
+     [
+      131573,
+      163887
+     ]
+    ],
+    "spearman_rho": 0.783,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": null,
+    "motor_spikes_dark_from_rest": 119552,
+    "cells_fired": 124,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": false,
+     "antenna_steers_dimming": true,
+     "pr1_regression": false,
+     "seizure": false,
+     "no_input_from_rest": false
+    },
+    "all_pass": false
+   },
+   {
+    "name": "leak shift 4 on MN and MGIN",
+    "kind": "leak",
+    "dimming_before_first10_without_pr2_dark": [
+     1448.5,
+     1605.0,
+     1605.0,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     69303,
+     85884
+    ],
+    "motor_mean_light_8000": 1321.6,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1321.6,
+     208.6,
+     1061.1
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      64369,
+      82549
+     ]
+    ],
+    "spearman_rho": 0.949,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 126,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "leak shift 5 on MN and MGIN",
+    "kind": "leak",
+    "dimming_before_first10_without_pr2_dark": [
+     1667.5,
+     542.2,
+     560.2,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     31797,
+     33825
+    ],
+    "motor_mean_light_8000": 1308.6,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1308.6,
+     0.0,
+     1083.3
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      0,
+      0
+     ],
+     [
+      48676,
+      59118
+     ]
+    ],
+    "spearman_rho": 0.966,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 12,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 121,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "adaptation 4096 on MN and MGIN",
+    "kind": "adaptation",
+    "dimming_before_first10_without_pr2_dark": [
+     2121.0,
+     54.8,
+     54.8,
+     0.0
+    ],
+    "onsets_where_pr2_raised_first_10": 0,
+    "dimming_burst_left_right": [
+     3289,
+     0
+    ],
+    "motor_mean_light_8000": 1391.5,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     1391.5,
+     249.7,
+     1429.0
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      8471,
+      23316
+     ],
+     [
+      1545,
+      7174
+     ]
+    ],
+    "spearman_rho": 0.966,
+    "ticks_to_silence_after_off": 0,
+    "seizure_ticks_to_silence": 17,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 123,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": true,
+     "antenna_alone": false,
+     "antenna_steers_dimming": false,
+     "pr1_regression": true,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "adaptation 2048 on MN and MGIN",
+    "kind": "adaptation",
+    "dimming_before_first10_without_pr2_dark": [
+     3603.1,
+     4098.6,
+     4263.0,
+     2303.8
+    ],
+    "onsets_where_pr2_raised_first_10": 1,
+    "dimming_burst_left_right": [
+     262710,
+     391694
+    ],
+    "motor_mean_light_8000": 2895.2,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     2895.2,
+     286.2,
+     2081.7
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      13434,
+      36366
+     ],
+     [
+      93124,
+      96944
+     ]
+    ],
+    "spearman_rho": 0.865,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": 19,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 123,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": true,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   },
+   {
+    "name": "adaptation 0 on MN and MGIN",
+    "kind": "adaptation",
+    "dimming_before_first10_without_pr2_dark": [
+     6247.1,
+     6485.2,
+     6420.9,
+     6503.0
+    ],
+    "onsets_where_pr2_raised_first_10": 2,
+    "dimming_burst_left_right": [
+     546982,
+     612720
+    ],
+    "motor_mean_light_8000": 6464.6,
+    "pr2_in_dark_without_with_after": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "antenna_light_motor_tilt_0_up_down": [
+     6464.6,
+     6391.4,
+     6433.6
+    ],
+    "antenna_dimming_left_right_up_down": [
+     [
+      555558,
+      628271
+     ],
+     [
+      543746,
+      622165
+     ]
+    ],
+    "spearman_rho": 0.831,
+    "ticks_to_silence_after_off": null,
+    "seizure_ticks_to_silence": null,
+    "motor_spikes_dark_from_rest": 0,
+    "cells_fired": 124,
+    "pass": {
+     "dimming_step": false,
+     "dimming_left_bias": false,
+     "antenna_alone": true,
+     "antenna_steers_dimming": false,
+     "pr1_regression": false,
+     "seizure": false,
+     "no_input_from_rest": true
+    },
+    "all_pass": false
+   }
+  ]
  }
 }

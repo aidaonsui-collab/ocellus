@@ -18,7 +18,7 @@ Nothing here changes the token design. Every paid action stays generic over `Coi
 | `ocellus_game::reef` | One shared `Reef` per shard, 16×16 cells (`rules::grid`), `occupy` / `attach` / `release` / `evict_expired`. `current_seed` is fixed at 1 and only read by `feed`. |
 | `ocellus_game::market` | `pay_hatch`, `pay_entry` (80% sink / 20% pot), `claim_prize`, timelocked `propose` / `execute`. |
 | Client | `client/src/engine.js` is the integer mirror (`stepLarva`, `follow`). `client/index.html` verifies events. `client/demo/` renders the pose. `replay/replay.py` checks the same events in Python. |
-| Data | `research/connectome.v1.json`: 224 reconciled cells, 3,010 chemical edges, 428 undirected gap junctions, 28 inhibitory. `research/signs.csv`: 196 of 224 cells are "default excitatory" with no transmitter identity in the cited papers. `ciona::canonical_hash` pins `9004dac6…cf16`. |
+| Data | `research/connectome.v1.json`: 224 reconciled cells, 3,010 chemical edges, 428 undirected gap junctions, 28 inhibitory. `research/signs.csv`: 138 of 224 cells are "default excitatory" with no transmitter identity in the cited papers, and 9 are "Contested" (kept excitatory although Kourakis 2019 reports VGAT; see phase 0). `ciona::canonical_hash` pins `9004dac6…cf16`. |
 
 ## The gap this plan closes
 
@@ -29,24 +29,88 @@ So today:
 - **Phototaxis** is mostly a body rule, and it points the wrong way. `integrate` turns the heading *toward* the lure whenever PR-I fires, up to `pr1_n × 180` angle units per tick, and motor yaw only adds a small bend. Real PR-I photoreceptors mediate **negative** phototaxis: in Kourakis 2019's assay, larvae cluster on the side of the dish away from the lamp. The game's "swim to the light" is a game convention, not the animal's behavior.
 - **The escape swim is not neural.** PR-II spikes only arm a counter in `Body`. The thrust does not come from motor neurons. The demo's shadow escape (PR #4) is this counter.
 - **Geotaxis is a body rule.** Antenna spikes nudge `tilt` by `TILT_STEP` (40), clamped to ±512. Nothing about gravity changes heading or thrust.
-- **Steady light gives bouts, not continuous swimming.** On the old 237-label bench graph, brain model v1 at drive 20,000 swam on 38% of ticks, in 10 bouts per 400 (`bench/results/dynamics.json`, the number PR #2 reports). The reconciled 224-cell graph has not been swept the same way; `phase0_behavior.json` only records that PR-I drive of 8,000 produces motor output while dimming and antenna drive produce none. Re-run the sweep on the reconciled graph before quoting a percentage for it.
+- **Steady light gives bouts, not continuous swimming.** On the old 237-label bench graph, brain model v1 at drive 20,000 swam on 38% of ticks, in 10 bouts per 400 (`bench/results/dynamics.json`, the number PR #2 reports). On the reconciled 224-cell graph (phase 0 probe, the chain's sensor mapping), PR-I intensity 4,000 to 20,000 swims on 17–40% of ticks, in 5–10 bouts per 400 ticks of 14–18 ticks each, and nothing swims below 4,000. Output isn't monotonic in drive (1,247 at 8,000, 979 at 10,000), and the rank correlation is 0.932 against the bench graph's 0.996.
 
-The cause PR #2 names, and the sign table confirms: **196 of 224 cells are inhibitory-or-not only by default, and the default is excitatory.** The relay neurons that should gate the dimming and gravity circuits are mostly in that default set, so inhibition never releases anything downstream. The 28 cells that *are* inhibitory are exactly the ones with a cited basis: PR-II (7), pr-AMG relay neurons (8), antenna relay classes (10) and ACINs (3).
+The cause PR #2 names, and the sign table confirmed when this plan was written: **196 of 224 cells were inhibitory-or-not only by default, and the default is excitatory.** The relay neurons that should gate the dimming and gravity circuits are mostly in that default set, so inhibition never releases anything downstream. The 28 cells that *are* inhibitory are exactly the ones with a cited basis: PR-II (7), pr-AMG relay neurons (8), antenna relay classes (10) and ACINs (3). Phase 0 tested this explanation and it doesn't hold: no cited sign change, alone or with a tonic drive, makes PR-II or the antenna cells drive the motor neurons ([results](#results-2026-10-08-a-negative-result)).
 
-Until phase 0 lands, phases 2 and 3 would be scripting behavior the brain does not produce. They wait for it.
+Phases 2 and 3 would script behavior the brain does not produce. Phase 0's result is negative, so they stay on the body rules and the UI has to say so.
 
 ## Phase 0. Brain pathways: dimming and gravity reach the motor neurons
 
 **Goal.** A dimming step and a gravity bias change motor output *inside the step*, with no new body rules. The three DESIGN §9.3 behavioral tests pass on the published wiring. Steady light produces sustained swimming if, and only if, the literature supports it.
 
+### Results (2026-10-08): a negative result
+
+Branch `brain/phase0-pathways`. `python3 bench/scripts/probe_dynamics.py` runs everything below on `research/connectome.v1.json` and writes it to `bench/results/dynamics.json` under `phase0`. `bench/scripts/test_course.py` copies the acceptance numbers into `research/phase0_behavior.json`. As the plan asks, the probe exits non-zero, because the shipped graph fails three tests. No sign, edge, constant or contract changed, so the goldens, `canonical_hash`, `phase2-events.json` and the gas figures stay as they are. `sui move test` (brain and game), `node client/src/check.js` and `replay.py` all pass unchanged.
+
+**Acceptance tests on the graph as shipped.** Inputs are `sensor_drives` for a larva facing the light at intensity 8,000 (the lure at distance 0 under light 256). A shadow quarters the PR-I shade and drives PR-II at `PR2_DRIVE`, exactly as the chain does. Dimming numbers pool six onsets (ticks 80 to 105), because a single run depends on bout phase.
+
+| Test | Result | Measured |
+|---|---|---|
+| Dimming step | fail | Motor mean 1,227 before the shadow, 0 in the first 10 ticks, 0 without PR-II drive, 0 in the dark after. During the shadow only PR-II fires. |
+| Dimming is left-biased | fail | No burst to split. |
+| Antenna alone | pass | Steady light: motor mean 1,260 at tilt 0, 238 at +512, 900 at −512. In the dark, tilt gives 0. |
+| Antenna steers a dimming swim | fail | No dimming swim at tilt 0 or −512 to steer. At +512 the shadow window has output, but it is a bout already running at the onset, identical without PR-II drive. |
+| PR-I regression | pass (baseline) | Rank correlation 0.932, silent 0 ticks after the light goes off. These are the reference values for any later change. |
+| Seizure | pass | Silent 12 ticks after an all-spiking start. |
+| Silence from rest | pass | 0 spikes with no input, and with the antenna tonic only. |
+| Coverage | recorded | 121 of 224 cells fire at least once across light, tilt and shadow. |
+| Sustained swimming | recorded | Bouts. Share of ticks swimming is 0 below intensity 4,000, then 0.17, 0.23, 0.35, 0.26, 0.31 and 0.40 at 4,000, 6,000, 8,000, 10,000, 15,000 and 20,000. |
+
+The dimming test passes only if PR-II raises the first 10 ticks above both the pre-step mean and the same shadow without PR-II drive, at four of six onsets or more, and the dark after is silent. A shadow also quarters PR-I drive, so without that control a rebound or a bout carried over would count as a dimming response.
+
+**Trace.** Missing paths are not the block. Within three chemical hops, PR-II and the antenna cells each reach all 16 MNs and MGINs. Counting routes by net sign (the source and the relays multiplied; only a net-excitatory route can raise motor output), with summed bottleneck weight:
+
+| From | 2 hops, net excitatory | 2 hops, net inhibitory | 3 hops, net excitatory | 3 hops, net inhibitory |
+|---|---|---|---|---|
+| PR-II | 22 routes, 117 (all via pr-AMG RN) | 38, 105 | 932, 2,589 | 718, 1,815 |
+| Antenna cells | 21, 63 | 65, 1,146 | 1,166, 4,107 | 1,097, 4,247 |
+
+**Ablations.** 89 hypotheses, run one at a time, all listed in `dynamics.json`. None passes all seven tests, and the best pass five. None makes PR-II drive reliably raise motor output. Starting from light, PR-II changes the first-10-tick motor mean by −164 to +259 with no consistent sign, and it raises output at no more than three of the six onsets. That is bout-phase noise against pre-step means of up to 2,000.
+
+| Hypothesis | What happened |
+|---|---|
+| Flip one default class to inhibitory: prRN, MGIN, AMG, Em, PNIN, ddN or Cor | PR-II has no effect in any of them. prRN or MGIN silences the PR-I pathway. Em cuts light-driven output by 81% (1,260 to 241) and fails antenna-alone. |
+| Kourakis 2019's own VGAT cells: AMG1–4, AMG6 and AMG7, then those plus Em | PR-II has no effect. With Em, light-driven output falls 75%, to 321. |
+| Tonic drive on pr-AMG RN, 1,024 to 8,192 per tick | Below about 4,096 the cells don't fire on their own, because gap junctions drain them (with the gap junctions zeroed, 3,072 makes them fire). Above that, PR-II slows them (0.17 to 0.05 spikes per tick at 4,096, 0.77 to 0.65 at 8,192) but never silences them. Two of the eight (74, 94) get no PR-II synapse, and the relays' mutual inhibition (334) outweighs PR-II's input to them (69). Nothing downstream changes. |
+| Tonic drive on the antenna relay neurons, 2,048 to 4,096 | PR-II has no effect, and light-driven output drops. |
+| Tonic pr-AMG RN (4,096 to 16,384) plus an excitatory baseline (2,048 to 4,096) on the cells it inhibits: its MN and MGIN targets, the AMGs, or every MN and MGIN. 60 combinations. | Its five MN and MGIN targets: no release, because a baseline on five cells spreads across the gap-coupled MN and MGIN pool (1,943 sections of gap junction among them). Every MN and MGIN: the larva swims in the dark with no input. The AMGs: the only switch seen, in the dark only. Rest is 0 to 100, motor output is 650 to 1,500 while PR-II is on, and 0 after (for example pr-AMG RN 6,144 with AMG 4,096), through PR-II ⊣ pr-AMG RN ⊣ AMG → MN. It fails the full tests. Starting from light, the same release happens without PR-II: PR-I's excitatory input to pr-AMG RN (191) outweighs PR-II's inhibitory input (69), and the shadow quarters PR-I. The larva keeps swimming in the dark afterward, most likely through the AMGs' recurrent excitation (563), a fresh larva swims at hatch, and small changes in either drive flip the outcome. It also needs the AMGs to be excitatory, which Kourakis 2019 contradicts for six of the seven. |
+| Kourakis 2019's VGAT signs plus a tonic pr-AMG RN, with and without a baseline on its MGIN targets (the paper's own circuit) | PR-II has no effect, in the dark or from light. |
+| Leak shift 4 or 5, or adaptation 4,096, 2,048 or 0, on MN and MGIN | PR-II has no effect. Adaptation at 2,048 or below makes the motor ganglion keep swimming with no input. |
+
+**Why, in this model.** Kourakis 2019 proposes "the inhibitory PR-IIs synapsing to the pr-AMG RNs to reduce their inhibition on the cholinergic MGINs." Three things in the wiring and the LIF model stop that from working:
+
+1. PR-II's input to pr-AMG RN is small: 69 sections onto six of the eight cells, against the relays' mutual inhibition (334) and their PR-I input (191).
+2. pr-AMG RN's output to the motor side is narrow: MGIN1L 107, MGIN1R 52, MGIN2L 2, MN1L 6, MN1R 5. The MGINs' input is dominated by BTN (315), the antenna relay classes (898), other MGINs (248) and Em (212).
+3. Disinhibition needs something held down. In this model the MGINs rest silent with no drive of their own, and there is no central pattern generator. Supplying that drive would be a new model mechanism (a per-cell tonic input in Move, JS and Python), not a sign change, and no setting measured here works.
+
+So sign changes can't make the dimming and gravity responses come from this graph. Phases 2 and 3 stay on the body rules (the `escape` counter and `TILT_STEP`), and the UI must call them game rules.
+
+**Gravity, measured anyway.** In steady light, tilt already changes the left/right split of PR-I bouts and lowers total output, because the antenna relays inhibit the running bout asymmetrically. At tilt −512, right exceeds left by 14,748 NMJ units over 300 ticks; at +512 the two sides are within 107. Bostwick 2020 reports that gravitaxis is inoperable in constant light and triggered by dimming. The model has no such gate. If phase 3 ever reads the brain's antenna output, it would steer in steady light too, which contradicts the paper.
+
+**The sign table, corrected without changing a sign.** Reading Kourakis 2019 in full (the Europe PMC full text) corrected several basis strings in `signs.csv`, which `build_connectome.py` now writes. Basis text is not part of `connectome.v1.bin`, so `data_hash` is unchanged.
+
+- PR-I: the majority are exclusively VGLUT (glutamatergic), matching the widespread ocellus VGLUT in Horie 2008b. The registration predicts PR-9 is VGAT-only (high confidence) and PR-10 is VGAT and VGLUT.
+- Antenna cells: VGLUT. MNs, MGINs, ddNs: the motor ganglion's VACHT block. ACINs: glycinergic.
+- prRN: the registration predicts the six are **evenly mixed between VGAT and VACHT**, with low confidence in which cell is which. The VACHT- and AMPAR-positive relay neurons carry the PR-I circuit. The candidate table's "prRNs are cholinergic" was too strong. The class stays excitatory, and the basis says why.
+- pr-AMG RN: five of eight VGAT, two VACHT, one unresolved. AntRN: eight of ten VGAT. Both stay inhibitory at class level.
+- AMG: **VGAT in AMGs 1, 2, 3, 4, 6 and 7, VACHT in AMG5.** This is the paper's registration, not an inference from how it groups cells, as the candidate table assumed.
+- Em: VGAT, agreeing with earlier GAD reports (Takamura 2010).
+
+138 cells are still "Default excitatory." Nine are marked "Contested": PR-9, AMG1–4, AMG6, AMG7, Em1 and Em2. The model keeps them excitatory although the paper reports VGAT, because flipping them produced neither behavior and cut light-driven output by about 75%. Whether to make the table match the paper anyway is a separate decision, not a phase 0 pathway fix. It would move every golden and `canonical_hash`.
+
+**Phototaxis direction: what the measurements imply.** The brain gets no bearing. All 23 PR-I cells receive the same shade term, so motor output tracks only how much light the cup sees. Under steady light the left/right split is close to even at every intensity, with the right side ahead by 1 to 10%. Heading toward or away from the lamp therefore comes entirely from the `PR1_TURN` body rule. With the current sensor mapping the brain cannot carry direction by itself, so "replace the rule with motor yaw" is not reachable. Flipping the rule's sign costs nothing on the brain side, though it still moves the goldens, because it's a body rule. Kourakis 2019 reports negative phototaxis. The choice between herding and "toward the light" stays open.
+
 ### What the brain must do
 
 1. **Dimming / escape (PR-II).** A step-down in light, delivered as the existing `shadow` input, must raise NMJ-weighted motor output above the pre-dimming baseline, and the burst must stop when the input stops. The left/right split should be asymmetric (the dimming swim is leftward-biased; see sources below). The body's `escape` counter must not be what produces the thrust.
-2. **Gravity (antenna / otolith).** Antenna drive from `tilt` must change motor output, and the sign of `tilt` must bias the left/right split, because the antenna relay neurons project asymmetrically (Bostwick 2020, below).
+2. **Gravity (antenna / otolith).** During a swim, the sign of `tilt` must bias the left/right split of motor output, because the antenna relay neurons project asymmetrically (Bostwick 2020, below). Antenna drive does not have to raise total motor output. Its two-hop routes to the motor neurons are almost all inhibitory (see the trace in the results), so it can steer a swim but not start one.
 3. **No regression on PR-I.** Motor output still rises with light level, and the network still goes silent after the light goes off and after an all-spiking start. Those are the properties PR #2 established.
 4. **Sustained swimming, only if supported.** Real larvae swim in short bouts ("tail flicks") under ordinary conditions and add sustained swims in specific conditions (Kourakis 2019, below). Do not tune the model to swim continuously under steady light just because it looks better. If sustained output appears as a consequence of the sign fix, record it; if it doesn't, bouts stay the honest behavior and the modes are designed around bouts.
 
 ### Investigation (do this before editing signs)
+
+Done on 2026-10-08. The outcome is in [the results above](#results-2026-10-08-a-negative-result); the steps are kept as the record of what was asked.
 
 Work in `bench/scripts/probe_dynamics.py` and `bench/scripts/lif_model.py`, which already compare models without touching the chain.
 
@@ -60,9 +124,9 @@ Work in `bench/scripts/probe_dynamics.py` and `bench/scripts/lif_model.py`, whic
 
 | Candidate | Why it's a candidate | What would justify it |
 |---|---|---|
-| AMG and eminens (Em) inhibitory | Kourakis 2019 lists the eminens cells and the AMGs among the PNS relay neurons picrotoxin should affect, which treats them as GABAergic. All 7 AMG and both Em are default excitatory today. | Antenna or PR-II drive reaches AMG or Em and stops there. Note this is an inference from how the paper groups them, and the `basis` string must say so. |
-| A small tonic drive on pr-AMG RN | The dimming circuit is disinhibitory: PR-II inhibits pr-AMG RN, which inhibits the downstream cholinergic cells, so those cells need a resting inhibitory tone to be released from (Kourakis 2019). | PR-II fires and suppresses pr-AMG RN in the trace, but nothing downstream changes because nothing was being held down. |
-| No change to prRN, ACINs, MNs, MGINs, ddNs, PR-I, antenna cells | Already supported: prRNs are the cholinergic, AMPA-receptor-expressing relay for PR-I (Kourakis 2019), so they stay excitatory even though the table's basis currently says "default". ACINs glycinergic (Kourakis 2019, citing Nishino 2010). MNs, MGINs and ddNs sit in the VACHT block. PR-I glutamatergic. Antenna cells VGLUT-positive (Kourakis 2019, agreeing with Horie 2008b). | Leave the signs. Do update the `basis` text for prRN, MN, MGIN and ddN to cite Kourakis 2019 instead of "default", because that changes what the table can claim without changing behavior. |
+| AMG and eminens (Em) inhibitory | Kourakis 2019 reports VGAT directly: in AMGs 1, 2, 3, 4, 6 and 7 (AMG5 is VACHT) and in the eminens cells (agreeing with GAD reports, Takamura 2010). It isn't only an inference from how the paper groups them. Neither class is on a two-hop route from PR-II or the antenna cells to the motor neurons. | **Measured, rejected for phase 0:** the flips produce no dimming or gravity response and cut light-driven output by 75–81%. The cells are marked "Contested" in `signs.csv`. |
+| A small tonic drive on pr-AMG RN | The dimming circuit is disinhibitory: PR-II inhibits pr-AMG RN, which inhibits the cholinergic MGINs, so those cells need a resting inhibitory tone to be released from (Kourakis 2019). A release also needs the released cells to have drive of their own, which the LIF model doesn't give them. That second part is an inference from the model, not from the papers. | **Measured, rejected:** alone, and with a baseline on its MGIN/MN targets, the AMGs, or every MN and MGIN (60 combinations), PR-II never reliably raises motor output. The one dark-only switch, through the AMGs, fails the full tests. |
+| No change to prRN, ACINs, MNs, MGINs, ddNs, PR-I, antenna cells | Mostly supported. ACINs glycinergic (Kourakis 2019, citing Nishino 2010). MNs, MGINs and ddNs sit in the VACHT block. PR-I mostly glutamatergic, though the registration predicts PR-9 VGAT-only and PR-10 VGAT and VGLUT. Antenna cells VGLUT-positive (Kourakis 2019, citing Horie 2008b). prRNs are not uniformly cholinergic: the registration predicts the six are evenly mixed between VGAT and VACHT, and the VACHT/AMPAR-positive ones carry the PR-I circuit. | **Done:** signs left as they were. The `basis` text for PR-I, the antenna cells, prRN, MN, MGIN, ddN, AMG5 and ACIN now cites Kourakis 2019. PR-9 is marked "Contested" and prRN "excitatory at class level". |
 
 ### Sources (only what the papers actually say)
 
@@ -85,11 +149,11 @@ Extend `bench/scripts/probe_dynamics.py` and fail the run unless all of these ho
 
 | Test | Passes when |
 |---|---|
-| Dimming step (already probed, currently 0) | Motor mean over the first 10 ticks after the step-down is greater than the pre-step mean, and the dark period returns to silence. |
+| Dimming step (currently 0) | Motor mean over the first 10 ticks after the step-down is greater than the pre-step mean and than the same shadow without PR-II drive, at four of six onsets or more, and the dark period returns to silence. |
 | Dimming is left-biased | Over that burst, left NMJ weight exceeds right. (Split the probe's single `MW` sum into the two sides.) |
 | Antenna alone | With constant light and no dimming, antenna drive does **not** raise motor output. This matches Bostwick 2020 and should be an explicit pass, not a failure. |
-| Antenna after dimming | The same antenna drive during a dimming window does raise motor output, and the sign of tilt changes which side dominates. |
-| PR-I regression | The drive sweep stays monotonic (Spearman of motor mean vs drive level above the current 0.996, or not below it), and `ticks_to_silence_after_off` stays 0. |
+| Antenna steers a dimming swim | During a dimming-evoked swim, the sign of tilt changes which side (left or right NMJ weight) dominates. Total motor output does not have to rise: the antenna's routes to the motor neurons are almost all inhibitory, so it can steer a swim but not start one. |
+| PR-I regression | The drive sweep's rank correlation doesn't fall below the shipped graph's (0.932 on the reconciled graph; 0.996 was the bench graph), and `ticks_to_silence_after_off` stays 0. |
 | Seizure | `all_spiking_start_no_input` still reaches silence. PR #2 measured 12 ticks; record the new number, don't assert 12. |
 | Coverage | The activity census reports cells fired at least once. Publish the count; don't set a quota. |
 | Sustained swimming | Report `share_of_ticks_swimming` at each drive level. No minimum. If it stays bout-like, say so in the results file. |
@@ -110,7 +174,7 @@ A sign change doesn't add state, but it can add spikes, and spikes add gas becau
 
 ### Risks
 
-- The hop trace may show **no path at all** from PR-II or antenna cells to the motor ganglion even with signs flipped. In that case the honest outcome is a written negative result, and phases 2 and 3 stay on the body rules with the UI saying so. Don't add edges to force it.
+- **No path at all: ruled out.** PR-II and the antenna cells reach every MN and MGIN within three chemical hops. **No justified change produces the behavior: this is what happened** (results above). Phases 2 and 3 stay on the body rules with the UI saying so. Don't add edges to force it.
 - Sign flips change behavior for every existing larva concept. No larva is on a public network, so nothing is stranded, but every golden and the pinned `phase2-events.json` must move together.
 - `data_hash` is still whatever the publisher passes to `create_frozen` (open item from PR #3). Phase 0 doesn't fix that; phase 7 depends on it being fixed first.
 

@@ -422,7 +422,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -453,7 +453,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Excitatory at class level. Kourakis et al. 2019 registration predicts the six prRNs are evenly mixed between VGAT and VACHT, with low confidence in which cell is which. The VACHT- and AMPAR-positive relay neurons carry the excitatory PR-I circuit. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -482,7 +482,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Excitatory at class level. Kourakis et al. 2019 registration predicts the six prRNs are evenly mixed between VGAT and VACHT, with low confidence in which cell is which. The VACHT- and AMPAR-positive relay neurons carry the excitatory PR-I circuit. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -540,7 +540,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -549,7 +549,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Excitatory at class level. Kourakis et al. 2019 registration predicts the six prRNs are evenly mixed between VGAT and VACHT, with low confidence in which cell is which. The VACHT- and AMPAR-positive relay neurons carry the excitatory PR-I circuit. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -558,7 +558,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Excitatory at class level. Kourakis et al. 2019 registration predicts the six prRNs are evenly mixed between VGAT and VACHT, with low confidence in which cell is which. The VACHT- and AMPAR-positive relay neurons carry the excitatory PR-I circuit. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -612,7 +612,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -657,7 +657,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -678,7 +678,7 @@
    ],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -687,7 +687,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Excitatory at class level. Kourakis et al. 2019 registration predicts the six prRNs are evenly mixed between VGAT and VACHT, with low confidence in which cell is which. The VACHT- and AMPAR-positive relay neurons carry the excitatory PR-I circuit. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -714,7 +714,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -732,7 +732,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Excitatory at class level. Kourakis et al. 2019 registration predicts the six prRNs are evenly mixed between VGAT and VACHT, with low confidence in which cell is which. The VACHT- and AMPAR-positive relay neurons carry the excitatory PR-I circuit. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -741,7 +741,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -768,7 +768,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -777,7 +777,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -806,7 +806,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -815,7 +815,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -824,7 +824,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -833,7 +833,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -854,7 +854,7 @@
    ],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -863,7 +863,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -872,7 +872,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Kourakis et al. 2019: pr-AMG relay neurons are GABAergic. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Kourakis et al. 2019: the majority of pr-AMG RNs are VGAT-only. Its registration predicts five of eight VGAT, two VACHT and one (157) unresolved, with low confidence in which cell is which, so the class is inhibitory. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -881,7 +881,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -899,7 +899,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Class from Ryan et al. 2016 Figure 1.",
+   "sign_basis": "Bostwick et al. 2020: antenna relay neurons are inhibitory. Kourakis et al. 2019 registration predicts eight of ten AntRNs VGAT-positive. Class from Ryan et al. 2016 Figure 1.",
    "confidence": "high"
   },
   {
@@ -989,7 +989,7 @@
    "also_classes": [],
    "side": "L",
    "sign": "inhibitory",
-   "sign_basis": "Ryan et al. 2016 Figure 1 cell key: ACIN is the ascending contralateral inhibitory neuron.",
+   "sign_basis": "Ryan et al. 2016 Figure 1 cell key: ACIN is the ascending contralateral inhibitory neuron. Kourakis et al. 2019: the ACINs are glycinergic.",
    "confidence": "high"
   },
   {
@@ -998,7 +998,7 @@
    "also_classes": [],
    "side": "L",
    "sign": "inhibitory",
-   "sign_basis": "Ryan et al. 2016 Figure 1 cell key: ACIN is the ascending contralateral inhibitory neuron.",
+   "sign_basis": "Ryan et al. 2016 Figure 1 cell key: ACIN is the ascending contralateral inhibitory neuron. Kourakis et al. 2019: the ACINs are glycinergic.",
    "confidence": "high"
   },
   {
@@ -1007,7 +1007,7 @@
    "also_classes": [],
    "side": "R",
    "sign": "inhibitory",
-   "sign_basis": "Ryan et al. 2016 Figure 1 cell key: ACIN is the ascending contralateral inhibitory neuron.",
+   "sign_basis": "Ryan et al. 2016 Figure 1 cell key: ACIN is the ascending contralateral inhibitory neuron. Kourakis et al. 2019: the ACINs are glycinergic.",
    "confidence": "high"
   },
   {
@@ -1016,7 +1016,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Contested. Kourakis et al. 2019 assigns VGAT to AMGs 1, 2, 3, 4, 6 and 7. The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response.",
    "confidence": "high"
   },
   {
@@ -1025,7 +1025,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Contested. Kourakis et al. 2019 assigns VGAT to AMGs 1, 2, 3, 4, 6 and 7. The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response.",
    "confidence": "high"
   },
   {
@@ -1034,7 +1034,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Contested. Kourakis et al. 2019 assigns VGAT to AMGs 1, 2, 3, 4, 6 and 7. The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response.",
    "confidence": "high"
   },
   {
@@ -1043,7 +1043,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Contested. Kourakis et al. 2019 assigns VGAT to AMGs 1, 2, 3, 4, 6 and 7. The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response.",
    "confidence": "high"
   },
   {
@@ -1052,7 +1052,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: AMG5 is VACHT-positive (cholinergic).",
    "confidence": "high"
   },
   {
@@ -1061,7 +1061,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Contested. Kourakis et al. 2019 assigns VGAT to AMGs 1, 2, 3, 4, 6 and 7. The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response.",
    "confidence": "high"
   },
   {
@@ -1070,7 +1070,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Contested. Kourakis et al. 2019 assigns VGAT to AMGs 1, 2, 3, 4, 6 and 7. The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response.",
    "confidence": "high"
   },
   {
@@ -1079,7 +1079,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the two otolith antenna cells express VGLUT (glutamatergic), citing Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1088,7 +1088,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the two otolith antenna cells express VGLUT (glutamatergic), citing Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1295,7 +1295,7 @@
    "also_classes": [],
    "side": "L",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the ddNs are in the motor ganglion's continuous VACHT block (cholinergic).",
    "confidence": "high"
   },
   {
@@ -1304,7 +1304,7 @@
    "also_classes": [],
    "side": "R",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the ddNs are in the motor ganglion's continuous VACHT block (cholinergic).",
    "confidence": "high"
   },
   {
@@ -1313,7 +1313,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Contested. Kourakis et al. 2019: the eminens cells express VGAT, agreeing with earlier GAD reports (Takamura et al. 2010). The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response.",
    "confidence": "high"
   },
   {
@@ -1322,7 +1322,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Contested. Kourakis et al. 2019: the eminens cells express VGAT, agreeing with earlier GAD reports (Takamura et al. 2010). The model keeps them excitatory: phase 0 found the flip does not produce the dimming or gravity response.",
    "confidence": "high"
   },
   {
@@ -1349,7 +1349,7 @@
    "also_classes": [],
    "side": "L",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the MGINs are in the motor ganglion's continuous VACHT block, and the paper calls them cholinergic.",
    "confidence": "high"
   },
   {
@@ -1358,7 +1358,7 @@
    "also_classes": [],
    "side": "R",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the MGINs are in the motor ganglion's continuous VACHT block, and the paper calls them cholinergic.",
    "confidence": "high"
   },
   {
@@ -1367,7 +1367,7 @@
    "also_classes": [],
    "side": "L",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the MGINs are in the motor ganglion's continuous VACHT block, and the paper calls them cholinergic.",
    "confidence": "high"
   },
   {
@@ -1376,7 +1376,7 @@
    "also_classes": [],
    "side": "R",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the MGINs are in the motor ganglion's continuous VACHT block, and the paper calls them cholinergic.",
    "confidence": "high"
   },
   {
@@ -1385,7 +1385,7 @@
    "also_classes": [],
    "side": "L",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the MGINs are in the motor ganglion's continuous VACHT block, and the paper calls them cholinergic.",
    "confidence": "high"
   },
   {
@@ -1394,7 +1394,7 @@
    "also_classes": [],
    "side": "R",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the MGINs are in the motor ganglion's continuous VACHT block, and the paper calls them cholinergic.",
    "confidence": "high"
   },
   {
@@ -1448,7 +1448,7 @@
    "also_classes": [],
    "side": "L",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs.",
    "confidence": "high"
   },
   {
@@ -1457,7 +1457,7 @@
    "also_classes": [],
    "side": "R",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs.",
    "confidence": "high"
   },
   {
@@ -1466,7 +1466,7 @@
    "also_classes": [],
    "side": "L",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs.",
    "confidence": "high"
   },
   {
@@ -1475,7 +1475,7 @@
    "also_classes": [],
    "side": "R",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs.",
    "confidence": "high"
   },
   {
@@ -1484,7 +1484,7 @@
    "also_classes": [],
    "side": "L",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs.",
    "confidence": "high"
   },
   {
@@ -1493,7 +1493,7 @@
    "also_classes": [],
    "side": "R",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs.",
    "confidence": "high"
   },
   {
@@ -1502,7 +1502,7 @@
    "also_classes": [],
    "side": "L",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs.",
    "confidence": "high"
   },
   {
@@ -1511,7 +1511,7 @@
    "also_classes": [],
    "side": "R",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs.",
    "confidence": "high"
   },
   {
@@ -1520,7 +1520,7 @@
    "also_classes": [],
    "side": "L",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs.",
    "confidence": "high"
   },
   {
@@ -1529,7 +1529,7 @@
    "also_classes": [],
    "side": "R",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the motor neurons are cholinergic, and a continuous VACHT block covers the anterior three MN pairs, the ddNs and the MGINs.",
    "confidence": "high"
   },
   {
@@ -1763,7 +1763,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1772,7 +1772,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1781,7 +1781,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1790,7 +1790,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1799,7 +1799,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1808,7 +1808,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1817,7 +1817,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1826,7 +1826,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1835,7 +1835,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Contested. Kourakis et al. 2019 registration predicts PR-9 is VGAT-only, with high confidence. The model keeps it excitatory with the other PR-Is.",
    "confidence": "high"
   },
   {
@@ -1844,7 +1844,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019 registration predicts PR-10 co-expresses VGAT and VGLUT. Kept excitatory.",
    "confidence": "high"
   },
   {
@@ -1853,7 +1853,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1862,7 +1862,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1871,7 +1871,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1880,7 +1880,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1889,7 +1889,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1898,7 +1898,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: PR-Is other than PR-9 and PR-10 are VGLUT-only (glutamatergic), with lower confidence for PR-16.",
    "confidence": "high"
   },
   {
@@ -1907,7 +1907,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1916,7 +1916,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1925,7 +1925,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1934,7 +1934,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1943,7 +1943,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1952,7 +1952,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1961,7 +1961,7 @@
    "also_classes": [],
    "side": "",
    "sign": "excitatory",
-   "sign_basis": "Default excitatory. No transmitter identity for this cell in Ryan 2016, Kourakis 2019, or Bostwick 2020.",
+   "sign_basis": "Kourakis et al. 2019: the majority of PR-Is are exclusively glutamatergic (VGLUT), matching the widespread VGLUT in the ocellus reported by Horie et al. 2008b.",
    "confidence": "high"
   },
   {
@@ -1970,7 +1970,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Kourakis et al. 2019: PR-II photoreceptors are GABAergic.",
+   "sign_basis": "Kourakis et al. 2019: PR-IIs are VGAT-positive (GABAergic), a subset co-expressing VGLUT.",
    "confidence": "high"
   },
   {
@@ -1979,7 +1979,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Kourakis et al. 2019: PR-II photoreceptors are GABAergic.",
+   "sign_basis": "Kourakis et al. 2019: PR-IIs are VGAT-positive (GABAergic), a subset co-expressing VGLUT.",
    "confidence": "high"
   },
   {
@@ -1988,7 +1988,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Kourakis et al. 2019: PR-II photoreceptors are GABAergic.",
+   "sign_basis": "Kourakis et al. 2019: PR-IIs are VGAT-positive (GABAergic), a subset co-expressing VGLUT.",
    "confidence": "high"
   },
   {
@@ -1997,7 +1997,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Kourakis et al. 2019: PR-II photoreceptors are GABAergic.",
+   "sign_basis": "Kourakis et al. 2019: PR-IIs are VGAT-positive (GABAergic), a subset co-expressing VGLUT.",
    "confidence": "high"
   },
   {
@@ -2006,7 +2006,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Kourakis et al. 2019: PR-II photoreceptors are GABAergic.",
+   "sign_basis": "Kourakis et al. 2019: PR-IIs are VGAT-positive (GABAergic), a subset co-expressing VGLUT.",
    "confidence": "high"
   },
   {
@@ -2015,7 +2015,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Kourakis et al. 2019: PR-II photoreceptors are GABAergic.",
+   "sign_basis": "Kourakis et al. 2019: PR-IIs are VGAT-positive (GABAergic), a subset co-expressing VGLUT.",
    "confidence": "high"
   },
   {
@@ -2024,7 +2024,7 @@
    "also_classes": [],
    "side": "",
    "sign": "inhibitory",
-   "sign_basis": "Kourakis et al. 2019: PR-II photoreceptors are GABAergic.",
+   "sign_basis": "Kourakis et al. 2019: PR-IIs are VGAT-positive (GABAergic), a subset co-expressing VGLUT.",
    "confidence": "high"
   },
   {

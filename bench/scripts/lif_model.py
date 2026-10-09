@@ -63,7 +63,8 @@ class Brain:
         self.tick = 0
         self.spikes_total = 0
 
-    def step(self, sensor_idx=(), sensor_drive=(), force_all=False, leak=None, theta=None):
+    def step(self, sensor_idx=(), sensor_drive=(), force_all=False, leak=None, theta=None, adapt_inc=None):
+        """leak, theta and adapt_inc are optional per-cell overrides (probe only)."""
         p, n, v = self.p, self.n, self.v
         exc, inh = [0] * n, [0] * n
         for i in range(n):
@@ -104,7 +105,7 @@ class Brain:
             if f:
                 self.r[i] = p["refractory"]
                 x = p["reset"]
-                a += p["adapt_inc"]
+                a += p["adapt_inc"] if adapt_inc is None else adapt_inc[i]
                 fired.append(i)
                 self.spikes_total += 1
             v[i] = x
